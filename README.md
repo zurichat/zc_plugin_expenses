@@ -24,27 +24,26 @@
 5. when done submit task
 
 ### Submitting a task
-1. after working on a task before committing, fetch from the [zc_plugin_expenses repo](https://github.com/zurichat/zc_plugin_expenses.git) to make sure your work is synced with ohers
+1. after working on a task before committing, fetch from the [zc_plugin_expenses repo](https://github.com/zurichat/zc_plugin_expenses.git) to make sure your work is synced with others
 2. after commitng make a pull request 
-3. in the title field write a very very brief descripton of the work done and also the number of the issues you worked on 
-4. on the description field add a link to your work on the [live server](http://expenses.zuri.chat/) for developer and a [link to your design file](https://www.figma.com/file/mizfCMNkiGxwfRgMkRJech/Zuri-Expenses?node-id=59%3A714) for designer
+3. in the title field write the team name i.e Team Grange, a very very brief descripton of the work done and also the number of the issues you worked on 
+4. on the description field add a link to your work on the [live server](http://expenses.zuri.chat/) for developers and a [link to your design file](https://www.figma.com/file/mizfCMNkiGxwfRgMkRJech/Zuri-Expenses?node-id=59%3A714) for designers
 5. also include a snapshot of your work on the [live server](http://expenses.zuri.chat/) or [design file](https://www.figma.com/file/mizfCMNkiGxwfRgMkRJech/Zuri-Expenses?node-id=59%3A714)
 6. make the pull request to the [zc_plugin_expenses](https://github.com/zurichat/zc_plugin_expenses.git) repo
-7. submit the link to your pull request on the  #issue-review page tagging one of our mentors i.e(@Loy, @caculuz or @twanitoria) and the team reviewer @Ammeromi or I @kelanialiyu 
+7. submit the link to your pull request on the  slack #issue-review page tagging one of our mentors i.e(@Loy, @caculuz or @twanitoria) **and** the team reviewer @Ammeromi or I @kelanialiyu 
 
 ## Coding Guidelines
 1. create new files only when necessary
-2. before writing any code on any file write a comment including your slack username and task issue number with start 
-3. then your code 
-4. and a comment including your slack username and task issue number withend keywords 
+2. try to make all work look excactly like the [designs](https://www.figma.com/file/mizfCMNkiGxwfRgMkRJech/Zuri-Expenses?node-id=59%3A714)
+3. before writing any code on any file write a comment including your slack username and task issue number with start 
+4. then your code 
+5. and a comment including your slack username and task issue number withend keywords 
 eg
 ```javascript
 
 //@kelanialiyu issue #123
 function fancyAlert(arg) {
-  if(arg) {
-    $.facebox({div:'#foo'})
-  }
+  console.log("Team Grange");
 }
 //@kelanialiyu issue #123
 ```
