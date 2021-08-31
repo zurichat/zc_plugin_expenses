@@ -6,8 +6,10 @@
 ### About
  The Zuri expenses plugin hosted [here](http://expenses.zuri.chat/) is a plugin that allows users to create and publish expense list which can be viewed by everyone in the organisation
  
-### Files
+### Resources
 1. [This](https://www.figma.com/file/mizfCMNkiGxwfRgMkRJech/Zuri-Expenses?node-id=59%3A714) is the link to the Design file
+2. our repo the [zc_plugin_expenses repo](https://github.com/zurichat/zc_plugin_expenses.git)
+3. the [live server](http://expenses.zuri.chat/)
 
 ## Instructions
 
