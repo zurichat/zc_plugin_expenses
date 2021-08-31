@@ -18,7 +18,7 @@
 
 ### Getting Tasks to work on
 1. To get a task to work on, search for any unassigned issue on your preferred track(i.e design, frontend or backend)  on the issues tab
-2. take note of the issue number and indicate interest to work on the issue on the slack channel
+2. take note of the issue number and indicate interest to work on the issue on Team grange slack channel
 3. if approved the issue will be assigned to you
 4. try to finish the issue as fast as possible to avoid reassignment
 5. when done submit task
