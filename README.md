@@ -32,7 +32,7 @@
 4. on the description field add a link to your work on the [live server](http://expenses.zuri.chat/) for developers and a [link to your design file](https://www.figma.com/file/mizfCMNkiGxwfRgMkRJech/Zuri-Expenses?node-id=59%3A714) for designers
 5. also include a snapshot of your work on the [live server](http://expenses.zuri.chat/) or [design file](https://www.figma.com/file/mizfCMNkiGxwfRgMkRJech/Zuri-Expenses?node-id=59%3A714)
 6. make the pull request to the [zc_plugin_expenses](https://github.com/zurichat/zc_plugin_expenses.git) repo
-7. submit the link to your pull request on the  slack #issue-review page tagging one of our mentors i.e(@Loy, @caculuz or @twanitoria) **and** the team reviewer @Ammeromi or I @kelanialiyu 
+7. submit the link to your pull request on the  slack #issue-review page tagging **one** of our mentors i.e(@Loy, @caculuz or @twanitoria) **and** the **one** team reviewer @Ammeromi or I @kelanialiyu 
 
 ## Coding Guidelines
 1. create new files only when necessary
@@ -44,9 +44,11 @@ eg
 ```javascript
 
 //@kelanialiyu issue #123
+
 function fancyAlert(arg) {
   console.log("Team Grange");
 }
+
 //@kelanialiyu issue #123
 ```
 ***GOOD LUCK AND HAPPY CODING***
