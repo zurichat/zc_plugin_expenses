@@ -26,6 +26,8 @@ jobs:
       run: chmod -R 777 storage bootstrap/cache
     - name: Migrate Database
       run: |
+        php artisan cache:clear 
+        php artisan config:clear
         php artisan migrate --force
         
     - name: Execute tests (Unit and Feature tests) via PHPUnit
