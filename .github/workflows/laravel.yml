@@ -31,5 +31,5 @@ jobs:
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       env:
         DB_CONNECTION: mysql
-        DB_DATABASE: grange_db
+        DB_DATABASE: expenses_db
       run: vendor/bin/phpunit
