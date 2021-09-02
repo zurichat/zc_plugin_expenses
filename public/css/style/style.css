@@ -1,0 +1,21 @@
+body {
+    background: #f0f0f0;
+}
+.top {
+    background: #00bb72;
+    align-items: center;
+}
+
+th {
+    color: white;
+    font-size: large;
+}
+th:nth-child(1) {
+    padding-left: 30px;
+}
+th:nth-child(5) {
+    color: black;
+}
+table {
+    margin-top: 100px;
+}
