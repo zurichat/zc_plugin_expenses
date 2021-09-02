@@ -11,6 +11,8 @@ class AddAdminToUsersTable extends Migration
      *
      * @return void
      */
+
+    // @Aduramimo issue #129
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
@@ -30,3 +32,4 @@ class AddAdminToUsersTable extends Migration
         });
     }
 }
+// @Aduramimo issue #129

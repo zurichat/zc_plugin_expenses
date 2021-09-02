@@ -11,6 +11,8 @@ class ModifyTheUsersTable extends Migration
      *
      * @return void
      */
+
+    // @Aduramimo issue #129
     public function up()
     {
       Schema::table('users', function (Blueprint $table) {
@@ -32,3 +34,4 @@ class ModifyTheUsersTable extends Migration
         });
     }
 }
+// @Aduramimo issue #129

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+// @Aduramimo issue #127
 class AdminController extends Controller
 {
     /**
@@ -97,3 +98,4 @@ class AdminController extends Controller
         //
     }
 }
+// @Aduramimo issue #127
