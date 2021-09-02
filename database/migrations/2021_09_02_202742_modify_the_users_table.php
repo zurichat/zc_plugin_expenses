@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFeesTable extends Migration
+class ModifyTheUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateFeesTable extends Migration
      */
     public function up()
     {
-        Schema::create('fees', function (Blueprint $table) {
-            $table->id();
-            $table->text('user');
-            $table->text('email');
-            $table->longText('payment_ref');
-            $table->longText('amount');
-            $table->date('date');
+      Schema::table('users', function (Blueprint $table) {
+            DB::statement('ALTER Table `users` ALTER `admin` SET DEFAULT 1;');
+     
+
         });
     }
 
@@ -30,6 +27,8 @@ class CreateFeesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('fees');
+        Schema::table('users', function (Blueprint $table) {
+            //
+        });
     }
 }
