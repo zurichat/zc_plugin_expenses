@@ -17,3 +17,14 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+// routes that an admin user will have to pass through
+Route::group(['middleware' => 'Admin', 'prefix'=>'v1'], function () {
+
+    Route::get('admin', 'AdminController@index');
+    //Route::post('admin', 'AdminController@save');
+    //Route::delete('admin', 'AdminController@delete');
+    //Route::update('admin', 'AdminController@update');
+     
+});

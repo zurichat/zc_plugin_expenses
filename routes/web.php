@@ -20,3 +20,14 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+// routes that an admin user will have to pass through
+Route::group(['middleware' => 'Admin'], function () {
+
+    Route::get('admin', 'AdminController@index');
+    //Route::post('admin', 'AdminController@save');
+    //Route::delete('admin', 'AdminController@delete');
+    //Route::update('admin', 'AdminController@update');
+     
+});
