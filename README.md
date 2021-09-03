@@ -1,4 +1,4 @@
-# zc_expenses plungin
+# zc_expenses plugin
 
 ### Creators:
  HNGi8 Team Grange
