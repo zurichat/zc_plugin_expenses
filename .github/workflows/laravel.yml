@@ -24,5 +24,7 @@ jobs:
           key: ${{ secrets.SSHKEY }}
           script: |
             cd /var/www/expenses.zuri.chat
-            git pull
-            composer update
+            git pull origin dev
+            git branch -r
+            sudo rm composer.lock
+            composer install
