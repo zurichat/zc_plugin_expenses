@@ -28,3 +28,4 @@ jobs:
             git branch -r
             sudo rm composer.lock
             composer install
+            npm run production
