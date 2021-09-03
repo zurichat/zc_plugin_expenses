@@ -44,7 +44,7 @@
 7. add a link to your pull request
 8. and finally include a snapshot of your work on the [live server](http://expenses.zuri.chat/) or [design file](https://www.figma.com/file/mizfCMNkiGxwfRgMkRJech/Zuri-Expenses?node-id=59%3A714)
 9. submit the link to your issue on the  slack #issue-review page tagging **one** of our mentors i.e(@Loy, @caculuz or @twanitoria) **and** the **one** team reviewer @Ammeromi or I @kelanialiyu 
->>>>>>> 146a1fbe8dff1c88fa499b78f5aeed18918677b1
+
 
 ## Coding Guidelines
 1. Create new files only when necessary
