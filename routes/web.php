@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AboutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
+
 // @Aduramimo issue #129
 // routes that an admin user will have to pass through
 Route::group(['middleware' => 'Admin'], function () {
@@ -33,3 +35,7 @@ Route::group(['middleware' => 'Admin'], function () {
      
 });
 // @Aduramimo issue #129
+
+Route::get('/about', [AboutController::class, 'show']);
+
+
