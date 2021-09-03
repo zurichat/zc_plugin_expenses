@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -15,7 +15,7 @@
     </head>
     <body>
         <div class="container">
-            <table class="table top">
+            <table class="table top-146">
                 <thead>
                     <tr>
                         <th scope="col">S/N</th>
