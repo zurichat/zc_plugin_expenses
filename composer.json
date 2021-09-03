@@ -8,7 +8,11 @@
     ],
     "license": "MIT",
     "require": {
+<<<<<<< HEAD
         "php": "^7.2.5|^8.0.9",
+=======
+        "php": "^7.2.5|^8.0.3",
+>>>>>>> 146a1fbe8dff1c88fa499b78f5aeed18918677b1
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^1.0",
         "guzzlehttp/guzzle": "^6.3",

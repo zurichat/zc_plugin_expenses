@@ -26,6 +26,7 @@
 5. When done submit task
 
 ### Submitting a task
+<<<<<<< HEAD
 1. After working on a task before committing, fetch from the [zc_plugin_expenses repo](https://github.com/zurichat/zc_plugin_expenses.git) to make sure your work is synced with others
 2. After committing make a pull request 
 3. In the title field write the team name i.e Team Grange, a very very brief descripton of the work done and also the number of the issues you worked on 
@@ -33,6 +34,17 @@
 5. Also include a snapshot of your work on the [live server](http://expenses.zuri.chat/) or [design file](https://www.figma.com/file/mizfCMNkiGxwfRgMkRJech/Zuri-Expenses?node-id=59%3A714)
 6. Make the pull request to the [zc_plugin_expenses](https://github.com/zurichat/zc_plugin_expenses.git) repo
 7. Submit the link to your pull request on the  slack #issue-review page tagging **one** of our mentors i.e(@Loy, @caculuz or @twanitoria) **and** the **one** team reviewer @Ammeromi or I @kelanialiyu 
+=======
+1. after working on a task before committing, fetch from the [zc_plugin_expenses repo](https://github.com/zurichat/zc_plugin_expenses.git) to make sure your work is synced with others
+2. after commiting make a pull request 
+3. in the title field write the team name i.e Team Grange, a very very brief descripton of the work done and also the number of the issues you worked on 
+4. make the pull request to the [zc_plugin_expenses](https://github.com/zurichat/zc_plugin_expenses.git) repo
+5. locate the issue you worked on and on the descrition field write the team name i.e Team Grange, a very very brief descripton of the work done
+6. also on the description field add a link to your work on the [live server](http://expenses.zuri.chat/) for developers and a [link to your design file](https://www.figma.com/file/mizfCMNkiGxwfRgMkRJech/Zuri-Expenses?node-id=59%3A714) for designers
+7. add a link to your pull request
+8. and finally include a snapshot of your work on the [live server](http://expenses.zuri.chat/) or [design file](https://www.figma.com/file/mizfCMNkiGxwfRgMkRJech/Zuri-Expenses?node-id=59%3A714)
+9. submit the link to your issue on the  slack #issue-review page tagging **one** of our mentors i.e(@Loy, @caculuz or @twanitoria) **and** the **one** team reviewer @Ammeromi or I @kelanialiyu 
+>>>>>>> 146a1fbe8dff1c88fa499b78f5aeed18918677b1
 
 ## Coding Guidelines
 1. Create new files only when necessary
