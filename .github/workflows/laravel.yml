@@ -24,6 +24,7 @@ jobs:
           
           script: |
             cd /var/www/expenses.zuri.chat
+            git stash
             git pull origin dev
             git branch -r
             sudo rm composer.lock
