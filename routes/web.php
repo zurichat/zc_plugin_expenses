@@ -17,6 +17,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/expenses-list', function () {
+    return view('expenses-list');
+});
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

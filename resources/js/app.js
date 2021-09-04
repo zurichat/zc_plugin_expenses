@@ -13,5 +13,6 @@ require('./bootstrap');
  */
 
 require('./components/Example');
+require('./components/CreateExpensesForm')
 require('./components/Index');
 require('./User');
