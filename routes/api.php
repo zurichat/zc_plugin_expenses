@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SidebarController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AboutController;
@@ -20,16 +21,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-
-// routes that an admin user will have to pass through
-Route::group(['middleware' => 'Admin', 'prefix'=>'v1'], function () {
-
-    Route::get('admin', 'AdminController@index');
-    //Route::post('admin', 'AdminController@save');
-    //Route::delete('admin', 'AdminController@delete');
-    //Route::update('admin', 'AdminController@update');
-     
-});
-
-// Route::get('/about', [AboutController::class, 'show']);
+Route::get('/sidebarlist', [SidebarController::class, 'sidebar']);
 
