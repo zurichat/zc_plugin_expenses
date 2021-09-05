@@ -1,7 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\SidebarController;
+use App\Http\Controllers\AboutController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +21,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/dbtable', function () {
+    return view('table');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
 

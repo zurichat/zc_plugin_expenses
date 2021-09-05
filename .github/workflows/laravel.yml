@@ -21,11 +21,14 @@ jobs:
           host: ${{ secrets.ZURI_HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
-          key: ${{ secrets.SSHKEY }}
+          
           script: |
             cd /var/www/expenses.zuri.chat
+            sudo rm composer.lock
+            sudo rm package-lock.json
             git pull origin dev
             git branch -r
-            sudo rm composer.lock
+            git stash
             composer install
+            npm install
             npm run production
