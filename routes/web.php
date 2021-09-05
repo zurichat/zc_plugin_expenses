@@ -30,7 +30,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-add-tablehead
+//add-tablehead
 Route::get('/expense_list', function () {
     return view('expense_list');
 });
