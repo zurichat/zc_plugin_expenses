@@ -15,3 +15,5 @@ require('./bootstrap');
 require('./components/Example');
 require('./components/Index');
 require('./User');
+
+require('./components/DashboardTable');

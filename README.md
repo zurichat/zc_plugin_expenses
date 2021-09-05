@@ -1,12 +1,16 @@
 # zc_expenses plugin
 
 ### Creators:
- HNGi8 Team Grange
+
+HNGi8 Team Grange
  
+
 ### About
- The Zuri expenses plugin hosted [here](http://expenses.zuri.chat/) is a plugin that allows users to create and publish expense list which can be viewed by everyone in the organisation
- 
+
+The Zuri expenses plugin hosted [here](http://expenses.zuri.chat/) is a plugin that allows users to create and publish expense list which can be viewed by everyone in the organisation
+
 ### Resources
+
 1. [This](https://www.figma.com/file/mizfCMNkiGxwfRgMkRJech/Zuri-Expenses?node-id=59%3A714) is the link to the Design file
 2. Our repo the [zc_plugin_expenses repo](https://github.com/zurichat/zc_plugin_expenses.git)
 3. The [live server](http://expenses.zuri.chat/)
@@ -14,6 +18,7 @@
 ## Instructions
 
 ### Setting up your environment
+
 1. Make a fork of the [zc_plugin_expenses repo](https://github.com/zurichat/zc_plugin_expenses.git)
 2. Clone the forked repo to your system
 3. Add a remote url pointing at the [zc_plugin_expenses repo](https://github.com/zurichat/zc_plugin_expenses.git) for fetches
@@ -45,12 +50,15 @@
 eg
 ```javascript
 
+
+```javascript
 //@kelanialiyu issue #123
 
 function fancyAlert(arg) {
-  console.log("Team Grange");
+    console.log("Team Grange");
 }
 
 //@kelanialiyu issue #123
 ```
-***GOOD LUCK AND HAPPY CODING***
+
+**_GOOD LUCK AND HAPPY CODING_**
