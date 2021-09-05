@@ -24,7 +24,7 @@ class SidebarController extends Controller
                  'status' => 'success',
                  'message' => 'Successfully displayed static sidebar list',
                  'list' => $list
-                ]);
+                ], 200);
             }catch (\Throwable $err){
                 throw $err;
                 //@Tshux issue #53
