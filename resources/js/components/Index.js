@@ -1,24 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-function Hello() {
+import Expenses from './Expenses';
+// @patutechz issue #51
+function Index() {
     return (
-        <div className="container">
-            <div className="row justify-content-center">
-                <div className="col-md-8">
-                    <div className="card">
-                        <div className="card-header">React Component</div>
-
-                        <div className="card-body">I'm an React component!</div>
-                    </div>
-                </div>
-            </div>
+        <div>
+            <Expenses />
         </div>
     );
 }
 
-export default Hello;
+export default Index;
 
 if (document.getElementById('root')) {
-    ReactDOM.render(<Hello />, document.getElementById('root'));
+    ReactDOM.render(<Index />, document.getElementById('root'));
 }
+// @patutechz issue #51
