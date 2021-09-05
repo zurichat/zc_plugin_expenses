@@ -1,7 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\SidebarController;
 use App\Http\Controllers\AboutController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +24,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
 
 add-tablehead
 Route::get('/expense_list', function () {
@@ -44,4 +48,5 @@ Route::group(['middleware' => 'Admin'], function () {
 Route::get('/about', [AboutController::class, 'show']);
 
 
- dev
+Route::get('/sidebarlist', [SidebarController::class, 'sidebar']);
+
