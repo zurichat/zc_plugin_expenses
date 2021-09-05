@@ -8,7 +8,7 @@ export default function Expenses(){
                 <div className="row">
                     <div className="col-12 d-flex justify-content-between align-items-center pt-3 pb-1">
                         <h4 className="text-uppercase">Expenses</h4>
-                        <a href="#" className="text-primary">
+                        <a href="/list/create" className="text-primary">
                         <i className="fas fa-plus"></i> <span className="ml-2">Add new list</span>
                         </a>
                     </div>
@@ -44,53 +44,44 @@ export default function Expenses(){
                         <tbody className="bg-light">
                             <tr>
                             <td>02/09/21</td>
-                            <td>jerry Mbam</td>
+                            <td>Jerry Mbam</td>
                             <td>Travel</td>
                             <td>N3,000</td>
                             <td>Approved</td>
-                            <td ><a href="#" className="btn-link">View Details</a></td>
+                            <td ><a href="list/1" className="btn-link">View Details</a></td>
                             </tr>
                             <tr>
-                            <td>02/09/21</td>
-                            <td>jerry Mbam</td>
-                            <td>Travel</td>
-                            <td>N3,000</td>
-                            <td>Approved</td>
-                            <td ><a href="#" className="btn-link">View Details</a></td>
+                                <td>02/09/21</td>
+                                <td>Jerry Mbam</td>
+                                <td>Travel</td>
+                                <td>N3,000</td>
+                                <td>Approved</td>
+                                <td ><a href="list/1" className="btn-link">View Details</a></td>
                             </tr>
                             <tr>
-                            <td>02/09/21</td>
-                            <td>jerry Mbam</td>
-                            <td>Travel</td>
-                            <td>N3,000</td>
-                            <td>Approved</td>
-                            <td ><a href="#" className="btn-link">View Details</a></td>
+                                <td>02/09/21</td>
+                                <td>Jerry Mbam</td>
+                                <td>Travel</td>
+                                <td>N3,000</td>
+                                <td>Approved</td>
+                                <td ><a href="list/1" className="btn-link">View Details</a></td>
                             </tr>
                             <tr>
-                            <td>02/09/21</td>
-                            <td>jerry Mbam</td>
-                            <td>Travel</td>
-                            <td>N3,000</td>
-                            <td>Approved</td>
-                            <td ><a href="#" className="btn-link">View Details</a></td>
+                                <td>02/09/21</td>
+                                <td>Jerry Mbam</td>
+                                <td>Travel</td>
+                                <td>N3,000</td>
+                                <td>Approved</td>
+                                <td ><a href="list/1" className="btn-link">View Details</a></td>
                             </tr>
                             <tr>
-                            <td>02/09/21</td>
-                            <td>jerry Mbam</td>
-                            <td>Travel</td>
-                            <td>N3,000</td>
-                            <td>Approved</td>
-                            <td ><a href="#" className="btn-link">View Details</a></td>
+                                <td>02/09/21</td>
+                                <td>Jerry Mbam</td>
+                                <td>Travel</td>
+                                <td>N3,000</td>
+                                <td>Approved</td>
+                                <td ><a href="list/1" className="btn-link">View Details</a></td>
                             </tr>
-                            <tr>
-                            <td>02/09/21</td>
-                            <td>jerry Mbam</td>
-                            <td>Travel</td>
-                            <td>N3,000</td>
-                            <td>Approved</td>
-                            <td ><a href="#" className="btn-link">View Details</a></td>
-                            </tr>
-
                         </tbody>
                     </table>
                 </div>

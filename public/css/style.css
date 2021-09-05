@@ -1,0 +1,23 @@
+
+.table-head {
+    background-color: #00B87C;
+    color: white;
+}
+.custom-card-header{
+    background-color: #00B87C;
+    color: white;
+    border-radius: 0;
+    font-size: 1.25rem;
+}
+.total::before{
+    content: "₦";
+    font-family: 'Courier New', Courier, monospace;
+    text-decoration: dotted;
+}
+.total{
+    font-family: 'Courier New', Courier, monospace;
+    text-decoration: dotted;
+}
+.display-4{
+    font-size: 1.5rem;
+}

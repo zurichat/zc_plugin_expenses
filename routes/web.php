@@ -29,4 +29,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+//@kelanialiyu issue #200 start
+Route::resource("list","ExpenseList");
+//@kelanialiyu 1ssue #200 end
+
 
