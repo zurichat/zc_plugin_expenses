@@ -29,5 +29,5 @@ jobs:
             git stash
             git pull origin dev
             composer install
-            npm install
-            npm run production
+            sudo systemctl restart nginx
+            
