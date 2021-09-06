@@ -11,24 +11,14 @@
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
         <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
-       
-
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/style.css') }}" rel="stylesheet">
         <!-- Styles -->
-        <style>
-            .table-head{
-                background-color:#00B87C;
-                color:white;
-            }
-        </style>
     </head>
     <body class="alert-secondary py-2">
-        <div class="container-fluid">
-            <div id="root">
-                
-            </div>
-        </div>
+        <main class="container-fluid" id="create">
+            
+        </main>
     </body>
     
     <!-- Scripts -->

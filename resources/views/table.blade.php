@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Zuri Chat | Expenses</title>
+        <title>Zuri Chat | DBTable</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -25,7 +25,8 @@
     </head>
     <body class="alert-secondary py-2">
         <div class="container-fluid">
-            <div id="root">
+            <div id="dbtable">
+              
                 
             </div>
         </div>
