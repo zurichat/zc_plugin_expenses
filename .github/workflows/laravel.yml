@@ -26,8 +26,14 @@ jobs:
             cd /var/www/expenses.zuri.chat
             sudo rm composer.lock
             sudo rm package-lock.json
+<<<<<<< HEAD
             git stash
             git pull origin dev
+=======
+            git pull origin dev
+            git branch -r
+            git stash
+>>>>>>> 015756077101cd230a631f77e02612d53a9e21aa
             composer install
             sudo systemctl restart nginx
             
