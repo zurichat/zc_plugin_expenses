@@ -1,0 +1,43 @@
+
+textarea-137 {
+    border: 1px solid #999999;
+    border-radius: 3px;
+    outline: none;
+    padding: 0 15px;
+    font-size: 15px;
+    line-height: 28px;
+    font-weight: 600;
+    background: #ffffff;
+    box-sizing: border-box;
+}
+textarea-137 {
+    height: 136px;
+    width: 515px;
+    left: 32%;
+    top: 53%;
+}
+
+
+.table-head {
+    background-color: #00B87C;
+    color: white;
+}
+.custom-card-header{
+    background-color: #00B87C;
+    color: white;
+    border-radius: 0;
+    font-size: 1.25rem;
+}
+.total::before{
+    content: "₦";
+    font-family: 'Courier New', Courier, monospace;
+    text-decoration: dotted;
+}
+.total{
+    font-family: 'Courier New', Courier, monospace;
+    text-decoration: dotted;
+}
+.display-4{
+    font-size: 1.5rem;
+}
+

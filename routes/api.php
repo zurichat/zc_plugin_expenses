@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SidebarAPI;
 use App\Http\Controllers\SidebarController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -21,5 +22,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::get('/sidebarlist', [SidebarController::class, 'sidebar']);
+Route::get("sidebarlist", [SidebarAPI::class, 'sidebar']);
+
+
+
 

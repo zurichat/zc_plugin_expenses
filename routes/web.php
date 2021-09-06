@@ -29,28 +29,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+//@kelanialiyu issue #200 start
+Route::resource("list","ExpenseList");
+//@kelanialiyu 1ssue #200 end for linking list controller 
 
-//add-tablehead
-Route::get('/expense_list', function () {
-    return view('expense_list');
-});
-
-
-
-// @Aduramimo issue #129
-// routes that an admin user will have to pass through
-Route::group(['middleware' => 'Admin'], function () {
-
-    Route::get('admin', 'AdminController@index');
-    //Route::post('admin', 'AdminController@save');
-    //Route::delete('admin', 'AdminController@delete');
-    //Route::update('admin', 'AdminController@update');
-     
-});
-// @Aduramimo issue #129
-
-Route::get('/about', [AboutController::class, 'show']);
-
-
-Route::get('/sidebarlist', [SidebarController::class, 'sidebar']);
 
