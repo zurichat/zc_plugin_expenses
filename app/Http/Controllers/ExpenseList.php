@@ -23,7 +23,7 @@ class ExpenseList extends Controller
      */
     public function create()
     {
-        return view("list.create");
+        return view("List.create");
     }
 
     /**
