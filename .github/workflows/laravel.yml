@@ -96,7 +96,7 @@ jobs:
         uses: appleboy/ssh-action@master
         with:
           key: ${{ secrets.SSHKEY }}
-          host: ${{ secrets.HOSTNAME }}
+          host: ${{ secrets.ZURI_HOST }}
           username: ${{ secrets.USERNAME }}
           script: |
             cd /var/www/expenses.zuri.chat/
