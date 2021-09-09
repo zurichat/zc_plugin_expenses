@@ -38,6 +38,6 @@ function Index() {
 
 export default Index;
 
-if (document.getElementById('view')) {
-    ReactDOM.render(<Index/>, document.getElementById('view'));
+if (document.getElementById("view")) {
+    ReactDOM.render(<Index />, document.getElementById("view"));
 }

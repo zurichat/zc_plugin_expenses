@@ -66186,7 +66186,7 @@ try {
 
 
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
@@ -66217,20 +66217,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _create_Breadcrumb__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./create/Breadcrumb */ "./resources/js/components/create/Breadcrumb.js");
+/* harmony import */ var _create_Breadcrumb__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_create_Breadcrumb__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _create_FormContainer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./create/FormContainer */ "./resources/js/components/create/FormContainer.js");
+/* harmony import */ var _create_FormContainer__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_create_FormContainer__WEBPACK_IMPORTED_MODULE_3__);
 
 
 
 
 
 function Index() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_create_Breadcrumb__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_create_FormContainer__WEBPACK_IMPORTED_MODULE_3__["default"], null));
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_create_Breadcrumb__WEBPACK_IMPORTED_MODULE_2___default.a, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_create_FormContainer__WEBPACK_IMPORTED_MODULE_3___default.a, null));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (Index);
 
-if (document.getElementById('create')) {
-  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Index, null), document.getElementById('create'));
+if (document.getElementById("create")) {
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Index, null), document.getElementById("create"));
 }
 
 /***/ }),
@@ -66308,8 +66310,8 @@ function Index() {
 
 /* harmony default export */ __webpack_exports__["default"] = (Index);
 
-if (document.getElementById('root')) {
-  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Index, null), document.getElementById('root'));
+if (document.getElementById("root")) {
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Index, null), document.getElementById("root"));
 } // @patutechz issue #51
 
 /***/ }),
@@ -66362,8 +66364,8 @@ function Index() {
 
 /* harmony default export */ __webpack_exports__["default"] = (Index);
 
-if (document.getElementById('view')) {
-  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Index, null), document.getElementById('view'));
+if (document.getElementById("view")) {
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Index, null), document.getElementById("view"));
 }
 
 /***/ }),
@@ -66372,57 +66374,10 @@ if (document.getElementById('view')) {
 /*!******************************************************!*\
   !*** ./resources/js/components/create/Breadcrumb.js ***!
   \******************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Breadcrumb; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-
-function Breadcrumb() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "container-fluid mb-3 bg-light "
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "row"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col-12 d-flex justify-content-between align-items-center pt-3 pb-1"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
-    className: "text-uppercase"
-  }, "Expenses | Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "/",
-    className: "text-primary"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-    className: "fa fa-arrow-left"
-  }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    className: "ml-2"
-  }, "Back")))));
-}
-
-/***/ }),
-
-/***/ "./resources/js/components/create/FormCancelElement.js":
-/*!*************************************************************!*\
-  !*** ./resources/js/components/create/FormCancelElement.js ***!
-  \*************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return FormCancleElement; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-
-function FormCancleElement(props) {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "form-group col-md-3"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "/home",
-    className: "btn btn-outline-danger"
-  }, "Cancel"));
-}
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: C:\\xampp\\htdocs\\Projects\\HNG\\dev\\resources\\js\\components\\create\\Breadcrumb.js: Unexpected token (1:1)\n\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 1 |\u001b[39m \u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<\u001b[39m \u001b[33mHEAD\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m   |\u001b[39m  \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 2 |\u001b[39m \u001b[36mimport\u001b[39m \u001b[33mReact\u001b[39m \u001b[36mfrom\u001b[39m \u001b[32m'react'\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 3 |\u001b[39m \u001b[33m===\u001b[39m\u001b[33m===\u001b[39m\u001b[33m=\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 4 |\u001b[39m \u001b[36mimport\u001b[39m \u001b[33mReact\u001b[39m \u001b[36mfrom\u001b[39m \u001b[32m\"react\"\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n    at Object._raise (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\parser\\lib\\index.js:807:17)\n    at Object.raiseWithData (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\parser\\lib\\index.js:800:17)\n    at Object.raise (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\parser\\lib\\index.js:761:17)\n    at Object.unexpected (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\parser\\lib\\index.js:3266:16)\n    at Object.jsxParseIdentifier (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\parser\\lib\\index.js:6942:12)\n    at Object.jsxParseNamespacedName (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\parser\\lib\\index.js:6952:23)\n    at Object.jsxParseElementName (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\parser\\lib\\index.js:6963:21)\n    at Object.jsxParseOpeningElementAt (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\parser\\lib\\index.js:7050:22)\n    at Object.jsxParseElementAt (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\parser\\lib\\index.js:7083:33)\n    at Object.jsxParseElement (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\parser\\lib\\index.js:7157:17)\n    at Object.parseExprAtom (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\parser\\lib\\index.js:7164:19)\n    at Object.parseExprSubscripts (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\parser\\lib\\index.js:11102:23)\n    at Object.parseUpdate (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\parser\\lib\\index.js:11082:21)\n    at Object.parseMaybeUnary (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\parser\\lib\\index.js:11060:23)\n    at Object.parseExprOps (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\parser\\lib\\index.js:10903:23)\n    at Object.parseMaybeConditional (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\parser\\lib\\index.js:10877:23)\n    at Object.parseMaybeAssign (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\parser\\lib\\index.js:10835:21)\n    at Object.parseExpressionBase (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\parser\\lib\\index.js:10775:23)\n    at C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\parser\\lib\\index.js:10769:39\n    at Object.allowInAnd (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\parser\\lib\\index.js:12613:16)\n    at Object.parseExpression (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\parser\\lib\\index.js:10769:17)\n    at Object.parseStatementContent (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\parser\\lib\\index.js:12951:23)\n    at Object.parseStatement (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\parser\\lib\\index.js:12820:17)\n    at Object.parseBlockOrModuleBlockBody (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\parser\\lib\\index.js:13409:25)\n    at Object.parseBlockBody (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\parser\\lib\\index.js:13400:10)\n    at Object.parseProgram (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\parser\\lib\\index.js:12742:10)\n    at Object.parseTopLevel (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\parser\\lib\\index.js:12733:25)\n    at Object.parse (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\parser\\lib\\index.js:14473:10)\n    at parse (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\parser\\lib\\index.js:14525:38)\n    at parser (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\core\\lib\\parser\\index.js:52:34)\n    at parser.next (<anonymous>)\n    at normalizeFile (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\core\\lib\\transformation\\normalize-file.js:87:38)\n    at normalizeFile.next (<anonymous>)\n    at run (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\core\\lib\\transformation\\index.js:29:50)\n    at run.next (<anonymous>)\n    at Function.transform (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\core\\lib\\transform.js:25:41)");
 
 /***/ }),
 
@@ -66430,192 +66385,10 @@ function FormCancleElement(props) {
 /*!*********************************************************!*\
   !*** ./resources/js/components/create/FormContainer.js ***!
   \*********************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return FormContainer; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _FormItemElement__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FormItemElement */ "./resources/js/components/create/FormItemElement.js");
-/* harmony import */ var _FormTitleElement__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./FormTitleElement */ "./resources/js/components/create/FormTitleElement.js");
-/* harmony import */ var _FormDescriptionElement__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./FormDescriptionElement */ "./resources/js/components/create/FormDescriptionElement.js");
-/* harmony import */ var _FormCreateElement__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./FormCreateElement */ "./resources/js/components/create/FormCreateElement.js");
-/* harmony import */ var _FormCancelElement__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./FormCancelElement */ "./resources/js/components/create/FormCancelElement.js");
-
-
-
-
-
-
-function FormContainer(props) {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "container-fluid mb-6"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "row"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col-md-2"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col-md-8 p-0 m-0"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "card rounded-0"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "card-header custom-card-header py-3"
-  }, "Create Expense List"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "card-body"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-    method: "post",
-    action: ""
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FormTitleElement__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FormItemElement__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FormDescriptionElement__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "form-row"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FormCreateElement__WEBPACK_IMPORTED_MODULE_4__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FormCancelElement__WEBPACK_IMPORTED_MODULE_5__["default"], null))))))));
-}
-
-/***/ }),
-
-/***/ "./resources/js/components/create/FormCreateElement.js":
-/*!*************************************************************!*\
-  !*** ./resources/js/components/create/FormCreateElement.js ***!
-  \*************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return FormCreateElement; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-
-function FormCreateElement(props) {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "form-group col-md-3"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    type: "submit",
-    className: "btn btn-outline-success"
-  }, "Create"));
-}
-
-/***/ }),
-
-/***/ "./resources/js/components/create/FormDescriptionElement.js":
-/*!******************************************************************!*\
-  !*** ./resources/js/components/create/FormDescriptionElement.js ***!
-  \******************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return FormDescriptionElement; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-
-function FormDescriptionElement(props) {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "form-group"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-    htmlFor: "description"
-  }, "Description"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
-    className: "form-control",
-    id: "description",
-    rows: "4",
-    placeholder: "Description"
-  }));
-}
-
-/***/ }),
-
-/***/ "./resources/js/components/create/FormItemElement.js":
-/*!***********************************************************!*\
-  !*** ./resources/js/components/create/FormItemElement.js ***!
-  \***********************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return FormItemElement; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-
-function FormItemElement(props) {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "items"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "form-group"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Items")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "itemList"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "form-row"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "form-group col-md-4"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    type: "item",
-    className: "form-control",
-    id: "itemName",
-    placeholder: "Item Name"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "form-group col-md-4"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    type: "item",
-    className: "form-control",
-    id: "itemName",
-    placeholder: "Item Price"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "form-group col-md-2"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    type: "number",
-    className: "form-control",
-    id: "itemName",
-    placeholder: "Item Qty",
-    value: "1"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "form-group col-md-2 float-right"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "btn btn-outline-danger",
-    type: "button"
-  }, "Delete")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "form-row "
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "form-group col-md-6 text-right"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "btn btn-outline-info",
-    type: "button"
-  }, "Add Item")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "form-group col-md-5 text-left"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Total : ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    className: "total"
-  }, "0")))));
-}
-
-/***/ }),
-
-/***/ "./resources/js/components/create/FormTitleElement.js":
-/*!************************************************************!*\
-  !*** ./resources/js/components/create/FormTitleElement.js ***!
-  \************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return FormTitleElement; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-
-function FormTitleElement(props) {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "form-group"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-    htmlFor: "title"
-  }, "Title"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    type: "text",
-    className: "form-control",
-    id: "title",
-    placeholder: "Expense Title"
-  }));
-}
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: C:\\xampp\\htdocs\\Projects\\HNG\\dev\\resources\\js\\components\\create\\FormContainer.js: Unexpected token (1:1)\n\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 1 |\u001b[39m \u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<\u001b[39m \u001b[33mHEAD\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m   |\u001b[39m  \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 2 |\u001b[39m \u001b[36mimport\u001b[39m \u001b[33mReact\u001b[39m \u001b[36mfrom\u001b[39m \u001b[32m'react'\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 3 |\u001b[39m \u001b[36mimport\u001b[39m \u001b[33mFormItemElement\u001b[39m \u001b[36mfrom\u001b[39m \u001b[32m'./FormItemElement'\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 4 |\u001b[39m \u001b[36mimport\u001b[39m \u001b[33mFormTitleElement\u001b[39m \u001b[36mfrom\u001b[39m \u001b[32m'./FormTitleElement'\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n    at Object._raise (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\parser\\lib\\index.js:807:17)\n    at Object.raiseWithData (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\parser\\lib\\index.js:800:17)\n    at Object.raise (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\parser\\lib\\index.js:761:17)\n    at Object.unexpected (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\parser\\lib\\index.js:3266:16)\n    at Object.jsxParseIdentifier (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\parser\\lib\\index.js:6942:12)\n    at Object.jsxParseNamespacedName (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\parser\\lib\\index.js:6952:23)\n    at Object.jsxParseElementName (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\parser\\lib\\index.js:6963:21)\n    at Object.jsxParseOpeningElementAt (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\parser\\lib\\index.js:7050:22)\n    at Object.jsxParseElementAt (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\parser\\lib\\index.js:7083:33)\n    at Object.jsxParseElement (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\parser\\lib\\index.js:7157:17)\n    at Object.parseExprAtom (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\parser\\lib\\index.js:7164:19)\n    at Object.parseExprSubscripts (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\parser\\lib\\index.js:11102:23)\n    at Object.parseUpdate (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\parser\\lib\\index.js:11082:21)\n    at Object.parseMaybeUnary (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\parser\\lib\\index.js:11060:23)\n    at Object.parseExprOps (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\parser\\lib\\index.js:10903:23)\n    at Object.parseMaybeConditional (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\parser\\lib\\index.js:10877:23)\n    at Object.parseMaybeAssign (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\parser\\lib\\index.js:10835:21)\n    at Object.parseExpressionBase (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\parser\\lib\\index.js:10775:23)\n    at C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\parser\\lib\\index.js:10769:39\n    at Object.allowInAnd (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\parser\\lib\\index.js:12613:16)\n    at Object.parseExpression (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\parser\\lib\\index.js:10769:17)\n    at Object.parseStatementContent (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\parser\\lib\\index.js:12951:23)\n    at Object.parseStatement (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\parser\\lib\\index.js:12820:17)\n    at Object.parseBlockOrModuleBlockBody (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\parser\\lib\\index.js:13409:25)\n    at Object.parseBlockBody (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\parser\\lib\\index.js:13400:10)\n    at Object.parseProgram (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\parser\\lib\\index.js:12742:10)\n    at Object.parseTopLevel (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\parser\\lib\\index.js:12733:25)\n    at Object.parse (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\parser\\lib\\index.js:14473:10)\n    at parse (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\parser\\lib\\index.js:14525:38)\n    at parser (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\core\\lib\\parser\\index.js:52:34)\n    at parser.next (<anonymous>)\n    at normalizeFile (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\core\\lib\\transformation\\normalize-file.js:87:38)\n    at normalizeFile.next (<anonymous>)\n    at run (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\core\\lib\\transformation\\index.js:29:50)\n    at run.next (<anonymous>)\n    at Function.transform (C:\\xampp\\htdocs\\Projects\\HNG\\dev\\node_modules\\@babel\\core\\lib\\transform.js:25:41)");
 
 /***/ }),
 

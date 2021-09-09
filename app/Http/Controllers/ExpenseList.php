@@ -23,7 +23,7 @@ class ExpenseList extends Controller
      */
     public function create()
     {
-        return view("list.create");
+        return view("List.create");
     }
 
     /**
@@ -45,7 +45,7 @@ class ExpenseList extends Controller
      */
     public function show($id)
     {
-        return view("list.view");
+        return view("List.view");
     }
 
     /**
