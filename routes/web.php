@@ -31,6 +31,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //@kelanialiyu issue #200 start
 Route::resource("list","ExpenseList");
-//@kelanialiyu 1ssue #200 end
+//@kelanialiyu 1ssue #200 end for linking list controller 
 
 Route::get("external", "External@index");

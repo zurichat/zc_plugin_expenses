@@ -26,9 +26,8 @@ jobs:
             cd /var/www/expenses.zuri.chat
             sudo rm composer.lock
             sudo rm package-lock.json
-            git pull origin dev
-            git branch -r
             git stash
+            git pull origin dev
             composer install
-            npm install
-            npm run production
+            sudo systemctl restart nginx
+            
