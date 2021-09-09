@@ -33,4 +33,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource("list","ExpenseList");
 //@kelanialiyu 1ssue #200 end
 
-
+Route::get("external", "External@index");
