@@ -17,7 +17,6 @@ function ExpenseListTable({expenseList}) {
                             </tr>
                         </tbody>
                         <tbody className="bg-light">
-                            ExpenseList
                             <tr>
                                 <td>02/09/21</td>
                                 <td>Jerry Mbam</td>

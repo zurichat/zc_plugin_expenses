@@ -1,5 +1,5 @@
 import React from "react";
-
+import ExpenseListTable from "./dashboard/ExpenseListTable";
 // @patutechz issue #51
 export default function Expenses() {
     return (
@@ -30,7 +30,7 @@ export default function Expenses() {
                     </div>
                 </div>
             </div>
-            <ExpenseListTable expenslist=""/>
+            <ExpenseListTable expenselists=""/>
             
     </div>
     )

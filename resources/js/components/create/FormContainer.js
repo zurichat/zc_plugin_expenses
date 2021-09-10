@@ -1,18 +1,9 @@
-<<<<<<< HEAD
 import React from 'react';
 import FormItemElement from './FormItemElement';
 import FormTitleElement from './FormTitleElement';
 import FormDescriptionElement from './FormDescriptionElement';
 import FormCreateElement from './FormCreateElement';
 import FormCancelElement from './FormCancelElement';
-=======
-import React from "react";
-import FormItemElement from "./FormItemElement";
-import FormTitleElement from "./FormTitleElement";
-import FormDescriptionElement from "./FormDescriptionElement";
-import FormCreateElement from "./FormCreateElement";
-import FormCancelElement from "./FormCancelElement";
->>>>>>> cf28a0eae7c44a36e167bb3304c8c55bbf1dfec5
 export default function FormContainer(props) {
     return (
         <div className="container-fluid mb-6">
@@ -25,21 +16,12 @@ export default function FormContainer(props) {
                         </div>
                         <div className="card-body">
                             <form method="post" action="">
-<<<<<<< HEAD
                                 <FormTitleElement/>
                                 <FormItemElement/>
                                 <FormDescriptionElement/>
                                 <div className="form-row">
                                     <FormCreateElement/>
                                     <FormCancelElement/>
-=======
-                                <FormTitleElement />
-                                <FormItemElement />
-                                <FormDescriptionElement />
-                                <div className="form-row">
-                                    <FormCreateElement />
-                                    <FormCancelElement />
->>>>>>> cf28a0eae7c44a36e167bb3304c8c55bbf1dfec5
                                 </div>
                             </form>
                         </div>
@@ -47,10 +29,6 @@ export default function FormContainer(props) {
                 </div>
             </div>
         </div>
-<<<<<<< HEAD
 
     )
-=======
-    );
->>>>>>> cf28a0eae7c44a36e167bb3304c8c55bbf1dfec5
 }
