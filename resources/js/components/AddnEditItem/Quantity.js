@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 export const Quantity = () => {
     return (
@@ -6,5 +6,5 @@ export const Quantity = () => {
             <label>Quantity</label>
             <input name="Quantity" />
         </div>
-    )
-}
+    );
+};

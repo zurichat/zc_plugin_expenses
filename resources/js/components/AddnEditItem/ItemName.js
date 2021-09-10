@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 export const ItemName = () => {
     return (
@@ -6,5 +6,5 @@ export const ItemName = () => {
             <label>Item name</label>
             <input name="itemName" />
         </div>
-    )
-}
+    );
+};

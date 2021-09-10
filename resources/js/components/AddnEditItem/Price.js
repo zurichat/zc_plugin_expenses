@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 export const Price = () => {
     return (
@@ -6,5 +6,5 @@ export const Price = () => {
             <label>Price</label>
             <input name="Price" />
         </div>
-    )
-}
+    );
+};
