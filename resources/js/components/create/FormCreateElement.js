@@ -1,8 +1,10 @@
-import React from 'react';
+import React from "react";
 export default function FormCreateElement(props) {
     return (
         <div className="form-group col-md-3">
-            <button type="submit" className="btn btn-outline-success">Create</button>
+            <button type="submit" className="btn btn-outline-success">
+                Create
+            </button>
         </div>
-    )
+    );
 }

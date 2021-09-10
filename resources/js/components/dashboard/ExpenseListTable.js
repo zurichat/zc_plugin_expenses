@@ -1,6 +1,6 @@
-import React from 'react'
+import React from "react";
 
-function ExpenseListTable({expenseList}) {
+function ExpenseListTable({ expenseList }) {
     return (
         <>
             <div className="container-fluid mb-3 bg-light">
@@ -8,7 +8,7 @@ function ExpenseListTable({expenseList}) {
                     <table className="table">
                         <tbody className="table-head">
                             <tr>
-                                <td >DATE</td>
+                                <td>DATE</td>
                                 <td>AUTHOR</td>
                                 <td>TITLE</td>
                                 <td>PRICE</td>
@@ -23,7 +23,11 @@ function ExpenseListTable({expenseList}) {
                                 <td>Travel</td>
                                 <td>N3,000</td>
                                 <td>Approved</td>
-                                <td ><a href="list/1" className="btn-link">View Details</a></td>
+                                <td>
+                                    <a href="list/1" className="btn-link">
+                                        View Details
+                                    </a>
+                                </td>
                             </tr>
                             <tr>
                                 <td>02/09/21</td>
@@ -31,7 +35,11 @@ function ExpenseListTable({expenseList}) {
                                 <td>Travel</td>
                                 <td>N3,000</td>
                                 <td>Approved</td>
-                                <td ><a href="list/1" className="btn-link">View Details</a></td>
+                                <td>
+                                    <a href="list/1" className="btn-link">
+                                        View Details
+                                    </a>
+                                </td>
                             </tr>
                             <tr>
                                 <td>02/09/21</td>
@@ -39,7 +47,11 @@ function ExpenseListTable({expenseList}) {
                                 <td>Travel</td>
                                 <td>N3,000</td>
                                 <td>Approved</td>
-                                <td ><a href="list/1" className="btn-link">View Details</a></td>
+                                <td>
+                                    <a href="list/1" className="btn-link">
+                                        View Details
+                                    </a>
+                                </td>
                             </tr>
                             <tr>
                                 <td>02/09/21</td>
@@ -47,7 +59,11 @@ function ExpenseListTable({expenseList}) {
                                 <td>Travel</td>
                                 <td>N3,000</td>
                                 <td>Approved</td>
-                                <td ><a href="list/1" className="btn-link">View Details</a></td>
+                                <td>
+                                    <a href="list/1" className="btn-link">
+                                        View Details
+                                    </a>
+                                </td>
                             </tr>
                             <tr>
                                 <td>02/09/21</td>
@@ -55,14 +71,18 @@ function ExpenseListTable({expenseList}) {
                                 <td>Travel</td>
                                 <td>N3,000</td>
                                 <td>Approved</td>
-                                <td ><a href="list/1" className="btn-link">View Details</a></td>
+                                <td>
+                                    <a href="list/1" className="btn-link">
+                                        View Details
+                                    </a>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
         </>
-    )
+    );
 }
 
-export default ExpenseListTable
+export default ExpenseListTable;
