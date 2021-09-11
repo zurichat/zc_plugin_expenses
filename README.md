@@ -12,10 +12,11 @@
 3. the [live server](http://expenses.zuri.chat/)
 
 ## Instructions
+
 ### Instruction for backend endpoints creators
-1.Please take note that all plugins should follow the route <pluginurl>/api/v1/<endpoint>
-1.after writing an api document it properly and make it available on <pluginurl>/docs/v1
-1. For each of the api created, create a test that will call it and validate that it is working. The test has to be online and hosted via <pluginurl>/test/<endpoint>. Each test is a different task.
+1. Please take note that all plugins should follow the route <pluginurl>/api/v1/<endpoint>
+2. After writing an api document it properly and make it available on <pluginurl>/docs/v1
+3. For each of the api created, create a test that will call it and validate that it is working. The test has to be online and hosted via <pluginurl>/test/<endpoint>. Each test is a different task.
 
 ### Setting up your environment
 1. make a fork of the [zc_plugin_expenses repo](https://github.com/zurichat/zc_plugin_expenses.git)
