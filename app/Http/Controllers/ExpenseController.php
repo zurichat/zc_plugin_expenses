@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Resources\ExpenseResource;
+use App\Expense;
 
 class ExpenseController extends Controller
 {
@@ -15,11 +15,8 @@ class ExpenseController extends Controller
     public function index()
     {
         //
-        $data = [];
-        return ExpenseResource::collection($data)->additional([
-            'status' => 'success',
-            'message' => 'all expenses retrieved successfully'
-        ]);
+        $data = Expense::_all();
+        return response()->json(['status' => 'success', 'data' => $data], 201);
     }
 
     /**
@@ -29,7 +26,18 @@ class ExpenseController extends Controller
      */
     public function create()
     {
-        //
+        $data = [
+            'title' => 'lorem ipsum',
+            'description' => 'here is the description for this expense list',
+            'owner' => 'John Doe',
+        ];
+
+        try {
+            $expense = Expense::_create($data);
+            return response()->json(['status' => 'created successfully', 'data' => $expense], 201); 
+        } catch (Exception $e) {
+            return $e;
+        }
     }
 
     /**
