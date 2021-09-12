@@ -5,6 +5,7 @@ use App\Http\Controllers\SidebarController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\ExpenseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,19 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 Route::get("sidebarlist", [SidebarAPI::class, 'sidebar']);
+
+// Auth Endpoints
+
+// Expense List Routes
+Route::group(['middleware' => 'api', 'prefix' => 'v1'], function(){
+	Route::get("/expenses", [ExpenseController::class, 'index']);
+});
+
+// Rooms Endpoints
+
+// Organization Endpoints
+
+
 
 
 
