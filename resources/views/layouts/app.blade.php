@@ -9,24 +9,21 @@
 
     <title>{{ config('app.name', 'Zuri Chat') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
-        <main class="py-4 alert-secondary">
+    <main>
+        <div class="container-fluid">
             @yield('content')
-        </main>
-    </div>
-
+        </div>
+    </main>
     <!-- Scripts -->
-     {{-- <script type="text/javascript" src="{{ asset('js/app.js') }}"></script> --}}
+     <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

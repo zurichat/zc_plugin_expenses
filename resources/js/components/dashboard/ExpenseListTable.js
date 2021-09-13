@@ -4,7 +4,7 @@ function ExpenseListTable({ expenseList }) {
     return (
         <>
             <div className="container-fluid mb-3 bg-light">
-                <div className="row text-center">
+                <div className="row text-center table-responsive-md">
                     <table className="table">
                         <tbody className="table-head">
                             <tr>
