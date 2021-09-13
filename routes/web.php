@@ -37,4 +37,4 @@ Auth::routes();
 // Route::resource("list","ExpenseList");
 //@kelanialiyu 1ssue #200 end for linking list controller 
 
-
+Route::get("external", "External@index");
