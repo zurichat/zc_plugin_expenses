@@ -21,6 +21,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/dbtable', function () {
+    return view('table');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

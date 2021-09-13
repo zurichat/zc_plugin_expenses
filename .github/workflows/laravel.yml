@@ -24,9 +24,11 @@ jobs:
           
           script: |
             cd /var/www/expenses.zuri.chat
-
+            sudo rm composer.lock
+            sudo rm package-lock.json
             git pull origin dev
             git branch -r
-            sudo rm composer.lock
+            git stash
             composer install
+            npm install
             npm run production
