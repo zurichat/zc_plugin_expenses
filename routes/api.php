@@ -5,6 +5,7 @@ use App\Http\Controllers\SidebarController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\ListApi;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 Route::get("sidebarlist", [SidebarAPI::class, 'sidebar']);
+
+Route::resource("list", "ListApi");
 
 
 
