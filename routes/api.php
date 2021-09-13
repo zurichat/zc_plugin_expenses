@@ -26,7 +26,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get("sidebarlist", [SidebarAPI::class, 'sidebar']);
 
-Route::resource("list", "ListApi");
+Route::prefix('v1')->group(function () {
+    Route::resource("list", "ListApi");
+});
+
+
 // Auth Endpoints
 
 // Expense List Routes

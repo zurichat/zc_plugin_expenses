@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Collection;
 
 class ListApi extends Controller
 {
@@ -14,22 +15,9 @@ class ListApi extends Controller
      */
     public function index(Request $request)
     {
-        $request->validate([
-            "token" => "required",
-            // "plugin_id" => "required",
-            // "user_id" => "required"
-        ]);
-        $response = Http::withHeaders([
-            // 'Accept' => "application/json",
-            "Authorization" => "Bearer",
-            "Connection" => "Keep-alive",
-
-            //"Cookie" =>"f6822af94e29ba112be310d3af45d5c7=MTYzMTUwNTk3NHxHd3dBR0RZeE0yVmpOell6TVRWbVlqSTBNalF5TmpGaU5qWTFPUT09fHYliwsAxcEo0kl0KZhJGyOPsvjohYWvuOa0SpnI0qAO"
-        ])->get('https://api.zuri.chat/users');
-        //return $request->token;
-        return $response;
+        return $this->write();
     }
-
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -73,5 +61,33 @@ class ListApi extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Writes Data to an zuricore api.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function write($data=null, $method=null, $url=null,$filter=null)
+    {
+        
+        //$response = Http::post("https://api.zuri.chat/data/write", [
+         $response = [   "plugin_id" => "613ba9de41f5856617552f51",
+            "organization_id" => "6133c5a68006324323416896",
+            "collection_name" => "expenses_rooms_collection",
+            "bulk_write" => false,
+            "object_id" => "",
+            "filter" =>null,
+            "payload" =>[
+                "room_name" => "Accountants",
+                "creator_id" => "613d3e65e4010959c8dc0c11",
+                "visibility" => "public",
+                "users_id" => ["613d3e65e4010959c8dc0c11"],
+                "creation_date" => "date()",
+                "plugin_id" => "613ba9de41f5856617552f51",
+                "organisation_id" => "6133c5a68006324323416896"
+            ]
+            ];//);
+        return $response;
     }
 }

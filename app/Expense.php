@@ -31,7 +31,7 @@ class Expense extends Model
 	}
 
 	// rewrite model all to zuri api read/write interface
-	public static function _all ($data){
+	public static function _all (){
 		return;
 	}
 
