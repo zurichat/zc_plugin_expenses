@@ -17,20 +17,24 @@ use App\Http\Controllers\AboutController;
 |
 */
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('app');
 });
 
-Route::get('/dbtable', function () {
-    return view('table');
-});
+// Route::get('/dbtable', function () {
+//     return view('table');
+// });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
 
 //@kelanialiyu issue #200 start
-Route::resource("list","ExpenseList");
+// Route::resource("list","ExpenseList");
 //@kelanialiyu 1ssue #200 end for linking list controller 
 
 Route::get("external", "External@index");
