@@ -15,8 +15,8 @@ class ExpenseController extends Controller
     public function index()
     {
         //
-        $data = Expense::_all();
-        return response()->json(['status' => 'success', 'data' => $data], 201);
+        $expense = Expense::_all();
+        return response()->json(['status' => 'expenses retrieved successfully', 'data' => $expense], 200);
     }
 
     /**
@@ -60,6 +60,7 @@ class ExpenseController extends Controller
     public function show($id)
     {
         //
+
     }
 
     /**
