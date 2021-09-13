@@ -3,17 +3,20 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Helpers\ReadWrite;
 
 class Expense extends Model
 {
     //
 
-    private $collection = 'Expense';
+    private static $collection = 'Expense';
 
 
 	// rewrite model creation to zuri api read/write interface
 	public static function _create ($data){
-		return $data;
+		$data['collection'] = static::$collection;
+		$res = ReadWrite::write($data);
+		return $res;
 	}
 
 
@@ -47,4 +50,9 @@ class Expense extends Model
 	public static function _destroy ($id){
 		return;
 	}
+
+
+	 public function getCollection(){
+        return $this->collection;
+    }
 }

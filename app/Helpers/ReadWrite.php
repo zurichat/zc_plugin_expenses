@@ -21,7 +21,10 @@ class ReadWrite
 
 	public static function write($payload, $filter = null, $object_id = null )
     {
-        
+
+        // send data to zuri core here for write operation
+        //  POST: /data/write/{plugin_id}/{collection_name}/{organization_id}/?_id=""
+        return $payload;
     }
 
 
@@ -32,7 +35,7 @@ class ReadWrite
     }
 
 
-    public static function delete($payload, $filter = null, $object_id = null )
+    public static function delete($filter = null, $object_id = null )
     {
         
     }
