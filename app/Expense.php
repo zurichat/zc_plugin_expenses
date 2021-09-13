@@ -27,8 +27,9 @@ class Expense extends Model
 
 	// rewrite model find to zuri api read/write interface
 	public static function _find ($id){
-		$data['collection'] = static::$collection;
-		$res = ReadWrite::read($id);
+		$collection = static::$collection;
+		$object_id = $id;
+		$res = ReadWrite::read($collection, null, $object_id);
 		return $res;
 	}
 
@@ -47,7 +48,10 @@ class Expense extends Model
 
 	// rewrite model _firstOrCreate to zuri api read/write interface
 	public static function _where ($query){
-		return;
+		$collection = static::$collection;
+		$filter = $id;
+		$res = ReadWrite::read($collection, $filter, null);
+		return $res;
 	}
 
 	// rewrite model _firstOrCreate to zuri api read/write interface

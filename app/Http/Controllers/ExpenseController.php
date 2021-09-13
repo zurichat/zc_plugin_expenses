@@ -26,18 +26,7 @@ class ExpenseController extends Controller
      */
     public function create()
     {
-        $data = [
-            'title' => 'lorem ipsum',
-            'description' => 'here is the description for this expense list',
-            'owner' => 'John Doe',
-        ];
-
-        try {
-            $expense = Expense::_create($data);
-            return response()->json(['status' => 'created successfully', 'data' => $expense], 201); 
-        } catch (Exception $e) {
-            return $e;
-        }
+        
     }
 
     /**
@@ -48,7 +37,13 @@ class ExpenseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        try {
+            $expense = Expense::_create($data);
+            return response()->json(['status' => 'created successfully', 'data' => $expense], 201); 
+        } catch (Exception $e) {
+            return $e;
+        }
     }
 
     /**
@@ -60,6 +55,8 @@ class ExpenseController extends Controller
     public function show($id)
     {
         //
+        $expense = Expense::_find($id);
+        return response()->json(['status' => 'expense retrieved successfully', 'data' => $expense], 200);
 
     }
 

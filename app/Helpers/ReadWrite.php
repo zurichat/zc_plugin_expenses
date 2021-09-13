@@ -25,8 +25,8 @@ class ReadWrite
         $body = [
             'plugin_id' => static::$plugin_id,
             'organization_id' => static::$organization_id,
-            'collection_name' => $payload,
-            'payload' => $data['collection']
+            'collection_name' => $data['collection'],
+            'payload' => $data
         ];
         $header = [];
         $method = 'POST';
@@ -39,9 +39,9 @@ class ReadWrite
     {
     	//  GET: /data/read/{plugin_id}/{collection_name}/{organization_id}/?_id=""
         if($filter){
-            $query = 'filter={$filter}';
+            $query = "filter={$filter}";
         }elseif ($object_id) {
-            $query = '_id={$object_id}';
+            $query = "_id={$object_id}";
         }else{
             $query = '';
         }

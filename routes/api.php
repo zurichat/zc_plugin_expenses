@@ -30,7 +30,8 @@ Route::get("sidebarlist", [SidebarAPI::class, 'sidebar']);
 // Expense List Routes
 Route::group(['middleware' => 'api', 'prefix' => 'v1'], function(){
 	Route::get("/expenses", [ExpenseController::class, 'index']);
-	Route::post("/expenses", [ExpenseController::class, 'create']);
+	Route::get("/expenses/{id}", [ExpenseController::class, 'show']);
+	Route::post("/expenses", [ExpenseController::class, 'store']);
 });
 
 // Rooms Endpoints
