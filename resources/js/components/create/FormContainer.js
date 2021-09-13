@@ -1,9 +1,9 @@
-import React from 'react';
-import FormItemElement from './FormItemElement';
-import FormTitleElement from './FormTitleElement';
-import FormDescriptionElement from './FormDescriptionElement';
-import FormCreateElement from './FormCreateElement';
-import FormCancelElement from './FormCancelElement';
+import React from "react";
+import FormItemElement from "./FormItemElement";
+import FormTitleElement from "./FormTitleElement";
+import FormDescriptionElement from "./FormDescriptionElement";
+import FormCreateElement from "./FormCreateElement";
+import FormCancelElement from "./FormCancelElement";
 export default function FormContainer(props) {
     return (
         <div className="container-fluid mb-6">
@@ -16,12 +16,12 @@ export default function FormContainer(props) {
                         </div>
                         <div className="card-body">
                             <form method="post" action="">
-                                <FormTitleElement/>
-                                <FormItemElement/>
-                                <FormDescriptionElement/>
+                                <FormTitleElement />
+                                <FormItemElement />
+                                <FormDescriptionElement />
                                 <div className="form-row">
-                                    <FormCreateElement/>
-                                    <FormCancelElement/>
+                                    <FormCreateElement />
+                                    <FormCancelElement />
                                 </div>
                             </form>
                         </div>
@@ -29,6 +29,5 @@ export default function FormContainer(props) {
                 </div>
             </div>
         </div>
-
-    )
+    );
 }

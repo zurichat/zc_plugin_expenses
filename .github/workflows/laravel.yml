@@ -1,107 +1,41 @@
-name: Expenses Deployment Pipeline
+name: Laravel
 
 on:
-  # Triggers the workflow on push or pull request events but only for the dev branch
   push:
-    branches: [dev]
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+    branches: [ main, dev ]
+  pull_request:
+    branches: [ main, dev ]
 
 jobs:
-  prettier:
+  laravel-tests:
+
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
+    - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
       with:
-        # Make sure the actual branch is checked out when running on pull requests
-        ref: ${{ github.head_ref }}
-
-    - name: Prettify code
-      uses: creyD/prettier_action@v3.1
+        php-version: '8.0'
+    - uses: actions/checkout@v2
+    - name: Copy .env
+      run: php -r "file_exists('.env') || copy('.env.test', '.env');"
+    - name: Cache Composer dependencies
+      uses: actions/cache@v2
       with:
-        # This part is also where you can pass other options, for example:
-        prettier_options: --write **/*.{js,md}
-        commit_message: same_commit
+        path: /tmp/composer-cache
+        key: ${{ runner.os }}-${{ hashFiles('**/composer.lock') }}
+        restore-keys: ${{ runner.os }}-composer-
+    - name: Install Dependencies
+      run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+    - name: Generate key
+      run: php artisan key:generate
+    - name: Directory Permissions
+      run: chmod -R 777 storage bootstrap/cache
+    - name: Create Database
+      run: |
+        mkdir -p database
+        touch database/database.sqlite
+    - name: Execute tests (Unit and Feature tests) via PHPUnit
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-  fe_eslint:
-    needs: prettier
-
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-      with:
-        # Make sure the actual branch is checked out when running on pull requests
-        ref: ${{ github.head_ref }}
-    
-    - name: Use cached node_modules
-      uses: c-hive/gha-yarn-cache@v2
-      with:
-        directory: client
-
-    - name: Install yarn dependencies and Run ESLint
-      run: |
-        cd client
-        yarn install
-        yarn run lint --fix
-    - name: Commit changes
-      if: always()
-      uses: stefanzweifel/git-auto-commit-action@v4.1.2
-      with:
-        commit_message: Frontend EsLint Fixes
-
-  be_eslint:
-    needs: fe_eslint
-
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-      with:
-        # Make sure the actual branch is checked out when running on pull requests
-        ref: ${{ github.head_ref }}
-    
-    - name: Use cached node_modules
-      uses: c-hive/gha-yarn-cache@v2
-      with:
-        directory: server
-
-    - name: Install yarn dependencies and Run ESLint
-      run: |
-        cd server
-        yarn install
-        yarn run lint --fix
-    - name: Commit changes
-      if: always()
-      uses: stefanzweifel/git-auto-commit-action@v4.1.2
-      with:
-        commit_message: Backend EsLint Fixes
-
-  deploy:
-    needs: be_eslint
-
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Deployment
-        uses: appleboy/ssh-action@master
-        with:
-          key: ${{ secrets.SSHKEY }}
-          host: ${{ secrets.ZURI_HOST }}
-          username: ${{ secrets.USERNAME }}
-          script: |
-            cd /var/www/expenses.zuri.chat/
-            git stash
-            git pull origin dev
-            yarn install
-            yarn build
-            
+        DB_CONNECTION: sqlite
+        DB_DATABASE: database/database.sqlite
+      run: vendor/bin/phpunit

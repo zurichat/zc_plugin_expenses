@@ -30,10 +30,8 @@ export default function Expenses() {
                     </div>
                 </div>
             </div>
-            <ExpenseListTable expenselists=""/>
-            
-    </div>
-    )
-    
+            <ExpenseListTable expenselists="" />
+        </div>
+    );
 }
 // @patutechz issue #51
