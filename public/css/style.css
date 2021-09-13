@@ -41,3 +41,20 @@ textarea-137 {
     font-size: 1.5rem;
 }
 
+.my-nav{
+    flex-flow: nowrap;
+    overflow-x:scroll;
+    justify-content: space-between;
+    border-bottom: 0.05rem grey solid;
+    scrollbar-3dlight-color: pink;
+}
+.my-nav .nav-item{
+    color:rgb(26, 25, 25)
+}
+.my-nav .nav-item:focus, .my-nav .nav-item.active{
+    border-bottom: 0.15rem #00B87C solid;
+}
+
+.my-nav .nav-item:hover, .my-nav .nav-item.active{
+    border-bottom: 0.15rem #00B87C solid;
+}
