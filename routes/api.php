@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\SidebarAPI;
-use App\Http\Controllers\SidebarController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AboutController;
@@ -23,7 +22,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::get("sidebarlist", [SidebarAPI::class, 'sidebar']);
+Route::group(['prefix' => 'v1'], function(){
+    Route::get('/sidebarlist', [SidebarAPI::class, 'sidebar']);
+    });
+
 
 // Auth Endpoints
 
