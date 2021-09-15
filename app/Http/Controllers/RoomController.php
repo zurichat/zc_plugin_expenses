@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Repository\RoomRepository;
+use App\Zuri\Room;
 use Illuminate\Http\JsonResponse;
 
 class RoomController extends Controller
@@ -11,15 +11,15 @@ class RoomController extends Controller
 	/**
      * @var RoomRepository
      */
-    private $repository;
+    private $model;
     /**
      * @var Request
      */
     private $request;
 
-	public function __construct(RoomRepository $repository, Request $request)
+	public function __construct(Room $model, Request $request)
     {
-        $this->repository = $repository;
+        $this->model = $model;
         $this->request = $request;
     }
 
@@ -33,8 +33,6 @@ class RoomController extends Controller
     public function index()
     {
        
-       // $rooms = $this->repository->index();
-       // return response()->json(['status' => 'expenses retrieved successfully', 'data' => $rooms], 200);
     }
 
     /**
@@ -47,17 +45,9 @@ class RoomController extends Controller
     {
        try {
             
-            $room = $this->repository->store($request);
+             $room = $this->model->create($request);
        		return response()->json(['status' => 'room created successfully', 'data' => $room], 201);
-        }catch(\GuzzleHttp\Exception\RequestException  $e){
-        	if ($e->hasResponse()) {
-			    $exception = (string) $e->getResponse()->getBody();
-			    return response()->json(['status' => 'error', 'message' => $e->getMessage() ], $e->getCode() );
-			} else {
-			    return new JsonResponse($e->getMessage(), 503);
-			}
-        }
-        catch (\Exception $e) {
+        }catch (\Exception $e) {
             return response()->json(['status' => 'error',  'message' => 'internal server error '.$e->getMessage()], 503 );
         }
 

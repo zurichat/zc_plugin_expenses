@@ -1,12 +1,12 @@
 <?php
 
-namespace App;
+namespace App\Zuri;
 
 use Illuminate\Database\Eloquent\Model;
 use App\User;
 use App\Helpers\ZuriInterface;
 
-class Room extends Model
+class Room
 {
     protected $fillable = [
         'room_name',
@@ -23,7 +23,7 @@ class Room extends Model
 
 
     // rewrite model creation to zuri api endpoint
-    public static function _create ($data){
+    public static function create ($data){
         $url = static::$apiBase . "createroom";
         $res = ZuriInterface::post($data, $url );
         return $res;
@@ -31,12 +31,12 @@ class Room extends Model
 
 
     // rewrite model saving to zuri api endpoint
-    public static function _save ($id, $data){
+    public static function save ($id, $data){
         return;
     }
 
     // rewrite model find to zuri api endpoint
-    public static function _find ($id){
+    public static function find ($id){
         $collection = static::$collection;
         $object_id = $id;
         $res = ReadWrite::read($collection, null, $object_id);
@@ -44,7 +44,7 @@ class Room extends Model
     }
 
     // rewrite model all to zuri api endpoint
-    public static function _all (){
+    public static function all (){
         $collection = static::$collection;
         $res = ReadWrite::read($collection);
         return $res;
@@ -52,12 +52,12 @@ class Room extends Model
 
 
     // rewrite model _firstOrCreate to zuri api endpoint
-    public static function _firstOrCreate ($data){
+    public static function firstOrCreate ($data){
         return;
     }
 
     // rewrite model _firstOrCreate to zuri api endpoint
-    public static function _where ($query){
+    public static function where ($query){
         $collection = static::$collection;
         $filter = $id;
         $res = ReadWrite::read($collection, $filter, null);
@@ -65,7 +65,7 @@ class Room extends Model
     }
 
     // rewrite model _firstOrCreate to zuri api endpoint
-    public static function _delete ($id){
+    public static function delete ($id){
         return;
     }
 
