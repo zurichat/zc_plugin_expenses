@@ -4,6 +4,7 @@ use App\Http\Controllers\SidebarAPI;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\ListApi;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\RoomController;
 
@@ -27,6 +28,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group(['prefix' => 'v1'], function(){
     Route::get('/sidebarlist', [SidebarAPI::class, 'sidebar']);
     });
+
+
+Route::prefix('v1')->group(function () {
+    Route::resource("list", "ListApi");
+});
 
 
 // Auth Endpoints
