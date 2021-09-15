@@ -38,18 +38,17 @@ Route::prefix('v1')->group(function () {
 // Auth Endpoints
 
 // Expense List Routes
-Route::group(['middleware' => 'api', 'prefix' => 'v1'], function(){
-	Route::get("/expenses", [ExpenseController::class, 'index']);
-	Route::get("/expenses/{id}", [ExpenseController::class, 'show']);
-	Route::post("/expenses", [ExpenseController::class, 'store']);
+Route::prefix('v1')->group(function () {
+	Route::get('/expenses/search', [ExpenseController::class, 'search'] );
+    Route::resource("expenses", "ExpenseController");
 });
 
 // Rooms Endpoints WIP
-Route::group(['middleware' => 'api', 'prefix' => 'v1'], function(){
-	Route::get("/rooms", [RoomController::class, 'index']);
-	Route::get("/rooms/{id}", [RoomController::class, 'show']);
-	Route::post("/rooms", [RoomController::class, 'store']);
-});
+// Route::group(['middleware' => 'api', 'prefix' => 'v1'], function(){
+// 	Route::get("/rooms", [RoomController::class, 'index']);
+// 	Route::get("/rooms/{id}", [RoomController::class, 'show']);
+// 	Route::post("/rooms", [RoomController::class, 'store']);
+// });
 
 
 // Organization Endpoints
