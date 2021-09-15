@@ -5,6 +5,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ExpenseController;
+use App\Http\Controllers\RoomController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -36,7 +38,13 @@ Route::group(['middleware' => 'api', 'prefix' => 'v1'], function(){
 	Route::post("/expenses", [ExpenseController::class, 'store']);
 });
 
-// Rooms Endpoints
+// Rooms Endpoints WIP
+Route::group(['middleware' => 'api', 'prefix' => 'v1'], function(){
+	Route::get("/rooms", [RoomController::class, 'index']);
+	Route::get("/rooms/{id}", [RoomController::class, 'show']);
+	Route::post("/rooms", [RoomController::class, 'store']);
+});
+
 
 // Organization Endpoints
 
