@@ -24,7 +24,7 @@ class ListApi extends Controller
         $data["plugin_id"] = $request->plugin_id;
         $data["organization_id"] = $request->organization_id;
         $query = ["room_id" => $request->room_id];
-        return $this->read("expenses_list_collection",$data,$query);
+        return $this->read("expenses_list_collection",$data,$query)->json();
     }
     
     /**
@@ -46,11 +46,8 @@ class ListApi extends Controller
         foreach ($request->items as $item ) {
            $total+=$item["unit_price"] * $item["quantity"];
         }
-        // return $total;
-        $data["url"] = "https://api.zuri.chat/data/write";
         $data["plugin_id"] = $request->plugin_id;
         $data["organization_id"] = $request->organization_id;
-        $data["collection_name"] = "expenses_list_collection";
         $data["bulk_write"]=false;
         $data["object_id"]="";
         $data["filter"] =json_decode("{}");
@@ -63,10 +60,10 @@ class ListApi extends Controller
                 "description" => $request->description,
                 "status" => "pending",
                 "admin_comment" =>"",
-                "creation_date" => time()
+                "updated_at" => time(),
+                "created_at" => time()
         ];
-        // return $data;
-        return $this->write("expenses_list_collection",$data);
+        return $this->write("POST","expenses_list_collection",$data);
      }
 
     /**
@@ -82,14 +79,13 @@ class ListApi extends Controller
             "organization_id" => "required",
             "room_id" => "required"
         ]);
-
         $data["plugin_id"] = $request->plugin_id;
         $data["organization_id"] = $request->organization_id;
         $query = [
             "room_id" => $request->room_id,
             "_id" =>$id
         ];
-        return $this->read("expenses_list_collection",$data,$query);
+        return $this->read("expenses_list_collection",$data,$query)->json();
     }
 
     /**
@@ -105,16 +101,21 @@ class ListApi extends Controller
             "plugin_id" => "required",
             "organization_id" => "required",
             "room_id" => "required",
-            "list_status" =>"required"
+            "status" =>"required"
         ]);
-
         $data["plugin_id"] = $request->plugin_id;
         $data["organization_id"] = $request->organization_id;
+        $data["payload"]["status"] =$request->status;
+        $data["payload"]["comment"]=$request->comment??"";
+        $data["bulk_write"]=false;
+        $data["object_id"]=$id;
+        $data["filter"] =json_decode("{}");
+        $data["updated_at"] = time();
         $query = [
             "room_id" => $request->room_id,
             "_id" =>$id
         ];
-        return $this->read("expenses_list_collection",$data,$query);
+        return $this->write("PUT","expenses_list_collection",$data)->json();
     }
 
     /**
@@ -133,22 +134,29 @@ class ListApi extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function write($collection_name,$data=null,$url = "https://api.zuri.chat/data/write")
+    public function write($method,$collection_name,$data=null,$url = "https://api.zuri.chat/data/write")
     {
-        
-        $response = Http::post($url = "https://api.zuri.chat/data/write",[
+        $prepared_data = [
             "plugin_id" => $data["plugin_id"],
             "organization_id" => $data["organization_id"],
             "collection_name" => $collection_name,
-            "bulk_write" => $data["bulk_write"],
+            "bulk_write" => $data["bulk_write"]??"",
             "object_id" => $data["object_id"],
             "filter" =>$data["filter"],
             "payload" =>$data["payload"]
-            ]);
+        ];
+        if($method == "POST"){
+            $response = Http::post($url = "https://api.zuri.chat/data/write",$prepared_data);
+        }
+        else{
+           $response = Http::put($url = "https://api.zuri.chat/data/write",$prepared_data); 
+        }
         return $response;
     }
+
+    
      /**
-     * Writes Data to an zuricore api.
+     * Reads Data from zuricore api.
      *
      * @return \Illuminate\Http\Response
      */
@@ -156,27 +164,7 @@ class ListApi extends Controller
     {
         
         $response = Http::get($url = "$url/{$data['plugin_id']}/{$collection_name}/{$data['organization_id']}",$query);
-        return $response->json();
-        // $message = ($response->successful())?"Expense list created successfully":$response->message();
+        $result = $response;
+        return $result;
     }
 }
-
-
-// $response = Http::post("https://api.zuri.chat/data/write", [
-//             "plugin_id" => "613ba9de41f5856617552f51",
-//             "organization_id" => "6133c5a68006324323416896",
-//             "collection_name" => "expenses_rooms_collection",
-//             "bulk_write" => false,
-//             "object_id" => "",
-//             "filter" =>null,
-//             "payload" =>[
-//                 "room_name" => "Accountants",
-//                 "creator_id" => "613d3e65e4010959c8dc0c11",
-//                 "visibility" => "public",
-//                 "users_id" => ["613d3e65e4010959c8dc0c11"],
-//                 "creation_date" => "date()",
-//                 "plugin_id" => "613ba9de41f5856617552f51",
-//                 "organisation_id" => "6133c5a68006324323416896"
-//             ]
-//             ]);
-//         return $response;

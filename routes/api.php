@@ -29,7 +29,7 @@ Route::group(['prefix' => 'v1'], function(){
     Route::get('/sidebarlist', [SidebarAPI::class, 'sidebar']);
     });
 
-
+// Expense List endpoints 
 Route::prefix('v1')->group(function () {
     Route::resource("list", "ListApi");
 });
