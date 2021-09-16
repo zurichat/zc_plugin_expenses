@@ -16,6 +16,24 @@ jobs:
       with:
         php-version: '8.0'
     - uses: actions/checkout@v2
+    
+    - name: Git Pull on Server
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.ZURI_HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        # key: ${{ secrets.SSHKEY }}
+        script: |
+          cd /var/www/expenses.zuri.chat
+          sudo rm composer.lock
+          sudo rm package-lock.json
+          git pull origin dev
+          git branch -r
+          git stash
+          composer install
+          npm run production
+    
     - name: Copy .env
       run: php -r "file_exists('.env') || copy('.env.test', '.env');"
     - name: Cache Composer dependencies
@@ -31,8 +49,7 @@ jobs:
     - name: Directory Permissions
       run: chmod -R 777 storage bootstrap/cache
     - name: Create Database
-      run: |
-        git pull origin dev --allow-unrelated-histories
+      run: |        
         mkdir -p database
         touch database/database.sqlite
     - name: Execute tests (Unit and Feature tests) via PHPUnit
@@ -40,3 +57,4 @@ jobs:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
       run: vendor/bin/phpunit
+    

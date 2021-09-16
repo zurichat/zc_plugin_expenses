@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Zuri;
 
 use Illuminate\Database\Eloquent\Model;
 use App\User;
@@ -8,7 +8,7 @@ use App\Helpers\ZuriInterface;
 use Illuminate\Support\Facades\Validator;
 
 
-class Room extends Model
+class Room
 {
     protected $fillable = [
         'room_name',
@@ -33,26 +33,21 @@ class Room extends Model
 
 
     // rewrite model creation to zuri api endpoint
-<<<<<<< Updated upstream:app/Room.php
-    public static function _create ($data){
-        $url = static::$apiBase . "createroom";
-        $res = ZuriInterface::post($data, $url );
-=======
+
     public static function create ($data){
         $data['collection_name'] = static::$collection_name;
         $res = ZuriInterface::post($data );
->>>>>>> Stashed changes:app/Zuri/Room.php
         return $res;
     }
 
 
     // rewrite model saving to zuri api endpoint
-    public static function _save ($id, $data){
+    public static function save ($id, $data){
         return;
     }
 
     // rewrite model find to zuri api endpoint
-    public static function _find ($id){
+    public static function find ($id){
         $collection = static::$collection;
         $object_id = $id;
         $res = ZuriInterface::read($collection, null, $object_id);
@@ -60,26 +55,20 @@ class Room extends Model
     }
 
     // rewrite model all to zuri api endpoint
-<<<<<<< Updated upstream:app/Room.php
-    public static function _all (){
-        $collection = static::$collection;
-        $res = ReadWrite::read($collection);
-=======
     public static function all ($params, $query){
         $params['collection_name'] = static::$collection_name;
         $res = ZuriInterface::get($params, $query);
->>>>>>> Stashed changes:app/Zuri/Room.php
         return $res;
     }
 
 
     // rewrite model _firstOrCreate to zuri api endpoint
-    public static function _firstOrCreate ($data){
+    public static function firstOrCreate ($data){
         return;
     }
 
     // rewrite model _firstOrCreate to zuri api endpoint
-    public static function _where ($query){
+    public static function where ($query){
         $collection = static::$collection;
         $filter = $id;
         $res = ZuriInterface::read($collection, $filter, null);
@@ -87,7 +76,7 @@ class Room extends Model
     }
 
     // rewrite model _firstOrCreate to zuri api endpoint
-    public static function _delete ($id){
+    public static function delete ($id){
         return;
     }
 

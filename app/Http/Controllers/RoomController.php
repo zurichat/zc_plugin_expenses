@@ -3,23 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Repository\RoomRepository;
+use App\Zuri\Room;
 use Illuminate\Http\JsonResponse;
 
 class RoomController extends Controller
 {
 	/**
-     * @var RoomRepository
+     * @var RoomModel
      */
-    private $repository;
+    private $model;
     /**
      * @var Request
      */
     private $request;
 
-	public function __construct(RoomRepository $repository, Request $request)
+    public function __construct(Room $model, Request $request)
     {
-        $this->repository = $repository;
+        $this->model = $model;
         $this->request = $request;
     }
 
