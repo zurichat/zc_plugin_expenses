@@ -30,11 +30,21 @@ class RoomController extends Controller
      * @param Request $request
      * @return AnonymousResourceCollection|Response
      */
-    public function index()
+    public function index(Request $request)
     {
-       
-       // $rooms = $this->repository->index();
-       // return response()->json(['status' => 'expenses retrieved successfully', 'data' => $rooms], 200);
+
+       if( $this->model->validateShow($request->all() ) ) {
+            $params["plugin_id"] = $request->plugin_id;
+            $params["organization_id"] = $request->organization_id;
+            $query = [];
+
+            $expense =  $this->model->all($params, $query);
+            return $expense;
+        }else{
+            $errors = $this->model->errors();
+            return response()->json(['status' => 'error', 'message' => $errors], 422); 
+       }
+
     }
 
     /**
@@ -45,22 +55,42 @@ class RoomController extends Controller
      */
     public function store(Request $request)
     {
-       try {
-            
-            $room = $this->repository->store($request);
-       		return response()->json(['status' => 'room created successfully', 'data' => $room], 201);
-        }catch(\GuzzleHttp\Exception\RequestException  $e){
-        	if ($e->hasResponse()) {
-			    $exception = (string) $e->getResponse()->getBody();
-			    return response()->json(['status' => 'error', 'message' => $e->getMessage() ], $e->getCode() );
-			} else {
-			    return new JsonResponse($e->getMessage(), 503);
-			}
-        }
-        catch (\Exception $e) {
-            return response()->json(['status' => 'error',  'message' => 'internal server error '.$e->getMessage()], 503 );
-        }
+       if($this->model->validate($request->all()) ){
 
+            $members = $request->members ? $request->members : [];
+            $creator = ["user_id" => $request->creator_id, "role" => "creator"];
+            // add creator as room member
+            array_push($members, $creator);
+            
+            $data["plugin_id"] = $request->plugin_id;
+            $data["organization_id"] = $request->organization_id;
+            $data["collection_name"] = "expenses_list_collection";
+            $data["bulk_write"]=false;
+            $data["object_id"]="";
+            $data["filter"] =json_decode("{}");
+            $data["payload"] = [
+                    "name" => $request->name,
+                    "description" => $request->description,
+                    "topic" =>$request->topic,
+                    "members" => $members,
+                    "plugin_id" => $request->plugin_id,
+                    "organization_id" => $request->organization_id,
+                    "creator_id" => $request->author_id,
+                    "status" => "open",
+                    "visibility" => $request->visibility,
+                    "created_at" => time()
+            ];
+
+            try {
+                $room = $this->model->create($data);
+                return $room;
+            } catch (Exception $e) {
+                return $e;
+            }
+        }else{
+            $errors = $this->model->errors();
+            return response()->json(['status' => 'error', 'message' => $errors], 422); 
+       }
     }
 
 }

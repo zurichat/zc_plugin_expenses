@@ -44,11 +44,12 @@ Route::group(['middleware' => 'api', 'prefix' => 'v1'], function(){
 	Route::post("/expenses", [ExpenseController::class, 'store']);
 });
 
-// Rooms Endpoints WIP
-Route::group(['middleware' => 'api', 'prefix' => 'v1'], function(){
-	Route::get("/rooms", [RoomController::class, 'index']);
-	Route::get("/rooms/{id}", [RoomController::class, 'show']);
-	Route::post("/rooms", [RoomController::class, 'store']);
+
+
+// Room  Endpoints
+Route::group(['prefix' => 'v1'], function(){
+	Route::get('/rooms/search', [RoomController::class, 'search'] );
+    Route::resource("rooms", "RoomController");
 });
 
 
