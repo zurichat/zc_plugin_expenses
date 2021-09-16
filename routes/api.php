@@ -7,6 +7,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ListApi;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\RoomController;
+use App\Http\Controllers\RoomMemberController;
 
 
 /*
@@ -44,11 +45,22 @@ Route::group(['middleware' => 'api', 'prefix' => 'v1'], function(){
 });
 
 
+
+// Room Members  Endpoints
+Route::group(['prefix' => 'v1'], function(){
+	Route::get('/rooms/{room_id}/members', [RoomMemberController::class, 'index'] );
+	Route::get('/rooms/{room_id}/members/{user_id}', [RoomMemberController::class, 'show'] );
+	Route::delete('/rooms/{room_id}/members/{user_id}', [RoomMemberController::class, 'destroy'] );
+	Route::post('/rooms/members', [RoomMemberController::class, 'store'] );
+	Route::delete('/rooms/members/{user_id}', [RoomMemberController::class, 'removeMember'] );
+});
+
 // Room  Endpoints
 Route::group(['prefix' => 'v1'], function(){
-	Route::get('/rooms/search', [RoomController::class, 'search'] );
     Route::resource("rooms", "RoomController");
 });
+
+
 
 
 // Organization Endpoints
