@@ -11,13 +11,11 @@ class Expense
     //
 
     private static $collection_name = 'expenses_list_collection';
-
+    
     private $rules = [
         "plugin_id" => "required",
         "organization_id" => "required",
-        "room_id" => "required",
-        "author_id"=>"required",
-        "title" =>"required"
+        "room_id" => "required"
         // .. more rules here ..
     ];
 
@@ -74,8 +72,7 @@ class Expense
 		return $res;
 	}
 
-
-	public function validate($data)
+    public function validate_all($data)
     {
         $v = Validator::make($data, $this->rules);
         if ($v->fails())
@@ -86,19 +83,37 @@ class Expense
         return true;
     }
 
-    public function validateShow($data)
+	public function validate($data)
     {
         $v = Validator::make($data, [
-        	"plugin_id" => "required",
-            "organization_id" => "required",
-            "room_id" => "required"
+            "author_id"=>"required",
+            "author_name" =>"required",
+            "title" =>"required"
         ]);
-
+        
+        // Specific validation
         if ($v->fails())
         {
             $this->errors = $v->errors()->toArray();
             return false;
         }
+
+        return true;
+    }
+
+    public function validateShow($data)
+    {
+        $v = Validator::make($data, [
+            // show specific rules
+        ]);
+
+        // Specific validation
+        if ($v->fails())
+        {
+            $this->errors = $v->errors()->toArray();
+            return false;
+        }
+
         return true;
     }
 
@@ -106,33 +121,32 @@ class Expense
     public function validateUpdate($data)
     {
         $v = Validator::make($data, [
-        	"plugin_id" => "required",
-            "organization_id" => "required",
-            "room_id" => "required",
-            "list_status" =>"required"
+            "status" =>"required"
         ]);
 
+        // Specific validation
         if ($v->fails())
         {
             $this->errors = $v->errors()->toArray();
             return false;
         }
+
         return true;
     }
 
     public function validateDelete($data)
     {
         $v = Validator::make($data, [
-        	"plugin_id" => "required",
-            "organization_id" => "required",
-            "room_id" => "required",
+        	//delete specific rules
         ]);
 
+        // Specific validation
         if ($v->fails())
         {
             $this->errors = $v->errors()->toArray();
             return false;
         }
+
         return true;
     }
 

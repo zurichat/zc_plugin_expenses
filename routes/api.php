@@ -39,9 +39,9 @@ Route::prefix('v1')->group(function () {
 // Auth Endpoints
 
 // Expense List Routes
-Route::group(['middleware' => 'api', 'prefix' => 'v1'], function(){
-	Route::get('/rooms/search', [ExpenseController::class, 'search'] );
-	Route::resource("expenses", "ExpenseController");
+Route::group(['middleware' => 'expense', 'prefix' => 'v1'],function () {
+	Route::get('/expenses/search', [ExpenseController::class, 'search'] );
+    Route::resource("expenses", "ExpenseController");
 });
 
 
