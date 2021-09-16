@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Zuri\RoomMember;
 use App\Zuri\Room;
 use Illuminate\Http\JsonResponse;
 
-class RoomController extends Controller
+class RoomMemberController extends Controller
 {
 	/**
      * @var RoomModel
@@ -17,7 +18,7 @@ class RoomController extends Controller
      */
     private $request;
 
-    public function __construct(Room $model, Request $request)
+    public function __construct(RoomMember $model, Request $request)
     {
         $this->model = $model;
         $this->request = $request;
@@ -30,13 +31,15 @@ class RoomController extends Controller
      * @param Request $request
      * @return AnonymousResourceCollection|Response
      */
-    public function index(Request $request)
+    public function index($room_id, Request $request)
     {
 
        if( $this->model->validateShow($request->all() ) ) {
             $params["plugin_id"] = $request->plugin_id;
             $params["organization_id"] = $request->organization_id;
-            $query = [];
+            $query = [
+                "room_id" => $room_id
+            ];
 
             $expense =  $this->model->all($params, $query);
             return $expense;
@@ -57,11 +60,6 @@ class RoomController extends Controller
     {
        if($this->model->validate($request->all()) ){
 
-            $members = $request->members ? $request->members : [];
-            $creator = ["user_id" => $request->creator_id, "role" => "creator"];
-            // add creator as room member
-            array_push($members, $creator);
-            
             $data["plugin_id"] = $request->plugin_id;
             $data["organization_id"] = $request->organization_id;
             $data["collection_name"] = "expenses_list_collection";
@@ -69,20 +67,30 @@ class RoomController extends Controller
             $data["object_id"]="";
             $data["filter"] =json_decode("{}");
             $data["payload"] = [
-                    "name" => $request->name,
-                    "description" => $request->description,
-                    "topic" =>$request->topic,
-                    "plugin_id" => $request->plugin_id,
-                    "organization_id" => $request->organization_id,
-                    "creator_id" => $request->creator_id,
-                    "status" => "open",
-                    "visibility" => $request->visibility,
+                    "user_id" => $request->user_id,
+                    "role" => $request->role,
+                    "room_id" => $request->room_id,
+                    "abilities" => $request->abilities,
                     "created_at" => time()
             ];
-
             try {
-                $room = $this->model->create($data);
-                return $room;
+                $params["plugin_id"] = $request->plugin_id;
+                $params["organization_id"] = $request->organization_id;
+                $query = [
+                    "_id" => $request->room_id
+                ];
+
+                $room = Room::find($params, $query);
+                if($room['data']){
+                    $member = $this->model->create($data);
+                    return response()->json([
+                        'status' => 'success',
+                        'message' => "user added successfully",
+                        "data" => $member['data']
+                    ], 201); 
+                }else{
+                    return response()->json(['status' => 'error', 'message' => "room not found"], 201); 
+                }
             } catch (Exception $e) {
                 return $e;
             }
@@ -100,14 +108,15 @@ class RoomController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id, Request $request)
+    public function show($room_id, $user_id, Request $request)
     {
        
         if( $this->model->validateShow($request->all() ) ) {
             $params["plugin_id"] = $request->plugin_id;
             $params["organization_id"] = $request->organization_id;
             $query = [
-                "_id" => $id
+                 "room_id" => $room_id,
+                 "user_id" => $user_id
             ];
 
             $room = $this->model->find($params, $query);
@@ -119,54 +128,6 @@ class RoomController extends Controller
         
 
     }
-
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-
-        if($this->model->validateUpdate($request->all()) ){
-
-            $members = $request->members ? $request->members : [];
-  
-            $data["plugin_id"] = $request->plugin_id;
-            $data["organization_id"] = $request->organization_id;
-            $data["collection_name"] = "expenses_list_collection";
-            $data["bulk_write"]=false;
-            $data["object_id"]= $request->object_id ? $request->object_id  : "";
-            $data["filter"] = $request->filter ? $request->filter  : json_decode("{}");
-            $data["payload"] = [
-                    "name" => $request->name,
-                    "description" => $request->description,
-                    "topic" =>$request->topic,
-                    // "members" => $members,
-                    // "plugin_id" => $request->plugin_id,
-                    // "organization_id" => $request->organization_id,
-                    // "creator_id" => $request->author_id,
-                    "status" => $request->status,
-                    "visibility" => $request->visibility,
-                    "updated_at" => time()
-            ];
-
-            try {
-                $room = $this->model->save($data);
-                return $room;
-            } catch (Exception $e) {
-                return $e;
-            }
-        }else{
-            $errors = $this->model->errors();
-            return response()->json(['status' => 'error', 'message' => $errors], 422); 
-       }
-
-    }
-
 
 
     /**

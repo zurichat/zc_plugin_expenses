@@ -8,20 +8,18 @@ use App\Helpers\ZuriInterface;
 use Illuminate\Support\Facades\Validator;
 
 
-class Room
+class RoomMember
 {
 
     private $rules = [
-        "plugin_id" => "required",
-        "organization_id" => "required",
-        "name" => "required",
-        "creator_id"=>"required",
-        "visibility" =>"required"
-        // .. more rules here ..
+        "room_id" => "required",
+        "user_id" => "required",
+        "role"=>"nullable",
+        "abilities" => "nullable"
     ];
 
     private $errors;
-    private static $collection_name = 'expense_rooms_collection';
+    private static $collection_name = 'expense_room_members_collection';
 
 
     // rewrite model creation to zuri api endpoint

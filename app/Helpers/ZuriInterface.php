@@ -3,6 +3,7 @@ namespace App\Helpers;
 use Illuminate\Container\Container;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Http;
 
 /**
  *
@@ -10,117 +11,54 @@ use Illuminate\Support\Collection;
 class ZuriInterface
 {
 
-	protected static $plugin_id = '613ba9de41f5856617552f51';
-	protected static $organization_id = '6133c5a68006324323416896';
+    protected static $apiBase = 'https://api.zuri.chat';
 
 
-	public static function post($data, $url )
+    public static function post($data )
     {
 
-        $body = [
-            'plugin_id' => static::$plugin_id,
-            'org_id' => static::$organization_id,
-        ];
+        // send data to zuri core here for write operation
+        //  POST: /data/write/{plugin_id}/{collection_name}/{organization_id}/?_id=""
         $header = [];
-        $method = 'POST';
-        try {
+        $url =    static::$apiBase . "/data/write";
+        $res = Http::post($url, $data);
+        return $res->json();
+    }
 
-            
-            $client = new \GuzzleHttp\Client();
-            $res = $client->request($method, $url, [
-                'body' => $body ? json_encode($body) : '',
-                'headers' => $header
-            ]);
+    public static function put($data )
+    {
 
-            $response = (json_decode($res->getBody()->getContents()));
-            if( $response ){
-               return $response;
-            } else{
-                return;
-            }
-            
-        } catch (Exception $e) {
-            return $e;
-        }
-
-        return $res;
+        // send data to zuri core here for write operation
+        //  POST: /data/write/{plugin_id}/{collection_name}/{organization_id}/?_id=""
+        $header = [];
+        $url =    static::$apiBase . "/data/write";
+        $res = Http::put($url, $data);
+        return $res->json();
     }
 
 
-    public static function get($url, $filter = null, $object_id = null )
+    public static function get($params, $query = null )
     {
-        
-        try {
+        //  GET: /data/read/{plugin_id}/{collection_name}/{organization_id}/?_id=""
 
-            if($filter){
-                $query = "filter={$filter}";
-            }elseif ($object_id) {
-                $query = "_id={$object_id}";
-            }else{
-                $query = '';
-            }
+        $url =    static::$apiBase . "/data/read/{$params['plugin_id']}/{$params['collection_name']}/{$params['organization_id']}";
+        $method = 'GET';
+        $body = null;
+        $header = [];
 
-            $plugin_id = static::$plugin_id;
-            $organization_id = static::$organization_id;
-
-            $url =  $url  . "/?{$query}";
-            $method = 'GET';
-            $body = null;
-            $header = [];
-
-            $client = new \GuzzleHttp\Client();
-            $res = $client->request($method, "{$url}", [
-                'body' => $body ? json_encode($body) : '',
-                'headers' => $header
-            ]);
-
-            $response = (json_decode($res->getBody()->getContents()));
-            if( $response ){
-               return $response;
-            } else{
-                return;
-            }
-            
-        } catch (Exception $e) {
-            return $e;
-        }
-
-        return $res;
+        // $res = static::guzzleMethod($body, $header, $url, $method);
+         $res = Http::get($url, $query);
+        return $res->json();
         
     }
 
 
-    public static function put($filter = null, $object_id = null )
+    public static function delete($params)
     {
-        
-    }
-
-    public static function patch($filter = null, $object_id = null )
-    {
-        
-    }
-
-
-    public static function delete($filter = null, $object_id = null )
-    {
-        try {
-
-            $client = new \GuzzleHttp\Client();
-            $res = $client->request($method, "{$url}", [
-                'body' => $body ? json_encode($body) : '',
-                'headers' => $header
-            ]);
-
-            $response = (json_decode($res->getBody()->getContents()));
-            if( $response ){
-               return $response;
-            } else{
-                return;
-            }
-            
-        } catch (Exception $e) {
-            return $e;
-        }
+        $header = [];
+        $url =    static::$apiBase . "/data/delete";
+        $res = Http::post($url, $params);
+        return $res->json();
     }
 
 }

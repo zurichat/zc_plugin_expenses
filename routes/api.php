@@ -7,7 +7,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ListApi;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\RoomController;
-use App\Http\Controllers\PingController;
+use App\Http\Controllers\RoomMemberController;
 
 
 /*
@@ -39,22 +39,34 @@ Route::prefix('v1')->group(function () {
 // Auth Endpoints
 
 // Expense List Routes
-Route::prefix('v1')->group(function () {
-	Route::get('/expenses/search', [ExpenseController::class, 'search'] );
-    Route::resource("expenses", "ExpenseController");
+Route::group(['middleware' => 'api', 'prefix' => 'v1'], function(){
+	Route::get('/rooms/search', [ExpenseController::class, 'search'] );
+	Route::resource("expenses", "ExpenseController");
 });
 
-//Ping endpoint
-Route::prefix('v1')->group(function () {
-	Route::get('/ping', [PingController::class, 'index'] );
+
+
+// Room Members  Endpoints
+Route::group(['prefix' => 'v1'], function(){
+	Route::get('/rooms/{room_id}/members', [RoomMemberController::class, 'index'] );
+	Route::get('/rooms/{room_id}/members/{user_id}', [RoomMemberController::class, 'show'] );
+	Route::delete('/rooms/{room_id}/members/{user_id}', [RoomMemberController::class, 'destroy'] );
+	Route::post('/rooms/members', [RoomMemberController::class, 'store'] );
+	Route::delete('/rooms/members/{user_id}', [RoomMemberController::class, 'removeMember'] );
 });
 
-// Rooms Endpoints WIP
-// Route::group(['middleware' => 'api', 'prefix' => 'v1'], function(){
-// 	Route::get("/rooms", [RoomController::class, 'index']);
-// 	Route::get("/rooms/{id}", [RoomController::class, 'show']);
-// 	Route::post("/rooms", [RoomController::class, 'store']);
-// });
+// Room  Endpoints
+Route::group(['prefix' => 'v1'], function(){
+    Route::resource("rooms", "RoomController");
+});
+
+
 
 
 // Organization Endpoints
+
+
+
+
+
+

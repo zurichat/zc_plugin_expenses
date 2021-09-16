@@ -102,17 +102,20 @@ class ExpenseController extends Controller
      */
     public function show($id, Request $request)
     {
-       
-        $params["plugin_id"] = $request->plugin_id;
-        $params["organization_id"] = $request->organization_id;
-        $query = [
-            "room_id" => $request->room_id,
-            "_id" =>$id
-        ];
+       if( $this->model->validateShow($request->all() ) ) {
+            $params["plugin_id"] = $request->plugin_id;
+            $params["organization_id"] = $request->organization_id;
+            $query = [
+                "room_id" => $request->room_id,
+                "_id" =>$id
+            ];
 
-        $expense = $this->model->find($params, $query);
-        return response()->json(['status' => 'expense retrieved successfully', 'data' => $expense], 200); 
-        
+            $expense = $this->model->find($params, $query);
+            return response()->json(['status' => 'expense retrieved successfully', 'data' => $expense], 200); 
+        }else{
+            $errors = $this->model->errors();
+            return response()->json(['status' => 'error', 'message' => $errors], 422); 
+       }
 
     }
 
