@@ -104,7 +104,7 @@ class ExpenseController extends Controller
      */
     public function show($id, Request $request)
     {
-       
+       if( $this->model->validateShow($request->all() ) ) {
         $params["plugin_id"] = $request->header("plugin_id");
         $params["organization_id"] = $request->header("organization_id");
         $query = [
@@ -112,9 +112,12 @@ class ExpenseController extends Controller
             "_id" =>$id
         ];
 
-        $expense = $this->model->find($params, $query);
-        return response()->json(['status' => 'expense retrieved successfully', 'data' => $expense], 200); 
-        
+            $expense = $this->model->find($params, $query);
+            return response()->json(['status' => 'expense retrieved successfully', 'data' => $expense], 200); 
+        }else{
+            $errors = $this->model->errors();
+            return response()->json(['status' => 'error', 'message' => $errors], 422); 
+       }
 
     }
 
