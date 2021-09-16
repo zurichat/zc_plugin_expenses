@@ -7,6 +7,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ListApi;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\RoomController;
+use App\Http\Controllers\PingController;
 
 
 /*
@@ -43,6 +44,11 @@ Route::prefix('v1')->group(function () {
     Route::resource("expenses", "ExpenseController");
 });
 
+//Ping endpoint
+Route::prefix('v1')->group(function () {
+	Route::get('/ping', [PingController::class, 'index'] );
+});
+
 // Rooms Endpoints WIP
 // Route::group(['middleware' => 'api', 'prefix' => 'v1'], function(){
 // 	Route::get("/rooms", [RoomController::class, 'index']);
@@ -52,9 +58,3 @@ Route::prefix('v1')->group(function () {
 
 
 // Organization Endpoints
-
-
-
-
-
-
