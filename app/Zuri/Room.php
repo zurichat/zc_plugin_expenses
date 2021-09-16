@@ -41,16 +41,17 @@ class Room
     }
 
 
-    // rewrite model saving to zuri api endpoint
-    public static function save ($id, $data){
-        return;
+    // rewrite model saving to zuri api read/write interface
+    public static function save ($data){
+        $data['collection_name'] = static::$collection_name;
+        $res = ZuriInterface::put($data);
+        return $res;
     }
 
-    // rewrite model find to zuri api endpoint
-    public static function find ($id){
-        $collection = static::$collection;
-        $object_id = $id;
-        $res = ZuriInterface::read($collection, null, $object_id);
+    // rewrite model find to zuri api read/write interface
+    public static function find ($params, $query){
+        $params['collection_name'] = static::$collection_name;
+        $res = ZuriInterface::get($params, $query);
         return $res;
     }
 
@@ -75,9 +76,11 @@ class Room
         return $res;
     }
 
-    // rewrite model _firstOrCreate to zuri api endpoint
-    public static function delete ($id){
-        return;
+    // rewrite model delete to zuri api read/write interface
+    public static function delete ($params){
+        $params['collection_name'] = static::$collection_name;
+        $res = ZuriInterface::delete($params);
+        return $res;
     }
 
 
@@ -107,6 +110,37 @@ class Room
         }
         return true;
     }
+
+     public function validateUpdate($data){
+        $v = Validator::make($data, [
+            "plugin_id" => "required",
+            "organization_id" => "required",
+        ]);
+
+        if ($v->fails())
+        {
+            $this->errors = $v->errors()->toArray();
+            return false;
+        }
+        return true;
+    }
+
+
+    public function validateDelete($data)
+    {
+        $v = Validator::make($data, [
+            "plugin_id" => "required",
+            "organization_id" => "required"
+        ]);
+
+        if ($v->fails())
+        {
+            $this->errors = $v->errors()->toArray();
+            return false;
+        }
+        return true;
+    }
+
 
     public function errors(){
         return $this->errors;

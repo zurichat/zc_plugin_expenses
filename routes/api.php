@@ -39,11 +39,9 @@ Route::prefix('v1')->group(function () {
 
 // Expense List Routes
 Route::group(['middleware' => 'api', 'prefix' => 'v1'], function(){
-	Route::get("/expenses", [ExpenseController::class, 'index']);
-	Route::get("/expenses/{id}", [ExpenseController::class, 'show']);
-	Route::post("/expenses", [ExpenseController::class, 'store']);
+	Route::get('/rooms/search', [ExpenseController::class, 'search'] );
+	Route::resource("expenses", "ExpenseController");
 });
-
 
 
 // Room  Endpoints
