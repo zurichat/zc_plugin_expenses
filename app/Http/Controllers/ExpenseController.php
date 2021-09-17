@@ -24,10 +24,10 @@ class ExpenseController extends Controller
     public function index(Request $request)
     {
         if( $this->model->validateShow($request->all() ) ) {
-            $params["plugin_id"] = $request->plugin_id;
-            $params["organization_id"] = $request->organization_id;
+            $params["plugin_id"] = $request->header("plugin_id");
+            $params["organization_id"] = $request->header("organization_id");
             $query = [
-                "room_id" => $request->room_id,
+                "room_id" => $request->header("room_id"),
             ];
 
             $expense =  $this->model->all($params, $query);
@@ -64,8 +64,8 @@ class ExpenseController extends Controller
                 }  
             }
             
-            $data["plugin_id"] = $request->plugin_id;
-            $data["organization_id"] = $request->organization_id;
+            $data["plugin_id"] = $request->header("plugin_id");
+            $data["organization_id"] = $request->header("organization_id");
             $data["collection_name"] = "expenses_list_collection";
             $data["bulk_write"]=false;
             $data["object_id"]="";
@@ -76,10 +76,12 @@ class ExpenseController extends Controller
                     "total" =>$total,
                     "items" => $request->items,
                     "status" => "pending",
-                    "room_id" => $request->room_id,
+                    "room_id" => $request->header("room_id"),
                     "author_id" => $request->author_id,
+                    "author_name" =>$request->author_name,
                     "admin_comment" =>"",
-                    "created_at" => time()
+                    "created_at" => time(),
+                    "updated_at" => time()
             ];
             try {
                 $expense = $this->model->create($data);
@@ -102,17 +104,20 @@ class ExpenseController extends Controller
      */
     public function show($id, Request $request)
     {
-       
-        $params["plugin_id"] = $request->plugin_id;
-        $params["organization_id"] = $request->organization_id;
+       if( $this->model->validateShow($request->all() ) ) {
+        $params["plugin_id"] = $request->header("plugin_id");
+        $params["organization_id"] = $request->header("organization_id");
         $query = [
-            "room_id" => $request->room_id,
+            "room_id" => $request->header("room_id"),
             "_id" =>$id
         ];
 
-        $expense = $this->model->find($params, $query);
-        return response()->json(['status' => 'expense retrieved successfully', 'data' => $expense], 200); 
-        
+            $expense = $this->model->find($params, $query);
+            return response()->json(['status' => 'expense retrieved successfully', 'data' => $expense], 200); 
+        }else{
+            $errors = $this->model->errors();
+            return response()->json(['status' => 'error', 'message' => $errors], 422); 
+       }
 
     }
 
@@ -126,12 +131,12 @@ class ExpenseController extends Controller
     {
        
         $query = [
-            "room_id" => $request->room_id,
+            "room_id" => $request->header("room_id"),
         ];
 
 
-        $params["plugin_id"] = $request->plugin_id;
-        $params["organization_id"] = $request->organization_id;
+        $params["plugin_id"] = $request->header("plugin_id");
+        $params["organization_id"] = $request->header("organization_id");
 
         if( array_key_exists('title', $request->filter) ){
             $query['title'] =   str_replace(' ', '%20', $request->filter['title']); 
@@ -182,20 +187,14 @@ class ExpenseController extends Controller
                 }  
             }
             
-            $data["plugin_id"] = $request->plugin_id;
-            $data["organization_id"] = $request->organization_id;
-            $data["bulk_write"]= $request->filter ? true  : false;
-            $data["object_id"]= $request->object_id ? $request->object_id  : "";
-            $data["filter"] = $request->filter ? $request->filter  : json_decode("{}");
-            $data["payload"] = [
-                    "title" => $request->title,
-                    "description" => $request->description,
-                    "total" =>$total,
-                    "items" => $request->items,
-                    "room_id" => $request->room_id,
-                    "author_id" => $request->author_id,
-                    "updated_at" => time(),
-            ];
+            $data["plugin_id"] = $request->header("plugin_id");
+            $data["organization_id"] = $request->header("organization_id");
+            $data["payload"]["status"] =$request->status;
+            $data["payload"]["admin_comment"]=$request->admin_comment??"";
+            $data["bulk_write"]=false;
+            $data["object_id"]=$id;
+            $data["filter"] =json_decode("{}");
+            $data["payload"]["updated_at"] = time();
             // return $data;
             try {
                 $expense = $this->model->save($data);
@@ -219,8 +218,8 @@ class ExpenseController extends Controller
     public function destroy($id, Request $request)
     {   
         if($this->model->validateDelete($request->all()) ){
-            $params["plugin_id"] = $request->plugin_id;
-            $params["organization_id"] = $request->organization_id;
+            $params["plugin_id"] = $request->header("plugin_id");
+            $params["organization_id"] = $request->header("organization_id");
             $params["bulk_delete"]= $request->filter ? true  : false;
             $params["object_id"]= $request->object_id ? $request->object_id  : "";
             $params["filter"] = $request->filter ? $request->filter  : json_decode("{}");
