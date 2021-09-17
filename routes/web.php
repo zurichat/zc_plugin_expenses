@@ -34,6 +34,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/centrifugo', function(){
+    return view("centrifugo");
+});
+
 
 //@kelanialiyu issue #200 start
 // Route::resource("list","ExpenseList");
