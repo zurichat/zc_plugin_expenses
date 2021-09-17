@@ -1,93 +1,132 @@
-import React from 'react';
-
 // @patutechz issue #51
-export default function Expenses(){
-    return(
-        <div>
-        <div className="container-fluid mb-3 bg-light ">
-                <div className="row">
-                    <div className="col-12 d-flex justify-content-between align-items-center pt-3 pb-1">
-                        <h4 className="text-uppercase">Expenses</h4>
-                        <a href="/list/create" className="text-primary">
-                        <i className="fas fa-plus"></i> <span className="ml-2">Add new list</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
+import React, {useState , useEffect} from 'react';
+import ReactDOM from 'react-dom';
+import Axios from 'axios';
+import Loader from './Loader';
+import ExpenseTable from './dashboard/ExpenseListTable';
 
-            <div className="container-fluid py-1 mb-3">
-                <div className="row">
-                    <div className="col-12 d-flex justify-content-between align-items-center text-secondary">
-                    <div>
-                        <span>View all</span><i className="fas fa-angle-down ml-2" ></i> 
-                    </div>
-                    <div>
-                        <i className="fas fa-sort-alpha-down"></i> <span className="ml-2">Sort by</span>
-                    </div>
-                    </div>
-                </div>
-            </div>
+function Expenses() {
+    const url = `api/v1/expenses`
+    const [expenses, setExpenses] = useState({
+        loading : false,
+        data : null,
+        error : false
+    });
 
-            <div className="container-fluid mb-3 bg-light">
-                <div className="row text-center">
-                    <table className="table">
-                        <tbody className="table-head">
-                            <tr>
-                            <td >DATE</td>
-                            <td>AUTHOR</td>
-                            <td>TITLE</td>
-                            <td>PRICE</td>
-                            <td>STATUS</td>
-                            <td>DETAILS</td>
-                            </tr>
-                        </tbody>
-                        <tbody className="bg-light">
-                            <tr>
-                            <td>02/09/21</td>
-                            <td>Jerry Mbam</td>
-                            <td>Travel</td>
-                            <td>N3,000</td>
-                            <td>Approved</td>
-                            <td ><a href="list/1" className="btn-link">View Details</a></td>
-                            </tr>
-                            <tr>
-                                <td>02/09/21</td>
-                                <td>Jerry Mbam</td>
-                                <td>Travel</td>
-                                <td>N3,000</td>
-                                <td>Approved</td>
-                                <td ><a href="list/1" className="btn-link">View Details</a></td>
-                            </tr>
-                            <tr>
-                                <td>02/09/21</td>
-                                <td>Jerry Mbam</td>
-                                <td>Travel</td>
-                                <td>N3,000</td>
-                                <td>Approved</td>
-                                <td ><a href="list/1" className="btn-link">View Details</a></td>
-                            </tr>
-                            <tr>
-                                <td>02/09/21</td>
-                                <td>Jerry Mbam</td>
-                                <td>Travel</td>
-                                <td>N3,000</td>
-                                <td>Approved</td>
-                                <td ><a href="list/1" className="btn-link">View Details</a></td>
-                            </tr>
-                            <tr>
-                                <td>02/09/21</td>
-                                <td>Jerry Mbam</td>
-                                <td>Travel</td>
-                                <td>N3,000</td>
-                                <td>Approved</td>
-                                <td ><a href="list/1" className="btn-link">View Details</a></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+    let content = null;
+
+    useEffect(() => {
+        setExpenses({
+            loading : true,
+            data : null,
+            error : false
+        })
+
+        Axios.get(url)
+            .then(response => {
+                setExpenses({
+                    loading : false,
+                    data : response.data.expenses.data,
+                    error : false
+                })
+            })
+            .catch(() => {
+                setExpenses({
+                    loading : false,
+                    data : null,
+                    error : true
+                })
+            })
+    }, [url])
+
+
+    if(expenses.error){
+        content = 
+        <>
+        <div className="table-responsive text-left text-md-center bg-light">
+            <table className="table table-hover table-sm">
+              <thead className="bg-success text-white">
+                <tr>
+                  <th>DATE</th>
+                  <th>NAME</th>
+                  <th>TITLE</th>
+                  <th>PRICE</th>
+                  <th>STATUS</th>
+                  <th>DETAILS</th>
+                </tr>
+              </thead>
+              <tbody>
+
+        </tbody>
+            </table>
+          </div>
+        <div className="d-flex justify-content-center align-items-center alert alert-danger w-full pt-2">
+            <p className="">
+                an error occured try again later
+            </p>
+        </div>
+        </>
+    }
+
+    if(expenses.loading){
+        content = <Loader />
+    }
+
+    if(expenses.data){
+        content = 
+        <div className="table-responsive text-left text-md-center bg-light">
+            <table className="table table-hover table-sm">
+              <thead className="bg-success text-white">
+                <tr>
+                  <th>DATE</th>
+                  <th>NAME</th>
+                  <th>TITLE</th>
+                  <th>PRICE</th>
+                  <th>STATUS</th>
+                  <th>DETAILS</th>
+                </tr>
+              </thead>
+              <tbody>
+             { expenses.data.map((expense, key) => 
+            
+                <ExpenseTable key={key} 
+                    expense={expense}
+                /> 
+        )}
+        </tbody>
+            </table>
+          </div>
+    }    
+
+    return (
+        <div className="container-fluid">
+            <nav className="navbar">
+                <a className="navbar-brand text-white" href="#">Expenses</a>
+            </nav>
+            
+            <div className="container-fluid ">
+              <div className="row">
+                  <main role="main" className="col-12 col-md-12  col-lg-12 pt-3">
+                    <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-1">
+                        <button className="btn btn-sm btn-outline-primary">
+                          <i className="fas fa-plus"></i>
+                          Add New List
+                        </button>
+                        <div className="btn-toolbar mb-2 mb-md-0">
+                          <button className="btn btn-sm btn-link text-primary">
+                            <i className="fas fa-sort-alpha-down"></i>
+                            Sort by
+                          </button>
+                        </div>
+                    </div>
+                    {content}
+                  </main>
+              </div>
             </div>
-    </div>
-    )
-    
+        </div>
+    );
 }
+
+export default Expenses;
+
 // @patutechz issue #51

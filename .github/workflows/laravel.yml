@@ -1,39 +1,60 @@
-name: Expenses Plugin Deployment
+name: Laravel
 
 on:
   push:
-    branches: [dev]
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+    branches: [ main, dev ]
+  pull_request:
+    branches: [ main, dev ]
 
 jobs:
-  
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      
-      - uses: actions/checkout@v2   
+  laravel-tests:
 
-      - name: Git Pull on Server
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.ZURI_HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          
-          script: |
-            cd /var/www/expenses.zuri.chat
-            sudo rm composer.lock
-            sudo rm package-lock.json
-<<<<<<< HEAD
-            git stash
-            git pull origin dev
-=======
-            git pull origin dev
-            git branch -r
-            git stash
->>>>>>> 015756077101cd230a631f77e02612d53a9e21aa
-            composer install
-            sudo systemctl restart nginx
-            
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
+      with:
+        php-version: '8.0'
+    - uses: actions/checkout@v2
+    
+    - name: Git Pull on Server
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.ZURI_HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+       # key: ${{ secrets.SSHKEY }}
+        script: |
+          cd /var/www/expenses.zuri.chat
+          sudo rm composer.lock
+          sudo rm package-lock.json
+          git pull origin dev
+          git branch -r
+          git stash
+          composer install
+          npm run production
+    
+    - name: Copy .env
+      run: php -r "file_exists('.env') || copy('.env.test', '.env');"
+    - name: Cache Composer dependencies
+      uses: actions/cache@v2
+      with:
+        path: /tmp/composer-cache
+        key: ${{ runner.os }}-${{ hashFiles('**/composer.lock') }}
+        restore-keys: ${{ runner.os }}-composer-
+    - name: Install Dependencies
+      run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+    - name: Generate key
+      run: php artisan key:generate
+    - name: Directory Permissions
+      run: chmod -R 777 storage bootstrap/cache
+    - name: Create Database
+      run: |        
+        mkdir -p database
+        touch database/database.sqlite
+    - name: Execute tests (Unit and Feature tests) via PHPUnit
+      env:
+        DB_CONNECTION: sqlite
+        DB_DATABASE: database/database.sqlite
+      run: vendor/bin/phpunit
+    
