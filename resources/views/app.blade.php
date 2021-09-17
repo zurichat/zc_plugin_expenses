@@ -21,13 +21,36 @@
                 background-color:#00B87C;
                 color:white;
             }
+            .loader {
+                border: 5px solid #f3f3f3;
+                border-radius: 50%;
+                border-top: 5px solid #00B87C;
+                width: 50px;
+                height: 50px;
+                -webkit-animation: spin 2s linear infinite; /* Safari */
+                animation: spin 2s linear infinite;
+            }
+
+            /* Safari */
+            @-webkit-keyframes spin {
+                0% { -webkit-transform: rotate(0deg); }
+                100% { -webkit-transform: rotate(360deg); }
+            }
+
+            @keyframes spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+            }
+
+            .navbar{
+                background-color:#00B87C; 
+                color:white;
+            }
         </style>
     </head>
-    <body class="alert-secondary py-2">
-        <div class="container-fluid">
-            <div id="root">
-                
-            </div>
+    <body>
+        <div id="root">
+            
         </div>
     </body>
     
