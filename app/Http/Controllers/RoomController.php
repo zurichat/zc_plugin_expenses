@@ -18,7 +18,6 @@ class RoomController extends Controller
     private $request;
     private $plugin_id;
     private $organization_id;
-    private $room_id;
 
     public function __construct(Room $model, Request $request)
     {
@@ -26,7 +25,6 @@ class RoomController extends Controller
         $this->request = $request;
         $this->plugin_id = $request->header('plugin-id');
         $this->organization_id = $request->header('organization-id');
-        $this->room_id = $request->header('room-id');
     }
 
 
