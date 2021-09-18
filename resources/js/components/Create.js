@@ -1,19 +1,19 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import Breadcrumb from "./create/Breadcrumb";
-import FormContainer from "./create/FormContainer";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Breadcrumb from './create/Breadcrumb';
+import FormContainer from './create/FormContainer';
 
 function Index() {
     return (
         <>
-            <Breadcrumb />
-            <FormContainer />
+        <Breadcrumb/>
+        <FormContainer/>
         </>
     );
 }
 
 export default Index;
 
-if (document.getElementById("create")) {
-    ReactDOM.render(<Index />, document.getElementById("create"));
+if (document.getElementById('create')) {
+    ReactDOM.render(<Index/>, document.getElementById('create'));
 }
