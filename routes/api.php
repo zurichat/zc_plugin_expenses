@@ -56,7 +56,7 @@ Route::group(['prefix' => 'v1'], function(){
 });
 
 // Room  Endpoints
-Route::group(['prefix' => 'v1'], function(){
+Route::group(['prefix' => 'v1', 'middleware' => ['plugin_id', 'organization_id']], function(){
     Route::resource("rooms", "RoomController");
 });
 
