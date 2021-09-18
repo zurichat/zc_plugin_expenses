@@ -4989,7 +4989,10 @@
         },
         {
             "name": "facade/ignition",
+<<<<<<< HEAD
+=======
 
+>>>>>>> 1c84884790c065e53799abac7c55dfdef69e5242
             "version": "2.13.1",
             "source": {
                 "type": "git",
@@ -5000,15 +5003,22 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/facade/ignition/zipball/e3f49bef7b4165fa4b8a9dc579e7b63fa06aef78",
                 "reference": "e3f49bef7b4165fa4b8a9dc579e7b63fa06aef78",
+<<<<<<< HEAD
+=======
 
+>>>>>>> 1c84884790c065e53799abac7c55dfdef69e5242
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "ext-mbstring": "*",
+<<<<<<< HEAD
+                "facade/flare-client-php": "^1.9.1",
+=======
 
                 "facade/flare-client-php": "^1.9.1",
 
+>>>>>>> 1c84884790c065e53799abac7c55dfdef69e5242
                 "facade/ignition-contracts": "^1.0.2",
                 "illuminate/support": "^7.0|^8.0",
                 "monolog/monolog": "^2.0",
@@ -5065,9 +5075,13 @@
                 "issues": "https://github.com/facade/ignition/issues",
                 "source": "https://github.com/facade/ignition"
             },
+<<<<<<< HEAD
+            "time": "2021-09-13T13:01:30+00:00"
+=======
 
             "time": "2021-08-24T09:53:54+00:00"
 
+>>>>>>> 1c84884790c065e53799abac7c55dfdef69e5242
         },
         {
             "name": "facade/ignition-contracts",
@@ -5302,7 +5316,10 @@
         },
         {
             "name": "mockery/mockery",
+<<<<<<< HEAD
+=======
 
+>>>>>>> 1c84884790c065e53799abac7c55dfdef69e5242
             "version": "1.4.4",
             "source": {
                 "type": "git",
@@ -5313,7 +5330,10 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/mockery/mockery/zipball/e01123a0e847d52d186c5eb4b9bf58b0c6d00346",
                 "reference": "e01123a0e847d52d186c5eb4b9bf58b0c6d00346",
+<<<<<<< HEAD
+=======
 
+>>>>>>> 1c84884790c065e53799abac7c55dfdef69e5242
                 "shasum": ""
             },
             "require": {
@@ -5370,11 +5390,17 @@
             ],
             "support": {
                 "issues": "https://github.com/mockery/mockery/issues",
+<<<<<<< HEAD
+                "source": "https://github.com/mockery/mockery/tree/1.4.4"
+            },
+            "time": "2021-09-13T15:28:59+00:00"
+=======
 
                 "source": "https://github.com/mockery/mockery/tree/1.4.4"
             },
             "time": "2021-09-13T15:28:59+00:00"
 
+>>>>>>> 1c84884790c065e53799abac7c55dfdef69e5242
         },
         {
             "name": "myclabs/deep-copy",
