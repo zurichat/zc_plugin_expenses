@@ -23,14 +23,15 @@ class ExpenseListAuth
 
     public function handle($request, Closure $next)
     {
-        $data["organization_id"] = $request->header("organization_id");
-        $data["plugin_id"] = $request->header("plugin_id");
-        $data["room_id"] = $request->header("room_id");
+        // $data["organization_id"] = $request->header("organization_id");
+        // $data["plugin_id"] = $request->header("plugin_id");
+        // $data["room_id"] = $request->header("room_id");
         
-        if($this->model->validate_all($data)){
-            return $next($request);
-        }
-        else return response($this->model->errors(), 422)
-                  ->header('Content-Type', 'application/json');
+        // if($this->model->validate_all($data)){
+        //     return $next($request);
+        // }
+        return $request->header("organization_id");
+        // else return response($this->model->errors(), 422)
+        //           ->header('Content-Type', 'application/json');
     }
 }

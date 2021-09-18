@@ -15,7 +15,9 @@ class Expense
     private $rules = [
         "plugin_id" => "required",
         "organization_id" => "required",
-        "room_id" => "required"
+        "room_id" => "required",
+        "author_id"=>"required",
+        "author_name" =>"required",
         // .. more rules here ..
     ];
 
@@ -72,26 +74,10 @@ class Expense
 		return $res;
 	}
 
-    public function validate_all($data)
-    {
-        $v = Validator::make($data, $this->rules);
-        if ($v->fails())
-        {
-            $this->errors = $v->errors()->toArray();
-            return false;
-        }
-        return true;
-    }
-
 	public function validate($data)
     {
-        $v = Validator::make($data, [
-            "author_id"=>"required",
-            "author_name" =>"required",
-            "title" =>"required"
-        ]);
+        $v = Validator::make($data, $this->rules);
         
-        // Specific validation
         if ($v->fails())
         {
             $this->errors = $v->errors()->toArray();
@@ -101,54 +87,6 @@ class Expense
         return true;
     }
 
-    public function validateShow($data)
-    {
-        $v = Validator::make($data, [
-            // show specific rules
-        ]);
-
-        // Specific validation
-        if ($v->fails())
-        {
-            $this->errors = $v->errors()->toArray();
-            return false;
-        }
-
-        return true;
-    }
-
-
-    public function validateUpdate($data)
-    {
-        $v = Validator::make($data, [
-            "status" =>"required"
-        ]);
-
-        // Specific validation
-        if ($v->fails())
-        {
-            $this->errors = $v->errors()->toArray();
-            return false;
-        }
-
-        return true;
-    }
-
-    public function validateDelete($data)
-    {
-        $v = Validator::make($data, [
-        	//delete specific rules
-        ]);
-
-        // Specific validation
-        if ($v->fails())
-        {
-            $this->errors = $v->errors()->toArray();
-            return false;
-        }
-
-        return true;
-    }
 
     public function errors()
     {
