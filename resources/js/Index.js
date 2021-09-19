@@ -5,7 +5,9 @@ import Dashboard from "./pages/Dashboard";
 import Create from "./pages/Create";
 import View from "./pages/View";
 import {useState , useEffect} from 'react';
+import { registerApplication, start } from 'single-spa';
 
+registerServiceWorker();
 function Index() {
     const url = `${window.location.origin}/api/v1/expenses`
     const [expenses, setExpenses] = useState({
@@ -13,7 +15,15 @@ function Index() {
         data : null,
         error : false
     });
-
+    const userdata={
+        id:"613d3e65e4010959c8dc0c11",
+        name:"Sally Jane",
+        room_id: "6133c5a68006324323416896",
+        plugin_id:"613ba9de41f5856617552f51",
+        organization_id:"6133c5a68006324323416896",
+        isadmin:false
+    }
+    
 
     useEffect(() => {
         setExpenses({
@@ -24,9 +34,9 @@ function Index() {
 
         axios.get(url,{
             headers: {
-              "Plugin-id" :"613ba9de41f5856617552f51",
-              "Organization-id" :"6133c5a68006324323416896",
-              "room-id" : "6133c5a68006324323416896"
+              "Plugin-id" :userdata.plugin_id,
+              "Organization-id" :userdata.organization_id,
+              "room-id" : userdata.room_id
             }
             })
             .then(response => {
@@ -50,13 +60,13 @@ function Index() {
         <Router basename="/expenses">
             <Switch>
                 <Route path="/create">
-                    <Create />
+                    <Create userdata={userdata} />
                 </Route>
                 <Route path="/view">
-                    <View />
+                    <View userdata={userdata}/>
                 </Route>
                 <Route path="/">
-                    <Dashboard expenses={expenses} setExpenses={setExpenses}/>
+                    <Dashboard expenses={expenses} setExpenses={setExpenses} userdata={userdata}/>
                 </Route>
             </Switch>
         </Router>

@@ -4,7 +4,7 @@ import Delete from './components/create/Delete';
 import { Link } from 'react-router-dom';
 import {Redirect} from "react-router-dom";
 
-const Create =({author_id,author_name}) => {
+const Create =({userdata}) => {
     var showError=false;
     const[title,setTitle] =useState("")
     const[description,setDescription] = useState("")
@@ -79,15 +79,15 @@ const Create =({author_id,author_name}) => {
     const createlist =()=>{
         axios.post(url,{
             "title" : title,
-            "author_id" : author_id,//"613d3e65e4010959c8dc0c11",
-            "author_name" :author_name, //"Mary Mark",
+            "author_id" : userdata.id,
+            "author_name" :userdata.name,
             "description" :description,
             "items":items
         },{
         headers: {
-            "Plugin-id" :"613ba9de41f5856617552f51",
-            "Organization-id" :"6133c5a68006324323416896",
-            "room-id" : "6133c5a68006324323416896"
+            "Plugin-id": userdata.plugin_id,
+            "Organization-id": userdata.organization_id,
+            "room-id": userdata.room_id
         }
         })
         .then(response => {

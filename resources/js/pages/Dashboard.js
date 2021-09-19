@@ -1,4 +1,4 @@
-// @patutechz issue #51
+
 import React, {useState , useEffect} from 'react';
 import axios from 'axios';
 import Loader from './components/dashboard/Loader';
@@ -6,7 +6,7 @@ import ExpenseListTable from './components/dashboard/ExpenseListTable';
 import { Link } from 'react-router-dom';
 
 
-function Dashboard({expenses,setExpenses}) {
+function Dashboard({expenses,userdata}) {
     
     return (
           <div className="container-fluid">
@@ -32,7 +32,7 @@ function Dashboard({expenses,setExpenses}) {
                             </button>
                           </div>
                       </div>
-                      {expenses.loading?<Loader />:<ExpenseListTable error={expenses.error} expenseLists={expenses.data} />}
+                      {expenses.loading?<Loader />:<ExpenseListTable error={expenses.error} expenseLists={expenses.data} userdata={userdata} />}
                     </main>
                 </div>
               </div>
