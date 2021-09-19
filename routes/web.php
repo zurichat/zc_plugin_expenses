@@ -21,7 +21,7 @@ use App\Http\Controllers\AboutController;
 //     return view('welcome');
 // });
 
- Route::view('/{path?}', 'app');
+ Route::view('/', 'app');
 
 // Route::get('/dbtable', function () {
 //     return view('table');

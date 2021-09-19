@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import Modal from 'react-modal';
-import '../Create_expense/Expense.css'
+import './Expense.css'
 import 'font-awesome/css/font-awesome.min.css';
-import AddItem from '../AddItem';
+import AddItem from './Add';
 import EditItem from '../EditItem';
 function Initial (){
 

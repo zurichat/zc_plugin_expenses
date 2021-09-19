@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap");
 
-* {
+.create {
     font-family: "lato";
     box-sizing: border-box;
     margin: 0;
@@ -17,16 +17,14 @@
   border-radius: 8px;
   color: #1d1c1d;
 }*/
-.wrapper {
-    position: absolute;
-    width: 1118px;
-    height: 776px;
-    left: 271px;
-    top: 113px;
+.create .wrapper {
+    width: 60wv;
+    /* height: 776px;  */
+    margin:auto;
     background: #ffffff;
     border-radius: 8px;
 }
-.label1 {
+.create .label1 {
     position: absolute;
     width: 41px;
     height: 28px;
@@ -41,7 +39,7 @@
     padding-left: 30px;
     padding-top: 50px;
 }
-.input1 {
+.create .input1 {
     position: absolute;
     width: 950px;
     height: 52px;
@@ -51,7 +49,7 @@
     box-sizing: border-box;
     border-radius: 3px;
 }
-.input1::placeholder {
+.create .input1::placeholder {
     position: absolute;
     font-family: Lato;
     font-style: normal;
@@ -62,7 +60,7 @@
     padding-left: 20px;
     padding-top: 15px;
 }
-.label2 {
+.create .label2 {
     position: absolute;
     width: 107px;
     height: 28px;
@@ -78,7 +76,7 @@
     padding-top: 50px;
 }
 
-.input2 {
+.create .input2 {
     position: absolute;
     width: 950px;
     height: 104px;
@@ -88,7 +86,7 @@
     box-sizing: border-box;
     border-radius: 3px;
 }
-.input2::placeholder {
+.create .input2::placeholder {
     position: absolute;
     font-family: Lato;
     font-style: normal;
@@ -99,7 +97,7 @@
     padding-left: 20px;
     padding-top: 15px;
 }
-h3 {
+.create h3 {
     position: absolute;
     width: 51px;
     height: 28px;
@@ -113,7 +111,7 @@ h3 {
     color: #1d1c1d;
     padding-left: 30px;
 }
-thead {
+.create thead {
     font-family: Lato;
     font-style: normal;
     font-weight: bold;
@@ -122,7 +120,7 @@ thead {
     padding-left: 30px;
     color: #1d1c1d;
 }
-th:nth-child(1) {
+.create th:nth-child(1) {
     position: absolute;
     width: 40px;
     height: 28px;
@@ -130,21 +128,21 @@ th:nth-child(1) {
     top: 454px;
     padding-left: 30px;
 }
-th:nth-child(2) {
+.create th:nth-child(2) {
     position: absolute;
     width: 34px;
     height: 28px;
     left: 198px;
     top: 454px;
 }
-th:nth-child(3) {
+.create th:nth-child(3) {
     position: absolute;
     width: 60px;
     height: 28px;
     left: 367px;
     top: 454px;
 }
-tbody {
+.create tbody {
     font-family: "Lato";
     font-style: normal;
     font-weight: normal;
@@ -153,7 +151,7 @@ tbody {
     padding-left: 30px;
     color: #1d1c1d;
 }
-td:nth-child(1) {
+.create td:nth-child(1) {
     position: absolute;
     width: 44px;
     height: 28px;
@@ -161,21 +159,21 @@ td:nth-child(1) {
     top: 490px;
     padding-left: 30px;
 }
-td:nth-child(2) {
+.create td:nth-child(2) {
     position: absolute;
     width: 64px;
     height: 28px;
     left: 192px;
     top: 490px;
 }
-td:nth-child(3) {
+.create td:nth-child(3) {
     position: absolute;
     width: 46px;
     height: 28px;
     left: 375px;
     top: 490px;
 }
-.font1 {
+.create .font1 {
     position: absolute;
     right: 31.5%;
     display: inline;
@@ -186,10 +184,10 @@ td:nth-child(3) {
     font-size: 25px;
     cursor: pointer;
 }
-.font1:hover {
+.create .font1:hover {
     color: #00b87c;
 }
-.font2 {
+.create .font2 {
     color: #999999;
     margin-left: 55px;
     display: inline;
@@ -202,10 +200,10 @@ td:nth-child(3) {
     font-size: 25px;
     cursor: pointer;
 }
-.font2:hover {
+.create .font2:hover {
     color: #00b87c;
 }
-.font3 {
+.create .font3 {
     display: flex;
     height: 65px;
     align-items: center;
@@ -216,7 +214,7 @@ td:nth-child(3) {
     font-size: 24px;
     cursor: pointer;
 }
-.font5 {
+.create .font5 {
     display: flex;
     height: 65px;
     align-items: center;
@@ -227,7 +225,7 @@ td:nth-child(3) {
     font-size: 24px;
     cursor: pointer;
 }
-.font4 {
+.create .font4 {
     position: absolute;
     bottom: -10.33%;
     padding-left: 250px;
@@ -238,7 +236,7 @@ td:nth-child(3) {
     align-items: center;
     cursor: pointer;
 }
-.info {
+.create .info {
     display: flex;
     height: 65px;
     align-items: center;
@@ -253,7 +251,7 @@ td:nth-child(3) {
     font-size: 15px;
     cursor: pointer;
 }
-button {
+.create button {
     display: flex;
     flex-direction: row;
     justify-content: center;
