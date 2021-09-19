@@ -16,3 +16,4 @@ require("./components/Index");
 require("./components/Create");
 require("./components/View");
 require("./components/External");
+require("./components/Modal");

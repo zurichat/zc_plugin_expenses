@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+
 function DashboardTable() {
     //@GoldenDev #177
     return (
@@ -24,7 +25,7 @@ function DashboardTable() {
                             <td>Notebooks</td>
                             <td>N5000</td>
                             <td>
-                                <a href="#" className="btn-link">
+                                <a href="#" className="btn-link" onclick="togglepopup()">
                                     View Details
                                 </a>
                             </td>
@@ -36,7 +37,7 @@ function DashboardTable() {
                             <td>Notebooks</td>
                             <td>N5000</td>
                             <td>
-                                <a href="#" className="btn-link">
+                                <a href="#" className="btn-link" onclick="togglepopup()">
                                     View Details
                                 </a>
                             </td>
@@ -48,7 +49,7 @@ function DashboardTable() {
                             <td>Notebooks</td>
                             <td>N5000</td>
                             <td>
-                                <a href="#" className="btn-link">
+                                <a href="#" className="btn-link" onclick="togglepopup()">
                                     View Details
                                 </a>
                             </td>
@@ -60,7 +61,7 @@ function DashboardTable() {
                             <td>Notebooks</td>
                             <td>N5000</td>
                             <td>
-                                <a href="#" className="btn-link">
+                                <a href="#" className="btn-link" onclick="togglepopup()">
                                     View Details
                                 </a>
                             </td>
@@ -72,7 +73,7 @@ function DashboardTable() {
                             <td>Notebooks</td>
                             <td>N5000</td>
                             <td>
-                                <a href="#" className="btn-link">
+                                <a href="#" className="btn-link" onclick="togglepopup()">
                                     View Details
                                 </a>
                             </td>
@@ -84,7 +85,7 @@ function DashboardTable() {
                             <td>Notebooks</td>
                             <td>N5000</td>
                             <td>
-                                <a href="#" className="btn-link">
+                                <a href="#" className="btn-link" onclick="togglepopup()">
                                     View Details
                                 </a>
                             </td>
@@ -100,4 +101,7 @@ export default DashboardTable;
 
 if (document.getElementById("dbtable")) {
     ReactDOM.render(<DashboardTable />, document.getElementById("dbtable"));
+}
+function togglepopup(){
+    document.getElementById("popup-1").classList.toggle("active");
 }
