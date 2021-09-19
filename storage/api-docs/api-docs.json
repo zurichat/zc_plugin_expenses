@@ -1,0 +1,175 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Zuri Expense Plugin Documentation",
+        "description": "Documentation for expenses plugin developed for Zuri Chat",
+        "contact": {
+            "email": "admin@zuri.chat"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://expenses.zuri.chat/api/v1",
+            "description": "Demo API Server"
+        }
+    ],
+    "paths": {
+        "/expenses": {
+            "get": {
+                "tags": [
+                    "Expenses"
+                ],
+                "summary": "Get list of all expenses for an organization",
+                "description": "Returns list of expenses",
+                "operationId": "index",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "example": "success"
+                                        },
+                                        "message": {
+                                            "example": "expenses retrieved successfully"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/Expense"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Expense": {
+                "description": "Expense model",
+                "properties": {
+                    "_id": {
+                        "title": "_ID",
+                        "description": "ID of the expense",
+                        "type": "string",
+                        "example": "61434b7dd0284bc6a92233f6"
+                    },
+                    "author_id": {
+                        "title": "Author ID",
+                        "description": "ID of Expense List Author",
+                        "type": "string",
+                        "example": "613d3e65e4010959c8dc0c11"
+                    },
+                    "author_name": {
+                        "title": "Author Name",
+                        "description": "Name of Expense List Author",
+                        "type": "string",
+                        "example": "Airon Dev"
+                    },
+                    "title": {
+                        "title": "Title",
+                        "description": "List title",
+                        "type": "string",
+                        "example": "Travel Expense"
+                    },
+                    "description": {
+                        "title": "Description",
+                        "description": "List Description",
+                        "type": "string",
+                        "example": "Breakdown of travel estimate for company delegates to Abuja"
+                    },
+                    "items": {
+                        "title": "List Items",
+                        "description": "List Items",
+                        "properties": {
+                            "name": {
+                                "description": "name of item",
+                                "type": "string",
+                                "example": "Fuel"
+                            },
+                            "quantity": {
+                                "description": "quantity of item",
+                                "type": "string",
+                                "example": "14 Litres"
+                            },
+                            "unit_price": {
+                                "description": "price of item",
+                                "type": "integer",
+                                "example": "190"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "admin_comment": {
+                        "title": "Admin Comment",
+                        "description": "Admin Comment on list",
+                        "type": "string",
+                        "example": "Sorry we cannot approve this expense budget at this time"
+                    },
+                    "total": {
+                        "title": "Total",
+                        "description": "",
+                        "type": "string",
+                        "example": "N44,000"
+                    },
+                    "status": {
+                        "title": "Status",
+                        "description": "",
+                        "type": "string",
+                        "example": "Declined"
+                    },
+                    "created_at": {
+                        "title": "Created at",
+                        "description": "Created at",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "1631800187"
+                    },
+                    "updated_at": {
+                        "title": "Updated at",
+                        "description": "Updated at",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "1631800187"
+                    },
+                    "deleted_at": {
+                        "title": "Deleted at",
+                        "description": "Deleted at",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "1631800187"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "ZURI CHAT",
+            "description": "API Endpoints of Zuri Chat Expense Plugin"
+        }
+    ],
+    "security": [
+        []
+    ]
+}
