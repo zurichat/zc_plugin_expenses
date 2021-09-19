@@ -6,48 +6,8 @@ import ExpenseListTable from './components/dashboard/ExpenseListTable';
 import { Link } from 'react-router-dom';
 
 
-function Dashboard() {
-    const url = `${window.location.origin}/api/v1/expenses`
-    console.log(url);
-    const [expenses, setExpenses] = useState({
-        loading : false,
-        data : null,
-        error : false
-    });
-
-
-    useEffect(() => {
-        setExpenses({
-            loading : true,
-            data : null,
-            error : false
-        })
-
-        axios.get(url,{
-            headers: {
-              "plugin_id" :"613ba9de41f5856617552f51",
-              "organization_id" :"6133c5a68006324323416896",
-              "room_id" : "6133c5a68006324323416896"
-            }
-            })
-            .then(response => {
-              console.log(response.data.data.data)
-                setExpenses({
-                    loading : false,
-                    data : response.data.data.data,
-                    error : false
-                })
-            })
-            .catch(error => {
-                 console.log(error);
-                setExpenses({
-                    loading : false,
-                    data : null,
-                    error : true
-                })
-            })
-    }, [url])
-
+function Dashboard({expenses,setExpenses}) {
+    
     return (
           <div className="container-fluid">
               <nav className="navbar">

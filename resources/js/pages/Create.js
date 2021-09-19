@@ -2,8 +2,12 @@ import React, { useState } from 'react';
 import Add from './components/create/Add'
 import Delete from './components/create/Delete';
 import { Link } from 'react-router-dom';
+import {Redirect} from "react-router-dom";
 
-const Create =() => {
+const Create =({author_id,author_name}) => {
+    var showError=false;
+    const[title,setTitle] =useState("")
+    const[description,setDescription] = useState("")
     const [items, setItems] = useState([]);
     const [modalData, setModalData] = useState({
         id: -1,
@@ -36,7 +40,7 @@ const Create =() => {
     }
 
     const showDeleteModal = (id) => {
-        setModalDeleteData(-1)
+        setModalDeleteData(id)
         $("#deleteModal").modal("show");
     }
 
@@ -52,7 +56,6 @@ const Create =() => {
             price: price,
             quantity: qty
         }]
-        console.log(newitems)
         setItems(newitems)
         
     }
@@ -73,12 +76,39 @@ const Create =() => {
         closeModal()
     }
 
+    const createlist =()=>{
+        axios.post(url,{
+            "title" : title,
+            "author_id" : author_id,//"613d3e65e4010959c8dc0c11",
+            "author_name" :author_name, //"Mary Mark",
+            "description" :description,
+            "items":items
+        },{
+        headers: {
+            "Plugin-id" :"613ba9de41f5856617552f51",
+            "Organization-id" :"6133c5a68006324323416896",
+            "room-id" : "6133c5a68006324323416896"
+        }
+        })
+        .then(response => {
+            showError=false;
+            <Redirect to="/" />
+            
+        })
+        .catch(error => {
+            showError=true;
+        })  
+    }
     return (
         <div>
             <nav className="navbar" style={{backgroundColor:"#00B87C", color:"white"}}>
                 <Link to="/expenses" className="navbar-brand text-white">Expenses</Link>
             </nav>
-
+            {showError?
+                <div className="alert alert-danger" role="alert">
+                    Opps An error occured while submitting!
+                </div>:null
+            }
             <div className="container-fluid">
                 <div className="row">
                     <main role="main" className="col-12 col-md-12  col-lg-12 px-5 pt-5">
@@ -87,20 +117,20 @@ const Create =() => {
                                 <div className="col-xs-12 col-sm-12 col-md-12">
                                     <div className="form-group">
                                         <label><strong>Title</strong></label>
-                                        <input type="text" name="name" className="form-control" placeholder="Enter Expenses Title" />
+                                        <input type="text" name="name" className="form-control" placeholder="Enter Expenses Title" value={title} onChange={e=>setTitle(e.target.value)} />
                                     </div>
                                 </div>
 
                                 <div className="col-xs-12 col-sm-12 col-md-12">
                                     <div className="form-group">
                                         <label><strong>Description</strong></label>
-                                        <textarea placeholder="Enter Info Here" className="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+                                        <textarea placeholder="Enter Info Here" className="form-control" id="exampleFormControlTextarea1" rows="5" value={description} onChange={e=>setDescription(e.target.value)}></textarea>
                                     </div>
                                 </div>
                                 <div className="col-xs-12 col-sm-12 col-md-12">
                                     <label><p>Items</p></label>
                                     <div className="table-responsive text-left">
-                                        <table className="table table-sm">
+                                        <table className="table table-md">
                                             <thead>
                                                 <tr>
                                                     <th>NAME</th>
@@ -113,13 +143,13 @@ const Create =() => {
                                             <tbody>
                                                 {   
                                                     items.map((item) => (
-                                                        <tr>
+                                                        <tr key={item.id}>
                                                             <td style={{ textTransform: "capitalize" }}>{item.name}</td>
                                                             <td>{`₦${item.price}`}</td>
                                                             <td>{item.quantity}</td>
-                                                            <td key={item.id}>
-                                                                <a href="#" className="text-secondary" onClick={() => {showModal(item.id, item.name, item.price, item.quantity); }} ><i className="far fa-edit"></i></a>
-                                                                <a href="#" className="text-secondary" onClick={() => showDeleteModal(item.id)}><i className="far fa-trash-alt"></i></a>
+                                                            <td>
+                                                                <button type="button" className="btn btn-link text-primary mx-1" onClick={() => {showModal(item.id, item.name, item.price, item.quantity); }} ><i className="far fa-edit"></i></button>
+                                                                <button type="button" className="btn btn-link text-danger mx-1" onClick={() => showDeleteModal(item.id)}><i className="far fa-trash-alt"></i></button>
                                                             </td>
                                                         </tr>
                                                     ))
@@ -128,12 +158,12 @@ const Create =() => {
 
                                             </tbody>
                                         </table>
-                                        <a href="#" className="text-primary" onClick={() => showModal()}><i className="far fa-plus-square mr-2"></i>Add items</a>
+                                        <button type="button" className="btn btn-link text-primary" onClick={() => showModal()}><i className="far fa-plus-square mr-2"></i>Add items</button>
                                     </div>
                                 </div>
                                 <div className="col-xs-12 col-sm-12 col-md-12 d-flex justify-content-end">
                                     <div className="form-group">
-                                        <button type="submit" className="btn btn-success">Submit Request</button>
+                                        <button type="button" className="btn btn-success" onChange={()=>{createlist()}}>Submit Request</button>
                                     </div>
                                 </div>
                             </div>
