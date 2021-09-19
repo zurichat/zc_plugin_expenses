@@ -1,0 +1,57 @@
+form {
+    max-width: 500px;
+    background-color: white;
+    max-height: 360px;
+    margin: 2rem auto;
+}
+label {
+    display: block;
+    color: black;
+    clear: both;
+}
+
+textarea {
+    width: 90%;
+    padding: 1rem;
+    border: 1px solid grey;
+    margin: 6px 0 16px 0;
+    resize: none;
+}
+.card_btn {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    padding: 8px;
+}
+
+.btn {
+    width: 8rem;
+    padding: 8px 6px;
+    border: 1px green solid;
+    margin: 6px 12px;
+    border-radius: 3px;
+    color: green;
+    background: none;
+}
+
+.accept {
+    background-color: green;
+    color: white;
+}
+
+.box {
+    display: flex;
+    justify-content: space-between;
+}
+.btn2 {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    margin-right: 6px;
+}
+
+/*
+admin modal Css
+by kihuni*/

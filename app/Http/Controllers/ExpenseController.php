@@ -4,16 +4,24 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Zuri\Expense;
+use Illuminate\Support\Facades\Validator;
+
 
 class ExpenseController extends Controller
 {
     private $model;
     private $request;
+    private $plugin_id;
+    private $organization_id;
+    private $room_id;
 
     public function __construct(Expense $model, Request $request)
     {
         $this->model = $model;
         $this->request = $request;
+        $this->plugin_id = $request->header('plugin-id');
+        $this->organization_id = $request->header('organization-id');
+        $this->room_id = $request->header('room-id');
     }
 
     /**
@@ -23,19 +31,16 @@ class ExpenseController extends Controller
      */
     public function index(Request $request)
     {
-        if( $this->model->validateShow($request->all() ) ) {
-            $params["plugin_id"] = $request->header("plugin_id");
-            $params["organization_id"] = $request->header("organization_id");
-            $query = [
-                "room_id" => $request->header("room_id"),
-            ];
+        
+        $params["plugin_id"] = $this->plugin_id;
+        $params["organization_id"] = $this->organization_id;
+        $query = [
+            "room_id" => $this->room_id
+        ];
 
-            $expense =  $this->model->all($params, $query);
-            return response()->json(['status' => 'expenses retrieved successfully', 'data' => $expense], 200);
-        }else{
-            $errors = $this->model->errors();
-            return response()->json(['status' => 'error', 'message' => $errors], 422); 
-       }
+        $expense =  $this->model->all($params, $query);
+        return response()->json(['status' => 'expenses retrieved successfully', 'data' => $expense], 200);
+        
     }
 
     /**
@@ -64,8 +69,8 @@ class ExpenseController extends Controller
                 }  
             }
             
-            $data["plugin_id"] = $request->header("plugin_id");
-            $data["organization_id"] = $request->header("organization_id");
+            $data["plugin_id"] = $this->plugin_id;
+            $data["organization_id"] = $this->organization_id;
             $data["collection_name"] = "expenses_list_collection";
             $data["bulk_write"]=false;
             $data["object_id"]="";
@@ -85,7 +90,7 @@ class ExpenseController extends Controller
             ];
             try {
                 $expense = $this->model->create($data);
-                return response()->json(['status' => 'created successfully', 'data' => $expense], 201); 
+                return $expense;
             } catch (Exception $e) {
                 return $e;
             }
@@ -104,20 +109,17 @@ class ExpenseController extends Controller
      */
     public function show($id, Request $request)
     {
-       if( $this->model->validateShow($request->all() ) ) {
-        $params["plugin_id"] = $request->header("plugin_id");
-        $params["organization_id"] = $request->header("organization_id");
+      
+        $params["plugin_id"] = $this->plugin_id;
+        $params["organization_id"] = $this->organization_id;
         $query = [
-            "room_id" => $request->header("room_id"),
+            "room_id" => $this->room_id,
             "_id" =>$id
         ];
 
             $expense = $this->model->find($params, $query);
             return response()->json(['status' => 'expense retrieved successfully', 'data' => $expense], 200); 
-        }else{
-            $errors = $this->model->errors();
-            return response()->json(['status' => 'error', 'message' => $errors], 422); 
-       }
+        
 
     }
 
@@ -131,26 +133,12 @@ class ExpenseController extends Controller
     {
        
         $query = [
-            "room_id" => $request->header("room_id"),
+            "room_id" => $this->room_id,
         ];
 
-
-        $params["plugin_id"] = $request->header("plugin_id");
-        $params["organization_id"] = $request->header("organization_id");
-
-        if( array_key_exists('title', $request->filter) ){
-            $query['title'] =   str_replace(' ', '%20', $request->filter['title']); 
-        }
-        if( array_key_exists('description', $request->filter) ){
-            $query['description'] =   str_replace(' ', '%20', $request->filter['description']); 
-        }
-
-        if( array_key_exists('author_id', $request->filter) ){
-            $query['author_id'] =  $request->filter['author_id']; 
-        }
-        if( array_key_exists('status', $request->filter) ){
-            $query['status'] =  $request->filter['status']; 
-        }
+        $params["plugin_id"] = $this->plugin_id;
+        $params["organization_id"] = $this->organization_id;
+        $query = $request->filter;
 
         $expense = $this->model->find($params, $query);
         return response()->json(['status' => 'expense retrieved successfully', 'data' => $expense], 200); 
@@ -179,7 +167,8 @@ class ExpenseController extends Controller
     public function update(Request $request, $id)
     {
 
-        if($this->model->validateUpdate($request->all()) ){
+        $v = Validator::make($request->all(), ["list_status" => "required"]);
+        if($v->passes()){
             $total = 0;
             if($request->items){
                 foreach ($request->items as $item ) {
@@ -187,8 +176,8 @@ class ExpenseController extends Controller
                 }  
             }
             
-            $data["plugin_id"] = $request->header("plugin_id");
-            $data["organization_id"] = $request->header("organization_id");
+            $data["plugin_id"] = $this->plugin_id;
+            $data["organization_id"] = $this->organization_id;
             $data["payload"]["status"] =$request->status;
             $data["payload"]["admin_comment"]=$request->admin_comment??"";
             $data["bulk_write"]=false;
@@ -198,12 +187,12 @@ class ExpenseController extends Controller
             // return $data;
             try {
                 $expense = $this->model->save($data);
-                return response()->json(['status' => 'expense list updated successfully', 'data' => $expense], 201); 
+                return $expense;
             } catch (Exception $e) {
                 return $e;
             }
         }else{
-            $errors = $this->model->errors();
+            $errors = $v->errors()->toArray();
             return response()->json(['status' => 'error', 'message' => $errors], 422); 
        }
 
@@ -217,18 +206,15 @@ class ExpenseController extends Controller
      */
     public function destroy($id, Request $request)
     {   
-        if($this->model->validateDelete($request->all()) ){
-            $params["plugin_id"] = $request->header("plugin_id");
-            $params["organization_id"] = $request->header("organization_id");
-            $params["bulk_delete"]= $request->filter ? true  : false;
-            $params["object_id"]= $request->object_id ? $request->object_id  : "";
-            $params["filter"] = $request->filter ? $request->filter  : json_decode("{}");
+        
+        $params["plugin_id"] = $this->plugin_id;
+        $params["organization_id"] = $this->organization_id;
+        $params["bulk_delete"]= $request->filter ? true  : false;
+        $params["object_id"]= $request->object_id ? $request->object_id  : "";
+        $params["filter"] = $request->filter ? $request->filter  : json_decode("{}");
 
-            $expense = $this->model->delete($params);
-            return response()->json(['status' => 'expense list deleted successfully', 'data' => $expense], 201); 
-        }else{
-            $errors = $this->model->errors();
-            return response()->json(['status' => 'error', 'message' => $errors], 422); 
-        }
+        $expense = $this->model->delete($params);
+        return response()->json(['status' => 'expense list deleted successfully', 'data' => $expense], 201); 
+        
     }
 }

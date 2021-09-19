@@ -12,8 +12,6 @@ class Room
 {
 
     private $rules = [
-        "plugin_id" => "required",
-        "organization_id" => "required",
         "name" => "required",
         "creator_id"=>"required",
         "visibility" =>"required"
@@ -25,7 +23,6 @@ class Room
 
 
     // rewrite model creation to zuri api endpoint
-
     public static function create ($data){
         $data['collection_name'] = static::$collection_name;
         $res = ZuriInterface::post($data );
@@ -75,56 +72,8 @@ class Room
         return $res;
     }
 
-
-
-
     public function validate($data){
         $v = Validator::make($data, $this->rules);
-        if ($v->fails())
-        {
-            $this->errors = $v->errors()->toArray();
-            return false;
-        }
-        return true;
-    }
-
-    public function validateShow($data)
-    {
-        $v = Validator::make($data, [
-            "plugin_id" => "required",
-            "organization_id" => "required",
-        ]);
-
-        if ($v->fails())
-        {
-            $this->errors = $v->errors()->toArray();
-            return false;
-        }
-        return true;
-    }
-
-     public function validateUpdate($data){
-        $v = Validator::make($data, [
-            "plugin_id" => "required",
-            "organization_id" => "required",
-        ]);
-
-        if ($v->fails())
-        {
-            $this->errors = $v->errors()->toArray();
-            return false;
-        }
-        return true;
-    }
-
-
-    public function validateDelete($data)
-    {
-        $v = Validator::make($data, [
-            "plugin_id" => "required",
-            "organization_id" => "required"
-        ]);
-
         if ($v->fails())
         {
             $this->errors = $v->errors()->toArray();
