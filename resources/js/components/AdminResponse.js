@@ -4,9 +4,9 @@ import AdminFormCreateElement from "./AdminFormCreateElement";
 import AdminFormDescriptionElement from "./AdminFormDescriptionElement";
 import AdminFormItemElement from "./AdminFormItemElement";
 import AdminFormTitleElement from "./AdminFormTitleElement";
-function App() {
+function AdminResponse() {
   return (
-    <div className="App">
+    <div className="AdminResponse">
       
       <AdminFormTitleElement/>
       <AdminFormDescriptionElement/>
@@ -17,4 +17,4 @@ function App() {
   );
 }
 
-export default App;
+export default AdminResponse;

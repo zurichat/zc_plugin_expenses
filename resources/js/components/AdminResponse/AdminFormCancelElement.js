@@ -8,5 +8,4 @@ export default function FormCancleElement(props) {
         </div>
     );
 }
-//create the "create form" cancel button component
-// issue #197 @chakes
+
