@@ -1,18 +1,30 @@
-import React from "react";
-import { EditButton } from "./AddnEditItem/AddButton";
-import { EditHeader } from "./AddnEditItem/AddHeader";
+import React, { useRef } from "react";
+import { EditButton } from "./AddnEditItem/EditButton";
+import { EditHeader } from "./AddnEditItem/EditHeader";
 import { ItemName } from "./AddnEditItem/ItemName";
 import { Price } from "./AddnEditItem/Price";
 import { Quantity } from "./AddnEditItem/Quantity";
+import "./AddnEditItem/addEdit.css"
 
-function EditItem() {
+export const EditItem = ({ setShowModal }) => {
+
+    // close the modal when clicking outside the modal.
+  const modalRef = useRef();
+  const closeModal = (e) => {
+    if (e.target === modalRef.current) {
+      setShowModal(false);
+    }
+  };
+
     return (
-        <div className="edit-popup">
-            <div className="box">
-                <span className="close-icon" onClick={props.handleClose}>
-                    x
-                </span>
-                <EditHeader />
+        <div className="add-popup" ref={modalRef} onClick={closeModal}>
+            <div className="aebox">
+                <div>
+                    <EditHeader />
+                    <a className="close-icon" onClick={() => setShowModal(false)}>
+                        X
+                    </a>
+                </div>
                 <ItemName />
                 <Price />
                 <Quantity />
@@ -21,5 +33,3 @@ function EditItem() {
         </div>
     );
 }
-
-export default EditItem;

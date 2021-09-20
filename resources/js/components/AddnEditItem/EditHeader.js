@@ -1,8 +1,8 @@
 import React from "react";
 
-export const AddHeader = () => {
+export const EditHeader = () => {
     return (
-        <div>
+        <div className="addEditHeader">
             <h4>Edit Item</h4>
         </div>
     );

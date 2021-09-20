@@ -3,7 +3,7 @@ import React from "react";
 export const AddButton = () => {
     return (
         <div>
-            <button>Add</button>
+            <button className="addEdit">Add item</button>
         </div>
     );
 };

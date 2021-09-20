@@ -3,7 +3,7 @@ import React from "react";
 export const AddHeader = () => {
     return (
         <div>
-            <h4>Add Item</h4>
+            <h4 id="addEditHeader">Add a new item</h4>
         </div>
     );
 };
