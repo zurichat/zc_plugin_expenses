@@ -15,24 +15,7 @@ jobs:
     - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
       with:
         php-version: '8.0'
-    - uses: actions/checkout@v2
-    
-    - name: Git Pull on Server
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.ZURI_HOST }}
-        username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PASSWORD }}
-       # key: ${{ secrets.SSHKEY }}
-        script: |
-          cd /var/www/expenses.zuri.chat
-          sudo rm composer.lock
-          sudo rm package-lock.json
-          git pull origin dev
-          git branch -r
-          git stash
-          composer install
-          npm run production
+    - uses: actions/checkout@v2 
     
     - name: Copy .env
       run: php -r "file_exists('.env') || copy('.env.test', '.env');"
@@ -57,4 +40,44 @@ jobs:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
       run: vendor/bin/phpunit
+       
+       # This job is to cache the node modules in order to reduce the time it would take to run
+    - name: Use cached node_modules
+      uses: actions/setup-node@v2
+      with:
+         directory: zc_plugin_expenses
+         
+         #this job installs intalls yarn dependencies on the github runner
+         #and also to build the static files that would be transferred to server later
+    - name: Install dependencies
+      run: |
+        npm install
+        npm run production
+      
+    - name: Git Pull on Server
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.ZURI_HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+       # key: ${{ secrets.SSHKEY }}
+        script: |
+          cd /var/www/expenses.zuri.chat
+          sudo rm composer.lock
+          sudo rm package-lock.json
+          git pull origin dev
+          git branch -r
+          git stash
+          composer install
+          npm install
+          
+        # this job copies the build folder from GitHub runners to the server with sftp, make sure the paths are correct      
+    - name: copy build to server
+      uses: Creepios/sftp-action@v1.0.1
+      with:
+        username: ${{ secrets.USERNAME }}
+        host: ${{ secrets.ZURI_HOST }}
+        password: ${{ secrets.PASSWORD }}
+        localPath: './zc_plugin_expenses/webpack.mix.js'
+        remotePath: '/var/www/expenses.zuri.chat'
     
