@@ -17,3 +17,4 @@ require("./components/Create");
 require("./components/View");
 require("./components/External");
 require("./components/Modal");
+require("./components/AdminResponse");
