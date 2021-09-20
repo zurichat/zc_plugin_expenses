@@ -10942,3 +10942,11 @@ a.text-dark:focus {
   }
 }
 
+.tablet {
+  border-top: 1px solid;
+  justify-content: space-between;
+}
+th, td {
+    padding: 10px;
+    text-align: left;
+  }
