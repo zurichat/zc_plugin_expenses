@@ -56,4 +56,4 @@ jobs:
           git branch -r
           git stash
           composer install
-          npm install
+          yarn
