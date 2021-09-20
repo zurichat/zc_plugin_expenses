@@ -21,7 +21,7 @@ use App\Http\Controllers\AboutController;
 //     return view('welcome');
 // });
 
- Route::view('/{path?}', 'app');
+ Route::view('/expenses', 'app');
 
 // Route::get('/dbtable', function () {
 //     return view('table');
@@ -31,6 +31,10 @@ Auth::routes();
 
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/centrifugo', function(){
+    return view("centrifugo");
+});
 
 
 //@kelanialiyu issue #200 start

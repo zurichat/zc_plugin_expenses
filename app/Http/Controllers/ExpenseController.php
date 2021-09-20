@@ -81,7 +81,7 @@ class ExpenseController extends Controller
                     "total" =>$total,
                     "items" => $request->items,
                     "status" => "pending",
-                    "room_id" => $request->header("room_id"),
+                    "room_id" => $this->room_id,
                     "author_id" => $request->author_id,
                     "author_name" =>$request->author_name,
                     "admin_comment" =>"",

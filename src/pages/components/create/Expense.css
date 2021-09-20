@@ -1,0 +1,268 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap");
+
+.create {
+    font-family: "lato";
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/*.wrapper {
+  position: absolute;
+  width: 963px;
+  height: 669px;
+  left: 369px;
+  top: 119px;
+  background: #ffffff;
+  border-radius: 8px;
+  color: #1d1c1d;
+}*/
+.create .wrapper {
+    width: 60wv;
+    /* height: 776px;  */
+    margin:auto;
+    background: #ffffff;
+    border-radius: 8px;
+}
+.create .label1 {
+    position: absolute;
+    width: 41px;
+    height: 28px;
+    left: 32px;
+    top: 30px;
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 130%;
+    color: #1d1c1d;
+    padding-left: 30px;
+    padding-top: 50px;
+}
+.create .input1 {
+    position: absolute;
+    width: 950px;
+    height: 52px;
+    left: 32px;
+    top: 84px;
+    border: 1px solid #a1a1a1;
+    box-sizing: border-box;
+    border-radius: 3px;
+}
+.create .input1::placeholder {
+    position: absolute;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 130%;
+    color: #1d1c1d;
+    padding-left: 20px;
+    padding-top: 15px;
+}
+.create .label2 {
+    position: absolute;
+    width: 107px;
+    height: 28px;
+    left: 32px;
+    top: 160px;
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 130%;
+    color: #1d1c1d;
+    padding-left: 30px;
+    padding-top: 50px;
+}
+
+.create .input2 {
+    position: absolute;
+    width: 950px;
+    height: 104px;
+    left: 32px;
+    top: 84px;
+    border: 1px solid #a1a1a1;
+    box-sizing: border-box;
+    border-radius: 3px;
+}
+.create .input2::placeholder {
+    position: absolute;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 130%;
+    color: #1d1c1d;
+    padding-left: 20px;
+    padding-top: 15px;
+}
+.create h3 {
+    position: absolute;
+    width: 51px;
+    height: 28px;
+    left: 32px;
+    top: 410px;
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 28px;
+    color: #1d1c1d;
+    padding-left: 30px;
+}
+.create thead {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 28px;
+    padding-left: 30px;
+    color: #1d1c1d;
+}
+.create th:nth-child(1) {
+    position: absolute;
+    width: 40px;
+    height: 28px;
+    left: 32px;
+    top: 454px;
+    padding-left: 30px;
+}
+.create th:nth-child(2) {
+    position: absolute;
+    width: 34px;
+    height: 28px;
+    left: 198px;
+    top: 454px;
+}
+.create th:nth-child(3) {
+    position: absolute;
+    width: 60px;
+    height: 28px;
+    left: 367px;
+    top: 454px;
+}
+.create tbody {
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 28px;
+    padding-left: 30px;
+    color: #1d1c1d;
+}
+.create td:nth-child(1) {
+    position: absolute;
+    width: 44px;
+    height: 28px;
+    left: 32px;
+    top: 490px;
+    padding-left: 30px;
+}
+.create td:nth-child(2) {
+    position: absolute;
+    width: 64px;
+    height: 28px;
+    left: 192px;
+    top: 490px;
+}
+.create td:nth-child(3) {
+    position: absolute;
+    width: 46px;
+    height: 28px;
+    left: 375px;
+    top: 490px;
+}
+.create .font1 {
+    position: absolute;
+    right: 31.5%;
+    display: inline;
+    flex-direction: column;
+    bottom: 33.5%;
+    left: 63.33%;
+    color: #999999;
+    font-size: 25px;
+    cursor: pointer;
+}
+.create .font1:hover {
+    color: #00b87c;
+}
+.create .font2 {
+    color: #999999;
+    margin-left: 55px;
+    display: inline;
+    height: 65px;
+    align-items: center;
+    position: absolute;
+    right: 33.33%;
+    bottom: 29.3%;
+    left: 63.33%;
+    font-size: 25px;
+    cursor: pointer;
+}
+.create .font2:hover {
+    color: #00b87c;
+}
+.create .font3 {
+    display: flex;
+    height: 65px;
+    align-items: center;
+    position: absolute;
+    bottom: 23.83%;
+    padding-left: 60px;
+    color: #1264a3;
+    font-size: 24px;
+    cursor: pointer;
+}
+.create .font5 {
+    display: flex;
+    height: 65px;
+    align-items: center;
+    position: absolute;
+    bottom: 23.83%;
+    padding-left: 60px;
+    color: #1264a3;
+    font-size: 24px;
+    cursor: pointer;
+}
+.create .font4 {
+    position: absolute;
+    bottom: -10.33%;
+    padding-left: 250px;
+    color: #1264a3;
+    font-size: 24px;
+    display: flex;
+    height: 65px;
+    align-items: center;
+    cursor: pointer;
+}
+.create .info {
+    display: flex;
+    height: 65px;
+    align-items: center;
+    position: absolute;
+    bottom: 23.83%;
+    padding-left: 90px;
+    color: #1264a3;
+    line-height: 28px;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    cursor: pointer;
+}
+.create button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 14px 18px;
+    position: absolute;
+    left: 79.34%;
+    right: 3.95%;
+    top: 75.55%;
+    bottom: 18.08%;
+    background: #00b87c;
+    border-radius: 3px;
+    color: #ffffff;
+}
