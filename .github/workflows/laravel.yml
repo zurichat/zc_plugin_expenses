@@ -50,10 +50,8 @@ jobs:
        # key: ${{ secrets.SSHKEY }}
         script: |
           cd /var/www/expenses.zuri.chat
-          sudo rm composer.lock
-          sudo rm package-lock.json
-          git pull origin dev
-          git branch -r
           git stash
+          git pull origin
+          git branch -r          
           composer install
           yarn
