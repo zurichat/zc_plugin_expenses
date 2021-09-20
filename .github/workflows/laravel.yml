@@ -51,8 +51,8 @@ jobs:
          #and also to build the static files that would be transferred to server later
     - name: Install dependencies
       run: |
-        npm run install
-        npm run production
+        npm install
+        npm run build
       
     - name: Git Pull on Server
       uses: appleboy/ssh-action@master
