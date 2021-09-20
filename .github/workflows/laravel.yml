@@ -46,13 +46,13 @@ jobs:
       uses: actions/setup-node@v2
       with:
          directory: zc_plugin_expenses
-         
-         #this job installs intalls yarn dependencies on the github runner
-         #and also to build the static files that would be transferred to server later
-    - name: Install dependencies
-      run: |
-        npm install
-        npm run prod
+  
+    - run: npm ci --ignore-scripts
+    - run: npm run build --if-present
+      name: Build
+    - run: npm test
+      env:
+        CI: true
       
     - name: Git Pull on Server
       uses: appleboy/ssh-action@master
