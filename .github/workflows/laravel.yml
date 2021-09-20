@@ -50,7 +50,8 @@ jobs:
          #this job installs intalls yarn dependencies on the github runner
          #and also to build the static files that would be transferred to server later
     - name: Install dependencies
-      run: |        
+      run: |
+        npm run install
         npm run production
       
     - name: Git Pull on Server
