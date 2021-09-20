@@ -51,7 +51,7 @@ jobs:
          #and also to build the static files that would be transferred to server later
     - name: Install dependencies
       run: |
-        npm install
+        npm
         npm run production
       
     - name: Git Pull on Server
