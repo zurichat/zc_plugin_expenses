@@ -39,24 +39,23 @@ Route::prefix('v1')->group(function () {
 // Auth Endpoints
 
 // Expense List Routes
-Route::group(['middleware' => 'expense', 'prefix' => 'v1'],function () {
-	Route::get('/expenses/search', [ExpenseController::class, 'search'] );
+Route::group(['middleware' => ['plugin_id', 'organization_id'], 'prefix' => 'v1'],function () {
+	Route::post('/expenses/search', [ExpenseController::class, 'search'] );
     Route::resource("expenses", "ExpenseController");
 });
 
 
 
 // Room Members  Endpoints
-Route::group(['prefix' => 'v1'], function(){
+Route::group(['middleware' => ['plugin_id', 'organization_id'], 'prefix' => 'v1'], function(){
 	Route::get('/rooms/{room_id}/members', [RoomMemberController::class, 'index'] );
 	Route::get('/rooms/{room_id}/members/{user_id}', [RoomMemberController::class, 'show'] );
 	Route::delete('/rooms/{room_id}/members/{user_id}', [RoomMemberController::class, 'destroy'] );
-	Route::post('/rooms/members', [RoomMemberController::class, 'store'] );
-	Route::delete('/rooms/members/{user_id}', [RoomMemberController::class, 'removeMember'] );
+	Route::post('/rooms/{room_id}/members', [RoomMemberController::class, 'store'] );
 });
 
 // Room  Endpoints
-Route::group(['prefix' => 'v1'], function(){
+Route::group(['middleware' => ['plugin_id', 'organization_id'], 'prefix' => 'v1'], function(){
     Route::resource("rooms", "RoomController");
 });
 

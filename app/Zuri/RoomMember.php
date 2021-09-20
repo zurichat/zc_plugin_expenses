@@ -74,8 +74,6 @@ class RoomMember
     }
 
 
-
-
     public function validate($data){
         $v = Validator::make($data, $this->rules);
         if ($v->fails())
@@ -85,52 +83,6 @@ class RoomMember
         }
         return true;
     }
-
-    public function validateShow($data)
-    {
-        $v = Validator::make($data, [
-            "plugin_id" => "required",
-            "organization_id" => "required",
-        ]);
-
-        if ($v->fails())
-        {
-            $this->errors = $v->errors()->toArray();
-            return false;
-        }
-        return true;
-    }
-
-     public function validateUpdate($data){
-        $v = Validator::make($data, [
-            "plugin_id" => "required",
-            "organization_id" => "required",
-        ]);
-
-        if ($v->fails())
-        {
-            $this->errors = $v->errors()->toArray();
-            return false;
-        }
-        return true;
-    }
-
-
-    public function validateDelete($data)
-    {
-        $v = Validator::make($data, [
-            "plugin_id" => "required",
-            "organization_id" => "required"
-        ]);
-
-        if ($v->fails())
-        {
-            $this->errors = $v->errors()->toArray();
-            return false;
-        }
-        return true;
-    }
-
 
     public function errors(){
         return $this->errors;

@@ -15,24 +15,7 @@ jobs:
     - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
       with:
         php-version: '8.0'
-    - uses: actions/checkout@v2
-    
-    - name: Git Pull on Server
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.ZURI_HOST }}
-        username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PASSWORD }}
-       # key: ${{ secrets.SSHKEY }}
-        script: |
-          cd /var/www/expenses.zuri.chat
-          sudo rm composer.lock
-          sudo rm package-lock.json
-          git pull origin dev
-          git branch -r
-          git stash
-          composer install
-          npm run production
+    - uses: actions/checkout@v2 
     
     - name: Copy .env
       run: php -r "file_exists('.env') || copy('.env.test', '.env');"
@@ -57,4 +40,18 @@ jobs:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
       run: vendor/bin/phpunit
-    
+      
+    - name: Git Pull on Server
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.ZURI_HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+       # key: ${{ secrets.SSHKEY }}
+        script: |
+          cd /var/www/expenses.zuri.chat
+          git stash
+          git pull origin
+          git branch -r          
+          composer install
+          yarn

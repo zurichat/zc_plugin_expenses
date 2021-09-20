@@ -16,11 +16,15 @@ class RoomController extends Controller
      * @var Request
      */
     private $request;
+    private $plugin_id;
+    private $organization_id;
 
     public function __construct(Room $model, Request $request)
     {
         $this->model = $model;
         $this->request = $request;
+        $this->plugin_id = $request->header('plugin-id');
+        $this->organization_id = $request->header('organization-id');
     }
 
 
@@ -33,18 +37,12 @@ class RoomController extends Controller
     public function index(Request $request)
     {
 
-       if( $this->model->validateShow($request->all() ) ) {
-            $params["plugin_id"] = $request->plugin_id;
-            $params["organization_id"] = $request->organization_id;
-            $query = [];
+        $params["plugin_id"] = $this->plugin_id;
+        $params["organization_id"] = $this->organization_id;
+        $query = [];
 
-            $expense =  $this->model->all($params, $query);
-            return $expense;
-        }else{
-            $errors = $this->model->errors();
-            return response()->json(['status' => 'error', 'message' => $errors], 422); 
-       }
-
+        $expense =  $this->model->all($params, $query);
+        return $expense;
     }
 
     /**
@@ -62,8 +60,8 @@ class RoomController extends Controller
             // add creator as room member
             array_push($members, $creator);
             
-            $data["plugin_id"] = $request->plugin_id;
-            $data["organization_id"] = $request->organization_id;
+            $data["plugin_id"] = $this->plugin_id;
+            $data["organization_id"] = $this->organization_id;
             $data["collection_name"] = "expenses_list_collection";
             $data["bulk_write"]=false;
             $data["object_id"]="";
@@ -100,24 +98,17 @@ class RoomController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id, Request $request)
+    public function show($id)
     {
        
-        if( $this->model->validateShow($request->all() ) ) {
-            $params["plugin_id"] = $request->plugin_id;
-            $params["organization_id"] = $request->organization_id;
-            $query = [
-                "_id" => $id
-            ];
+        $params["plugin_id"] = $this->plugin_id;
+        $params["organization_id"] = $this->organization_id;
+        $query = [
+            "_id" => $id
+        ];
 
-            $room = $this->model->find($params, $query);
-            return $room;
-        }else{
-            $errors = $this->model->errors();
-            return response()->json(['status' => 'error', 'message' => $errors], 422); 
-       }
-        
-
+        $room = $this->model->find($params, $query);
+        return $room;
     }
 
 
@@ -128,43 +119,35 @@ class RoomController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
 
-        if($this->model->validateUpdate($request->all()) ){
+        $members = $request->members ? $request->members : [];
+        $data["plugin_id"] = $this->plugin_id;
+        $data["organization_id"] = $this->organization_id;
+        $data["collection_name"] = "expenses_list_collection";
+        $data["bulk_write"]=false;
+        $data["object_id"]= $request->object_id ? $request->object_id  : "";
+        $data["filter"] = $request->filter ? $request->filter  : json_decode("{}");
+        $data["payload"] = [
+                "name" => $request->name,
+                "description" => $request->description,
+                "topic" =>$request->topic,
+                // "members" => $members,
+                // "plugin_id" => $request->plugin_id,
+                // "organization_id" => $request->organization_id,
+                // "creator_id" => $request->author_id,
+                "status" => $request->status,
+                "visibility" => $request->visibility,
+                "updated_at" => time()
+        ];
 
-            $members = $request->members ? $request->members : [];
-  
-            $data["plugin_id"] = $request->plugin_id;
-            $data["organization_id"] = $request->organization_id;
-            $data["collection_name"] = "expenses_list_collection";
-            $data["bulk_write"]=false;
-            $data["object_id"]= $request->object_id ? $request->object_id  : "";
-            $data["filter"] = $request->filter ? $request->filter  : json_decode("{}");
-            $data["payload"] = [
-                    "name" => $request->name,
-                    "description" => $request->description,
-                    "topic" =>$request->topic,
-                    // "members" => $members,
-                    // "plugin_id" => $request->plugin_id,
-                    // "organization_id" => $request->organization_id,
-                    // "creator_id" => $request->author_id,
-                    "status" => $request->status,
-                    "visibility" => $request->visibility,
-                    "updated_at" => time()
-            ];
-
-            try {
-                $room = $this->model->save($data);
-                return $room;
-            } catch (Exception $e) {
-                return $e;
-            }
-        }else{
-            $errors = $this->model->errors();
-            return response()->json(['status' => 'error', 'message' => $errors], 422); 
-       }
-
+        try {
+            $room = $this->model->save($data);
+            return $room;
+        } catch (Exception $e) {
+            return $e;
+        }
     }
 
 
@@ -177,19 +160,14 @@ class RoomController extends Controller
      */
     public function destroy($id, Request $request)
     {   
-        if($this->model->validateDelete($request->all()) ){
-            $params["plugin_id"] = $request->plugin_id;
-            $params["organization_id"] = $request->organization_id;
-            $params["bulk_delete"]= $request->filter ? true  : false;
-            $params["object_id"]= $request->object_id ? $request->object_id  : "";
-            $params["filter"] = $request->filter ? $request->filter  : json_decode("{}");
+        $params["plugin_id"] = $this->plugin_id;
+        $params["organization_id"] = $this->organization_id;
+        $params["bulk_delete"]= $request->filter ? true  : false;
+        $params["object_id"]= $request->object_id ? $request->object_id  : $id;
+        $params["filter"] = $request->filter ? $request->filter  : json_decode("{}");
 
-            $room = $this->model->delete($params);
-            return $room;
-        }else{
-            $errors = $this->model->errors();
-            return response()->json(['status' => 'error', 'message' => $errors], 422); 
-        }
+        $room = $this->model->delete($params);
+        return $room;
     }
 
 }
