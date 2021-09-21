@@ -23,8 +23,8 @@ class RoomController extends Controller
     {
         $this->model = $model;
         $this->request = $request;
-        $this->plugin_id = $request->header('plugin-id');
-        $this->organization_id = $request->header('organization-id');
+        $this->plugin_id = $request->header('Plugin-id');
+        $this->organization_id = $request->header('Organization-id');
     }
 
 
@@ -62,7 +62,7 @@ class RoomController extends Controller
             
             $data["plugin_id"] = $this->plugin_id;
             $data["organization_id"] = $this->organization_id;
-            $data["collection_name"] = "expenses_list_collection";
+            $data["collection_name"] = "expenses_rooms_collection";
             $data["bulk_write"]=false;
             $data["object_id"]="";
             $data["filter"] =json_decode("{}");
@@ -125,7 +125,7 @@ class RoomController extends Controller
         $members = $request->members ? $request->members : [];
         $data["plugin_id"] = $this->plugin_id;
         $data["organization_id"] = $this->organization_id;
-        $data["collection_name"] = "expenses_list_collection";
+        $data["collection_name"] = "expenses_rooms_collection";
         $data["bulk_write"]=false;
         $data["object_id"]= $request->object_id ? $request->object_id  : "";
         $data["filter"] = $request->filter ? $request->filter  : json_decode("{}");

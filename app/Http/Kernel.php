@@ -65,6 +65,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'plugin_id' => \App\Http\Middleware\CheckPlugin::class,
         'organization_id' => \App\Http\Middleware\CheckOrganization::class,
+        'room_id' => \App\Http\Middleware\CheckRoom::class,
 
         // @Aduramimo issue #110
         'Admin' => \App\Http\Middleware\Admin::class,

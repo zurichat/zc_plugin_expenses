@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class CheckOrganization
+class CheckRoom
 {
     /**
      * Handle an incoming request.
@@ -15,11 +15,11 @@ class CheckOrganization
      */
     public function handle($request, Closure $next)
     {
-        $organization_id = $request->header("Organization-id");
-        if($organization_id){
+        $room_id = $request->header("Room-id");
+        if($room_id){
             return $next($request);
         }else{
-            return response(["status" => "error", "message" => "Please include Organization-id in request header content"], 401)
+            return response(["status" => "error", "message" => "Please include Room-id in request header content"], 401)
                 ->header('Content-Type', 'application/json');
         }
     }

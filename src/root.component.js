@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React, { useState, useEffect } from "react";
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
@@ -7,7 +8,7 @@ import axios from "axios";
 import "./css/app.css";
 import "./css/style.css";
 function Root() {
-    const url = `$https://expenses.zuri.chat/api/v1/expenses`;
+    const [url, setUrl] = useState(`https://expenses.zuri.chat/api/v1/expenses`);
     const [expenses, setExpenses] = useState({
         loading: false,
         data: null,
@@ -40,7 +41,7 @@ function Root() {
             .then((response) => {
                 setExpenses({
                     loading: false,
-                    data: response.data.data.data,
+                    data: response.data.data.data.sort((a, b) => b.created_at - a.created_at),
                     error: false,
                 });
             })
@@ -56,7 +57,7 @@ function Root() {
         <Router basename="/expenses">
             <Switch>
                 <Route path="/create">
-                    <Create userdata={userdata} />
+                    <Create userdata={userdata} url={url} setUrl={setUrl} />
                 </Route>
                 <Route path="/view">
                     <View userdata={userdata} />

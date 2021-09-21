@@ -18,10 +18,10 @@ class ExpenseController extends Controller
     public function __construct(Expense $model, Request $request)
     {
         $this->model = $model;
-        $this->request = $request;
-        $this->plugin_id = $request->header('plugin-id');
-        $this->organization_id = $request->header('organization-id');
-        $this->room_id = $request->header('room-id');
+        // $this->request = $request;
+        $this->plugin_id = $request->header('Plugin-id');
+        $this->organization_id = $request->header('Organization-id');
+        $this->room_id = $request->header('Room-id');
     }
 
     /**
@@ -39,7 +39,7 @@ class ExpenseController extends Controller
         ];
 
         $expense =  $this->model->all($params, $query);
-        return response()->json(['status' => 'expenses retrieved successfully', 'data' => $expense], 200);
+        return response()->json(['status' =>'error', 'message' => 'expenses retrieved successfully', 'data' => $expense], 200);
         
     }
 
@@ -169,13 +169,6 @@ class ExpenseController extends Controller
 
         $v = Validator::make($request->all(), ["list_status" => "required"]);
         if($v->passes()){
-            $total = 0;
-            if($request->items){
-                foreach ($request->items as $item ) {
-                   $total+=$item["unit_price"] * $item["quantity"];
-                }  
-            }
-            
             $data["plugin_id"] = $this->plugin_id;
             $data["organization_id"] = $this->organization_id;
             $data["payload"]["status"] =$request->status;
