@@ -5,6 +5,7 @@ use App\Http\Controllers\ExpenseController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\ExpenseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,10 +22,24 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(['prefix' => 'v1'], function(){
-    Route::get('/sidebarlist', [SidebarAPI::class, 'sidebar']);
-    Route::post('/expense/add', [ExpenseController::class, 'add_expense']);
-    Route::get('/expense/show', [ExpenseController::class, 'show_expense']);
-    Route::post('/expense/update', [ExpenseController::class, 'update_expense']);
+
+// Auth Endpoints
+
+// Expense List Routes
+Route::group(['middleware' => 'api', 'prefix' => 'v1'], function(){
+	Route::get("/expenses", [ExpenseController::class, 'index']);
+	Route::get("/expenses/{id}", [ExpenseController::class, 'show']);
+	Route::post("/expenses", [ExpenseController::class, 'store']);
     Route::delete('/expense/delete', [ExpenseController::class, 'delete_expense']);
-    });
+    Route::post('/expense/update', [ExpenseController::class, 'update_expense']);
+});
+
+// Rooms Endpoints
+
+// Organization Endpoints
+
+
+
+
+
+

@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Expense;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Validation;
+
+
 
 class ExpenseController extends Controller
 {
@@ -17,19 +20,9 @@ class ExpenseController extends Controller
      */
     public function index()
     {
-        $expense = Expense::latest()->paginate(10);
-
-        if(!$expense){
-            return response()->json([
-                'status' => 'no data',
-                'data' => null
-            ]);
-        }
-
-        return response()->json([
-            'status' => 'success',
-            'data' => $expense
-        ], 200);
+        //
+        $expense = Expense::_all();
+        return response()->json(['status' => 'expenses retrieved successfully', 'data' => $expense], 200);
     }
 
     /**
@@ -37,104 +30,52 @@ class ExpenseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function add_expense(Request $request)
+    public function create()
     {
-       $validated = $request->validate([
-            'id' => "required",
-            'user_id' => "required",
-                'title' => "required",
-                'item' => "required",                  
-                  
-                  'unit_price' =>  "required",
-                  'quantity' =>  "required",
-                'total_price' =>  "required",
-                'description' =>  "required",
-                'status' =>  "required",
-                // 'admin_id' => "required",
-                // 'date' =>  Carbon::now(),
-                'room_id' => "required",
-                // 'plugin_id' => "",
-                'organisation_id' => "required"
-                
-        ]);
-
-        $id = $request->input('id');
-        $user_id = $request->input('user_id');
-        $title = $request->input('title');
-        $item = $request->input('item');
-        
-        $unit_price = $request->input('unit_price');
-        $quantity = $request->input('quantity');
-        $total_price = $request->input('total_price');
-        $description = $request->input('description');
-        $status = $request->input('status');
-        // $admin_id = $request->input('admin_id');
-        $room_id = $request->input('room_id');
-        $organisation_id = $request->input('organisation_id');
-        $created_at = $request->input('created_at');
-        $updated_at = $request->input('updated_at');
-        
-
-         Expense::create([
-           'id' => $id,
-           'user_id' => $user_id,
-           'title' => $title,
-           'item' => $item,
-           
-           'unit_price' => $unit_price,
-           'quantity' => $quantity,
-           'total_price' => $total_price,
-           'description' => $description,
-           'status' => $status,
-        //    'admin_id' => $admin_id,
-           'room_id' => $room_id,
-           'organisation_id' => $organisation_id,
-           'created_at' => Carbon::now(),
-           'updated_at' => Carbon::now()
-           
-       ]);
-        
-
-        $data = [
-            'status' => 'created successfully',
-            'create' => ['method' => 'POST']
-        ];
-
-        $response = [
-            'messsage' => 'Successfully created',
-            'data' => $data
-        ];
-
-        return response()->json($response, 200);
-        
+        // 
     }
 
-
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $data = $request->all();
+        try {
+            $expense = Expense::_create($data);
+            return response()->json(['status' => 'created successfully', 'data' => $expense], 201); 
+        } catch (Exception $e) {
+            return $e;
+        }
+    }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Expense  $expense
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show_expense(Expense $expense)
+    public function show($id)
     {
-        $expense = Expense::all();
+        //
+        $expense = Expense::_find($id);
+        return response()->json(['status' => 'expense retrieved successfully', 'data' => $expense], 200);
 
-        if(!$expense){
-            return response()->json([
-                'status' => 'not found',
-                'data' => null
-            ]);
-        }
-
-        return response()->json([
-            'status' => 'success',
-            'data' => $expense
-        ], 200);
     }
 
-
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
 
     /**
      * Update the specified resource in storage.
@@ -168,5 +109,3 @@ class ExpenseController extends Controller
             'status' => 'deleted',
             'data' => null
         ], 200);
-    }
-}

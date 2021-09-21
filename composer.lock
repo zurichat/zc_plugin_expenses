@@ -4,7 +4,10 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
+
     "content-hash": "3a3c91a0e4f85afdfcc1842da61dffba",
+
+
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -4986,6 +4989,7 @@
         },
         {
             "name": "facade/ignition",
+
             "version": "2.13.1",
             "source": {
                 "type": "git",
@@ -4996,12 +5000,15 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/facade/ignition/zipball/e3f49bef7b4165fa4b8a9dc579e7b63fa06aef78",
                 "reference": "e3f49bef7b4165fa4b8a9dc579e7b63fa06aef78",
+
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "ext-mbstring": "*",
+
                 "facade/flare-client-php": "^1.9.1",
+
                 "facade/ignition-contracts": "^1.0.2",
                 "illuminate/support": "^7.0|^8.0",
                 "monolog/monolog": "^2.0",
@@ -5058,7 +5065,9 @@
                 "issues": "https://github.com/facade/ignition/issues",
                 "source": "https://github.com/facade/ignition"
             },
-            "time": "2021-09-13T13:01:30+00:00"
+
+            "time": "2021-08-24T09:53:54+00:00"
+
         },
         {
             "name": "facade/ignition-contracts",
@@ -5293,6 +5302,7 @@
         },
         {
             "name": "mockery/mockery",
+
             "version": "1.4.4",
             "source": {
                 "type": "git",
@@ -5303,6 +5313,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/mockery/mockery/zipball/e01123a0e847d52d186c5eb4b9bf58b0c6d00346",
                 "reference": "e01123a0e847d52d186c5eb4b9bf58b0c6d00346",
+
                 "shasum": ""
             },
             "require": {
@@ -5359,9 +5370,11 @@
             ],
             "support": {
                 "issues": "https://github.com/mockery/mockery/issues",
+
                 "source": "https://github.com/mockery/mockery/tree/1.4.4"
             },
             "time": "2021-09-13T15:28:59+00:00"
+
         },
         {
             "name": "myclabs/deep-copy",
@@ -7083,7 +7096,12 @@
     "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
+
     "platform": [],
-    "platform-dev": [],
+
+    "platform": {
+        "php": "^7.2.5|^8.0.3"
+    },
+
     "plugin-api-version": "2.0.0"
 }
