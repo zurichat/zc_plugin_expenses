@@ -2,7 +2,7 @@ import React from 'react'
 import View from 'View'
 
 
-function App() {
+function View() {
     const [modalOpen, setModalOpen] = useState(false);
 } 
 const View = () => {
