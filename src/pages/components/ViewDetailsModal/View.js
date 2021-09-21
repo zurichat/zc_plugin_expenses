@@ -16,8 +16,8 @@ function Modal({ setOpenModal }) {
           <p>#2223311</p>
         </div>
         <div className="mid-two">
-          <h3>Jerry Mbam</h3>
-          <p>21/21/21</p>
+          <h3>{expense.author_name}</h3>
+          <p>{new Date(expense.created_at * 1000).toLocaleDateString()}</p>
         </div>
         <div className="tablet">
           <table style="width: 100%">
@@ -51,7 +51,7 @@ function Modal({ setOpenModal }) {
         </div>
         <div className="bottom">
           <h3>Status</h3>
-          <h4>Approved</h4>
+          <h4>{expense.status}</h4>
         </div>
 
         <div className="export">
