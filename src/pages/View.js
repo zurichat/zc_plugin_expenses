@@ -1,10 +1,20 @@
 import React from 'react'
+import AdminFormCancelElement from "./AdminFormCancelElement";
+import AdminFormCreateElement from "./AdminFormCreateElement";
+import AdminFormDescriptionElement from "./AdminFormDescriptionElement";
+import AdminFormItemElement from "./AdminFormItemElement";
+import AdminFormTitleElement from "./AdminFormTitleElement";
 
 const View = () => {
     return (
-        <div>
-            View page
-        </div>
+        <div className="AdminResponse">
+      
+        <AdminFormTitleElement/>
+        <AdminFormDescriptionElement/>
+        <AdminFormItemElement/>
+        <AdminFormCreateElement/>
+        <AdminFormCancelElement/>
+      </div>
     )
 }
 
