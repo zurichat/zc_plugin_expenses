@@ -9,9 +9,7 @@ use App\Organisation;
 class Room extends Model
 {
     protected $fillable = [
-        'title',
-        'excerpt',
-        'body',
+        'title'
     ];
 
     public function users(){
