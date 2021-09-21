@@ -13,9 +13,6 @@ class Expense
     private static $collection_name = 'expenses_list_collection';
     
     private $rules = [
-        "plugin_id" => "required",
-        "organization_id" => "required",
-        "room_id" => "required",
         "author_id"=>"required",
         "author_name" =>"required",
         // .. more rules here ..

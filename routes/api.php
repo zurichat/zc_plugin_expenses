@@ -39,7 +39,7 @@ Route::prefix('v1')->group(function () {
 // Auth Endpoints
 
 // Expense List Routes
-Route::group(['middleware' => ['plugin_id', 'organization_id'], 'prefix' => 'v1'],function () {
+Route::group(['middleware' => ['plugin_id', 'organization_id','room_id'], 'prefix' => 'v1'],function () {
 	Route::post('/expenses/search', [ExpenseController::class, 'search'] );
     Route::resource("expenses", "ExpenseController");
 });

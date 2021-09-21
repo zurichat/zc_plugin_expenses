@@ -15,7 +15,7 @@ class CheckPlugin
      */
     public function handle($request, Closure $next)
     {
-        $plugin_id = $request->header("plugin-id");
+        $plugin_id = $request->header("Plugin-id");
         if($plugin_id){
             return $next($request);
         }else{
