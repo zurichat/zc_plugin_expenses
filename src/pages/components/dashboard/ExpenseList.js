@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
 import React from "react";
 import { Link } from "react-router-dom";
+
 function ExpenseList({ expense }) {
     return (
         <tr>
@@ -22,7 +23,7 @@ function ExpenseList({ expense }) {
             </td>
             <td style={{ textTransform: "capitalize" }}>
                 <Link to={`/view`} className="btn-link">
-                    View Details
+                    View Detail
                 </Link>
             </td>
         </tr>

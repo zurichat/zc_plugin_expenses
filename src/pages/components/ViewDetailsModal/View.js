@@ -1,7 +1,8 @@
 import React from "react";
+import View from "../dashboard/View";
 import "./Modal.css";
 
-function Modal({ setOpenModal }) {
+function View ({ setOpenModal }) {
   return (
     <div className="container">
     <div className="popup" id="popup-1">
@@ -69,4 +70,4 @@ function Modal({ setOpenModal }) {
   );
 }
 
-export default Modal;
+export default View;
