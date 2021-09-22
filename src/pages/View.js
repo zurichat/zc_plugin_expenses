@@ -1,5 +1,4 @@
 import React from "react";
-import View from "./components/dashboard/View";
 import "./Modal.css";
 
 function View ({ setOpenModal }) {
@@ -46,7 +45,7 @@ function View ({ setOpenModal }) {
               <td>Total</td>
               <td></td>
               <td></td>
-              <td>N5200</td>
+              <td>{`₦${expense.total}`}</td>
             </tr>
           </table>
         </div>

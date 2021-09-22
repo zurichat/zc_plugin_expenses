@@ -22,8 +22,8 @@ function ExpenseList({ expense }) {
                 {expense.status}
             </td>
             <td style={{ textTransform: "capitalize" }}>
-                <Link to={`/view`} className="btn-link">
-                    View Detail
+                <Link to={`/View`} className="btn-link">
+                    View Details
                 </Link>
             </td>
         </tr>
