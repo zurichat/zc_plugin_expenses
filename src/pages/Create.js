@@ -4,10 +4,11 @@
 import React, { useState } from "react";
 import Add from "./components/create/Add";
 import Delete from "./components/create/Delete";
-import { Link, Redirect } from "react-router-dom";
+import { Link, Redirect, useHistory } from "react-router-dom";
 import axios from "axios";
 
-const Create = ({ userdata, url }) => {
+const Create = ({ userdata, url, setUrl }) => {
+    const [redirect, setRedirect] =useState(false)
     const [showError, setShowError] = useState(false);
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
@@ -15,18 +16,18 @@ const Create = ({ userdata, url }) => {
     const [modalData, setModalData] = useState({
         id: -1,
         name: "",
-        price: "",
+        unit_price: "",
         qty: "",
         opened: false,
     });
 
     const [modalDeleteData, setModalDeleteData] = useState(-1);
 
-    const showModal = (id = -1, name = "", price = "", qty = "") => {
+    const showModal = (id = -1, name = "", unit_price = "", qty = "") => {
         setModalData({
             id: id,
             name: name,
-            price: price,
+            unit_price: unit_price,
             qty: qty,
             opened: true,
         });
@@ -52,27 +53,27 @@ const Create = ({ userdata, url }) => {
         closeDeleteModal();
     };
 
-    const addItem = (name, price, qty) => {
+    const addItem = (name, unit_price, qty) => {
         let newitems = [
             ...items,
             {
                 id: items.length + 1,
                 name: name,
-                price: price,
+                unit_price: unit_price,
                 quantity: qty,
             },
         ];
         setItems(newitems);
     };
 
-    const editItem = (id, name, price, qty) => {
+    const editItem = (id, name, unit_price, qty) => {
         setItems(
             items.map((item) =>
                 item.id == id
                     ? {
                           id: item.id,
                           name: name,
-                          price: price,
+                          unit_price: unit_price,
                           quantity: qty,
                       }
                     : item
@@ -80,16 +81,16 @@ const Create = ({ userdata, url }) => {
         );
     };
 
-    const morphItems = (id, name, price, qty) => {
-        id == -1 ? addItem(name, price, qty) : editItem(id, name, price, qty);
+    const morphItems = (id, name, unit_price, qty) => {
+        id == -1 ? addItem(name, unit_price, qty) : editItem(id, name, unit_price, qty);
         closeModal();
     };
-
     const createlist = () => {
         axios
             .post(
                 url,
-                {
+
+                {  
                     title: title,
                     author_id: userdata.id,
                     author_name: userdata.name,
@@ -98,21 +99,26 @@ const Create = ({ userdata, url }) => {
                 },
                 {
                     headers: {
+                        "Content-Type": "application/json",
+                        "Accept": "application/json",
                         "Plugin-id": userdata.plugin_id,
                         "Organization-id": userdata.organization_id,
-                        "room-id": userdata.room_id,
+                        "Room-id": userdata.room_id,
                     },
                 }
             )
             .then((response) => {
                 setShowError(false);
+                setRedirect(true)
                 setUrl(url);
-                <Redirect to="/" />;
             })
             .catch((error) => {
                 setShowError(true);
             });
     };
+    if(redirect){
+        return <Redirect to="/expenses" />;
+    }
     return (
         <div className="container-fluid">
             <nav
@@ -180,7 +186,7 @@ const Create = ({ userdata, url }) => {
                                             <thead>
                                                 <tr>
                                                     <th>NAME</th>
-                                                    <th>PRICE</th>
+                                                    <th>unit_price</th>
                                                     <th>QUANTITY</th>
                                                     <th>ACTIONS</th>
                                                 </tr>
@@ -196,7 +202,7 @@ const Create = ({ userdata, url }) => {
                                                         >
                                                             {item.name}
                                                         </td>
-                                                        <td>{`₦${item.price}`}</td>
+                                                        <td>{`₦${item.unit_price}`}</td>
                                                         <td>{item.quantity}</td>
                                                         <td>
                                                             <button
@@ -206,7 +212,7 @@ const Create = ({ userdata, url }) => {
                                                                     showModal(
                                                                         item.id,
                                                                         item.name,
-                                                                        item.price,
+                                                                        item.unit_price,
                                                                         item.quantity
                                                                     );
                                                                 }}
@@ -268,7 +274,7 @@ const Create = ({ userdata, url }) => {
             <Add
                 id={modalData.id}
                 name={modalData.name}
-                price={modalData.price}
+                price={modalData.unit_price}
                 quantity={modalData.qty}
                 submit={morphItems}
             />

@@ -5,7 +5,7 @@ import Loader from "./components/dashboard/Loader";
 import ExpenseListTable from "./components/dashboard/ExpenseListTable";
 import { Link } from "react-router-dom";
 
-function Dashboard({ expenses, userdata }) {
+function Dashboard({ expenses, userdata,setUrl,url }) {
     return (
         <div className="container-fluid">
             <nav className="navbar">
@@ -14,7 +14,7 @@ function Dashboard({ expenses, userdata }) {
                 </Link>
             </nav>
 
-            <div className="container-fluid ">
+            <div className="container-fluid " onLoad={(e)=>setUrl(url)}>
                 <div className="row">
                     <main
                         role="main"

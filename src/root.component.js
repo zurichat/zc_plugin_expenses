@@ -4,6 +4,7 @@ import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
 import Create from "./pages/Create";
 import View from "./pages/View";
+import Admin from "./pages/Admin";
 import axios from "axios";
 import "./css/app.css";
 import "./css/style.css";
@@ -14,7 +15,7 @@ function Root() {
         data: null,
         error: false,
     });
-    const [userdata] = useState({
+    const [userdata,setUserdata] = useState({
         id: "613d3e65e4010959c8dc0c11",
         name: "Sally Jane",
         room_id: "6133c5a68006324323416896",
@@ -62,11 +63,21 @@ function Root() {
                 <Route path="/view">
                     <View userdata={userdata} />
                 </Route>
+                <Route path="/admin">
+                    <Admin
+                        expenses={expenses}
+                        setExpenses={setExpenses}
+                        userdata={userdata}
+                        setUserdata={setUserdata}
+                    />
+                </Route>
                 <Route path="/">
                     <Dashboard
                         expenses={expenses}
                         setExpenses={setExpenses}
                         userdata={userdata}
+                        url={url}
+                        setUrl={setUrl}
                     />
                 </Route>
             </Switch>
