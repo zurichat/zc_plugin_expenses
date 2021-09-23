@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import React from "react";
 import { Link } from "react-router-dom";
-function ExpenseList({ expense }) {
+function ExpenseList({ expense, userdata, showList }) {
     return (
         <tr>
             <td style={{ textTransform: "capitalize" }}>
@@ -21,9 +21,16 @@ function ExpenseList({ expense }) {
                 {expense.status}
             </td>
             <td style={{ textTransform: "capitalize" }}>
+                {
+                userdata.isadmin ?
                 <Link to={`/view`} className="btn-link">
                     View Details
                 </Link>
+                :
+                <button type="button" className="btn btn-link" onClick={(e)=>{showList(expense)}}>
+                    View Details
+                </button>
+                }
             </td>
         </tr>
     );
