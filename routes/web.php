@@ -23,7 +23,10 @@ use App\Http\Controllers\AboutController;
 
  Route::view('/expenses', 'app');
  Route::view('/', 'app');
+<<<<<<< HEAD
  Route::view('/local', 'local');
+=======
+>>>>>>> 58e08b51a9c3c6586c75644a3a236865cc23b179
 
 // Route::get('/dbtable', function () {
 //     return view('table');

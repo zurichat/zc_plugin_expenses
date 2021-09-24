@@ -167,7 +167,7 @@ class ExpenseController extends Controller
     public function update(Request $request, $id)
     {
 
-        $v = Validator::make($request->all(), ["list_status" => "required"]);
+        $v = Validator::make($request->all(), ["status" => "required"]);
         if($v->passes()){
             $data["plugin_id"] = $this->plugin_id;
             $data["organization_id"] = $this->organization_id;
