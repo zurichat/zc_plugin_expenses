@@ -22,6 +22,8 @@ use App\Http\Controllers\AboutController;
 // });
 
  Route::view('/expenses', 'app');
+ Route::view('/', 'app');
+ Route::view('/local', 'local');
 
 // Route::get('/dbtable', function () {
 //     return view('table');

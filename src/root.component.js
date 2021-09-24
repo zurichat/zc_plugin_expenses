@@ -4,17 +4,12 @@ import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
 import Create from "./pages/Create";
 import View from "./pages/View";
+import Admin from "./pages/Admin";
 import axios from "axios";
 import "./css/app.css";
 import "./css/style.css";
 function Root() {
-    const [url, setUrl] = useState(`https://expenses.zuri.chat/api/v1/expenses`);
-    const [expenses, setExpenses] = useState({
-        loading: false,
-        data: null,
-        error: false,
-    });
-    const [userdata] = useState({
+    const [userdata, setUserdata] = useState({
         id: "613d3e65e4010959c8dc0c11",
         name: "Sally Jane",
         room_id: "6133c5a68006324323416896",
@@ -23,6 +18,17 @@ function Root() {
         isadmin: false,
     });
 
+    const [url, setUrl] = useState(`https://expenses.zuri.chat/api/v1/expenses`);
+    
+    const [expenses, setExpenses] = useState({
+        loading: false,
+        data: null,
+        error: false,
+        approved: 0,
+        declined: 0,
+        pending: 0,
+    });
+    
     useEffect(() => {
         setExpenses({
             loading: true,
@@ -43,6 +49,9 @@ function Root() {
                     loading: false,
                     data: response.data.data.data.sort((a, b) => b.created_at - a.created_at),
                     error: false,
+                    approved:this.data ?this.data.filter(expense=> expense.status=="approved").length:0,
+                    declined: this.data ? this.data.filter(expense => expense.status == "declined").length : 0,
+                    pending: this.data ? this.data.filter(expense => expense.status == "pending").length : 0,
                 });
             })
             .catch((error) => {
@@ -50,9 +59,12 @@ function Root() {
                     loading: false,
                     data: null,
                     error: true,
+                    approved: 0,
+                    declined: 0,
+                    pending: 0
                 });
             });
-    }, [url]);
+    }, [url, userdata.organization_id, userdata.plugin_id, userdata.room_id,userdata.isadmin]);
     return (
         <Router basename="/expenses">
             <Switch>
@@ -62,11 +74,21 @@ function Root() {
                 <Route path="/view">
                     <View userdata={userdata} />
                 </Route>
+                <Route path="/admin">
+                    <Admin
+                        expenses={expenses}
+                        userdata={userdata}
+                        url={url}
+                        setUrl={setUrl}
+                    />
+                </Route>
                 <Route path="/">
                     <Dashboard
                         expenses={expenses}
                         setExpenses={setExpenses}
                         userdata={userdata}
+                        url={url}
+                        setUrl={setUrl}
                     />
                 </Route>
             </Switch>
