@@ -6,14 +6,24 @@ use Illuminate\Http\Request;
 
 class AboutController extends Controller
 {
-    public function show(){
-        $about = [
-            'plugin_name' => 'zuri expenses',
+    public function showPluginInfo() {
+        $pluginInfo = [
+            'name' => 'Expenses Plugin',
             'version' => '1.0',
-            'team_name' => 'team_grange',
-            'information' => 'This describes information about the expenses',
+            'description' => [
+                'zuri.chat Plugin',
+                'A plugin to track expenses'
+            ],
+            'scaffold_structure' => 'Monolith',
+            'team' => 'HNG-8.0/Expenses Team',
+            'ping_url' => 'https://expenses.zuri.chat/api/ping',
+            // 'html_url' => 'https:',
+            // 'sidebar_url' => '',
         ];
-
-        return response()->json($about, 200);
+        return response()->json([
+            'type' => 'Plugin Information',
+            'status' => 'success',
+            'plugin_info' => $pluginInfo
+        ], 200);
     }
 }

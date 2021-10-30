@@ -6,12 +6,7 @@ use Illuminate\Http\Request;
 
 class PingController extends Controller
 {
-    public function index(){
-        $result=[
-            "status"=>200,
-            "message" => "Successful",
-            "data" => "UP"
-        ];
-        return json_encode($result);
-    }
+   public function ping() {
+       return response()->json(['message' => 'Server is live!'], 200);
+   }
 }
