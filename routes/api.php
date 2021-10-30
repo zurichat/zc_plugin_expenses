@@ -4,10 +4,12 @@ use App\Http\Controllers\SidebarAPI;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\PingController;
 use App\Http\Controllers\ListApi;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\RoomMemberController;
+
 
 
 /*
