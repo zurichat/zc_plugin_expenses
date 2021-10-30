@@ -21,8 +21,8 @@ class AboutController extends Controller
             // 'sidebar_url' => '',
         ];
         return response()->json([
-            'type' => 'Plugin Information',
             'status' => 'success',
+            'type' => 'Plugin Information',
             'plugin_info' => $pluginInfo
         ], 200);
     }
