@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<!-- saved from url=(0053)https://getbootstrap.com/docs/4.0/examples/dashboard/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Create Expenses</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="font/css/all.css">
+  <style>
+      .green{
+        color : #00B87C;
+      }
+
+    </style>
+
+  <body>
+    <nav class="navbar" style="background-color:#00B87C; color:white;">
+      <a class="navbar-brand text-white" href="#">Expenses</a>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <main role="main" class="col-12 col-md-12  col-lg-12 px-5 pt-5">
+          <form>
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                  <div class="form-group">
+                    <label><strong>Title</strong></label>
+                    <input type="text" name="name" class="form-control" placeholder="Enter Expenses Title">
+                  </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                  <div class="form-group">
+                    <label><strong>Description</strong></label>
+                    <textarea placeholder="Enter Info Here" class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+                  </div>
+                </div>
+              <div class="col-xs-12 col-sm-12 col-md-12">
+              <label><p>Items</p></label>
+                <div class="table-responsive text-left">
+            <table class="table table-sm">
+              <thead>
+                <tr>
+                  <th>NAME</th>
+                  <th>PRICE</th>
+                  <th>QUANTITY</th>
+                  <th>ACTIONS</th>
+                  
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Coffee</td>
+                  <td>NGN 600</td>
+                  <td>4 Cups</td>
+                  <td>
+                     <!-- edit and delete model buttons -->
+                    <a href="#" class="text-secondary" data-toggle="modal" data-target="#editModal"><i class="far fa-edit"></i></a>
+                    <a href="#" class="text-secondary" data-toggle="modal" data-target="#deleteModal"><i class="far fa-trash-alt"></i></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Coffee</td>
+                  <td>NGN 600</td>
+                  <td>4 Cups</td>
+                  <td>
+                    <!-- edit and delete model buttons -->
+                    <a href="#" class="text-secondary" data-toggle="modal" data-target="#editModal"><i class="far fa-edit"></i></a>
+                    <a href="#" class="text-secondary" data-toggle="modal" data-target="#deleteModal"><i class="far fa-trash-alt"></i></a>
+                  </td>
+                </tr>
+               
+              </tbody>
+            </table>
+            <!-- add item button -->
+            <a href="#" class="text-primary" data-toggle="modal" data-target="#addModal"><i class="far fa-plus-square mr-2"></i>Add items</a>
+          </div>
+          </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 d-flex justify-content-end">
+                  <div class="form-group">
+                    <button type="submit" class="btn btn-success">Submit Request</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+        </main>
+      </div>
+    </div>
+
+<!-- add item modal -->
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Item</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      
+      
+      <div class="modal-body">
+        <form>
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                  <div class="form-group">
+                    <label><strong>Item Name</strong></label>
+                    <input type="text" name="name" class="form-control" placeholder="Item Name">
+                  </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                  <div class="form-group">
+                    <label><strong>Price</strong></label>
+                    <input type="text" name="name" class="form-control" placeholder="Price">
+                  </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                  <div class="form-group">
+                    <label><strong>Quantity</strong></label>
+                    <input type="number" name="name" class="form-control" placeholder="Quantity">
+                  </div>
+                </div>
+              </div>
+                
+        </form>
+
+      </div>
+      <div class="modal-footer d-flex justify-content-end">
+        <button class="btn btn-sm btn-success">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- delete item modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to delete?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div> 
+      <div class="modal-body">
+        <form>
+                <div class="d-flex justify-content-center">
+                  <button class="btn btn-sm btn-bg-secondary mr-2">No keep it</button>
+                  <button class="btn btn-sm btn-danger ml-2">Yes delete Item</button>
+              </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- edit item modal -->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Item</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      
+      
+      <div class="modal-body">
+        <form>
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                  <div class="form-group">
+                    <label><strong>Item Name</strong></label>
+                    <input type="text" name="name" class="form-control" placeholder="Item Name">
+                  </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                  <div class="form-group">
+                    <label><strong>Price</strong></label>
+                    <input type="text" name="name" class="form-control" placeholder="Price">
+                  </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                  <div class="form-group">
+                    <label><strong>Quantity</strong></label>
+                    <input type="number" name="name" class="form-control" placeholder="Quantity">
+                  </div>
+                </div>
+              </div>
+                
+        </form>
+
+      </div>
+      <div class="modal-footer d-flex justify-content-end">
+        <button class="btn btn-sm btn-success">Save Changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="jquery-3.3.1.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="main.js"></script>
+
+
+</body></html>

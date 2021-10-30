@@ -1,0 +1,84 @@
+
+textarea-137 {
+    border: 1px solid #999999;
+    border-radius: 3px;
+    outline: none;
+    padding: 0 15px;
+    font-size: 15px;
+    line-height: 28px;
+    font-weight: 600;
+    background: #ffffff;
+    box-sizing: border-box;
+}
+textarea-137 {
+    height: 136px;
+    width: 515px;
+    left: 32%;
+    top: 53%;
+}
+.table-head{
+    background-color:#00B87C;
+    color:rgb(182, 178, 178);
+}
+.loader {
+    border: 5px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 5px solid #00B87C;
+    width: 50px;
+    height: 50px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.navbar{
+    background-color:#00B87C; 
+    color:white;
+}
+
+.custom-card-header{
+    background-color: #00B87C;
+    color: white;
+    border-radius: 0;
+    font-size: 1.25rem;
+}
+.total::before{
+    content: "₦";
+    font-family: 'Courier New', Courier, monospace;
+    text-decoration: dotted;
+}
+.total{
+    font-family: 'Courier New', Courier, monospace;
+    text-decoration: dotted;
+}
+.display-4{
+    font-size: 1.5rem;
+}
+
+.my-nav{
+    flex-flow: nowrap;
+    overflow-x:scroll;
+    justify-content: space-between;
+    border-bottom: 0.05rem grey solid;
+    scrollbar-3dlight-color: pink;
+}
+.my-nav .nav-item{
+    color:rgb(26, 25, 25)
+}
+.my-nav .nav-item:focus, .my-nav .nav-item.active{
+    border-bottom: 0.15rem #00B87C solid;
+}
+
+.my-nav .nav-item:hover, .my-nav .nav-item.active{
+    border-bottom: 0.15rem #00B87C solid;
+}

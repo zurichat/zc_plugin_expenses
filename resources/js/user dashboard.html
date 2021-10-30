@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<!-- saved from url=(0053)https://getbootstrap.com/docs/4.0/examples/dashboard/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>User Expenses</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="font/css/all.css">
+  <style>
+      .green{
+        color : #00B87C;
+      }
+
+    </style>
+
+  <body style="background-color : #F0F0F0">
+    <nav class="navbar" style="background-color:#00B87C; color:white;">
+      <a class="navbar-brand text-white" href="#">Expenses</a>
+    </nav>
+
+    <div class="container-fluid ">
+      <div class="row">
+        <main role="main" class="col-12 col-md-12  col-lg-12 pt-3">
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-1">
+            <button class="btn btn-sm btn-outline-primary">
+                <i class="fas fa-plus"></i>
+                Add New List
+              </button>
+            <div class="btn-toolbar mb-2 mb-md-0">
+              <button class="btn btn-sm btn-link text-primary">
+                <i class="fas fa-sort-alpha-down"></i>
+                Sort by
+              </button>
+
+              <div class="btn-group">
+  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Action
+  </button>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="#">Action</a>
+    <a class="dropdown-item" href="#">Another action</a>
+    <a class="dropdown-item" href="#">Something else here</a>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="#">Separated link</a>
+  </div>
+</div>
+            </div>
+          </div>
+
+          <div class="table-responsive text-left text-md-center bg-light">
+            <table class="table table-hover table-sm">
+              <tbody style="background-color:#00B87C; color:white;">
+                <tr>
+                  <td>DATE</td>
+                  <td>NAME</td>
+                  <td>TITLE</td>
+                  <td>PRICE</td>
+                  <td>STATUS</td>
+                  <td>DETAILS</td>
+                </tr>
+              </tbody>
+              <tbody>
+                <tr>
+                  <td>02/09/21</td>
+                  <td>jerry Mbam</td>
+                  <td>Travel</td>
+                  <td>N3,000</td>
+                  <td class="green">Approved</td>
+                  <td>
+                    <!-- view expenses button -->
+                    <a href="#" class="btn-link" data-toggle="modal" data-target="#viewModal">View Details</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>02/09/21</td>
+                  <td>jerry Mbam</td>
+                  <td>Travel</td>
+                  <td>N3,000</td>
+                  <td class="green">Approved</td>
+                  <td>
+                    <!-- view expenses button -->
+                    <a href="#" class="btn-link" data-toggle="modal" data-target="#viewModal">View Details</a>
+                  </td>
+                </tr>
+               
+              </tbody>
+            </table>
+          </div>
+        </main>
+      </div>
+    </div>
+
+
+<script src="jquery-3.3.1.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="main.js"></script>
+
+
+</body></html>

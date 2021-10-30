@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 
+
+use App\Http\Controllers\AboutController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,10 +17,31 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+ Route::view('/expenses', 'app');
+ Route::view('/', 'app');
+ Route::view('/local', 'local');
+
+// Route::get('/dbtable', function () {
+//     return view('table');
+// });
 
 Auth::routes();
 
+
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/centrifugo', function(){
+    return view("centrifugo");
+});
+
+
+//@kelanialiyu issue #200 start
+// Route::resource("list","ExpenseList");
+//@kelanialiyu 1ssue #200 end for linking list controller 
+
+// Route::get("external", "External@index");
+

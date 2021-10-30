@@ -1,0 +1,110 @@
+body {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.container {
+  max-width: 500px;
+  margin: auto;
+  
+  padding: 10px;
+  
+  width: 497px;
+  height: 500px;
+}
+h1 {
+  color: rgb(1, 1, 14);
+  margin-left: 20px;
+}
+
+p {
+  color: #fff;
+}
+
+.top {
+  text-align: center;
+}
+.outer {
+  border: solid;
+}
+
+.mid {
+  display: flex;
+  justify-content: space-between;
+}
+.mid-two {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 50px;
+}
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgb(7, 0, 0);
+  padding: 10px;
+  color: rgb(19, 180, 40);
+}
+
+.test {
+  border: solid;
+}
+.tablet {
+  border-top: 1px solid;
+  justify-content: space-between;
+}
+th {
+  text-align: left;
+}
+
+.export {
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+  color: rgb(70, 189, 15);
+}
+.space-button {
+  padding: 50px;
+}
+
+.popup .overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1;
+  display: none;
+}
+.popup .content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  background: #fff;
+  width: 497px;
+  height: 500px;
+  z-index: 2;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.popup .close-btn {
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  width: 30px;
+  height: 30px;
+  font-size: 25px;
+  font-weight: 600;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 50%;
+}
+.popup.active .overlay {
+  display: block;
+}
+.popup.active .content {
+  transition: all 300ms ease-in-out;
+  transform: translate(-50%, -50%) scale(1);
+}

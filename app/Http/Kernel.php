@@ -41,6 +41,7 @@ class Kernel extends HttpKernel
         'api' => [
             'throttle:60,1',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+
         ],
     ];
 
@@ -62,5 +63,13 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'plugin_id' => \App\Http\Middleware\CheckPlugin::class,
+        'organization_id' => \App\Http\Middleware\CheckOrganization::class,
+        'room_id' => \App\Http\Middleware\CheckRoom::class,
+
+        // @Aduramimo issue #110
+        'Admin' => \App\Http\Middleware\Admin::class,
+
+        // @Aduramimo issue #110
     ];
 }

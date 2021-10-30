@@ -1,10 +1,16 @@
-name: Expenses Plugin Deployment
+name: Laravel
 
 on:
   push:
+<<<<<<< HEAD
     branches: [ main ]
   pull_request:
     branches: [ main ]
+=======
+    branches: [ main, dev ]
+  pull_request:
+    branches: [ main, dev ]
+>>>>>>> 1b8fcd5fedf783df346660b0bbcf2aa16822bbce
 
 jobs:
   laravel-tests:
@@ -17,6 +23,7 @@ jobs:
         php-version: '8.0'
     - uses: actions/checkout@v2 
     
+<<<<<<< HEAD
     - name: Copy .env
       run: php -r "file_exists('.env') || copy('.env.test', '.env');"
     - name: Cache Composer dependencies
@@ -53,6 +60,8 @@ jobs:
       run: |
         npm install
         npm run production
+=======
+>>>>>>> 1b8fcd5fedf783df346660b0bbcf2aa16822bbce
       
     - name: Git Pull on Server
       uses: appleboy/ssh-action@master
@@ -63,6 +72,7 @@ jobs:
        # key: ${{ secrets.SSHKEY }}
         script: |
           cd /var/www/expenses.zuri.chat
+<<<<<<< HEAD
           sudo rm composer.lock
           sudo rm package-lock.json
           git pull origin dev
@@ -80,3 +90,10 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         localPath: './zc_plugin_expenses/webpack.mix.js'
         remotePath: '/var/www/expenses.zuri.chat'
+=======
+          git stash
+          git pull origin
+          git branch -r          
+          composer install
+          yarn
+>>>>>>> 1b8fcd5fedf783df346660b0bbcf2aa16822bbce
