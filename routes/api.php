@@ -30,7 +30,7 @@ Route::group(['prefix' => 'v1'], function(){
     Route::get('/sidebarlist', [SidebarAPI::class, 'sidebar']);
     });
 
-// Expense List endpoints 
+// Expense List endpoints
 Route::prefix('v1')->group(function () {
     Route::resource("list", "ListApi");
 });
@@ -64,6 +64,10 @@ Route::group(['middleware' => ['plugin_id', 'organization_id'], 'prefix' => 'v1'
 
 // Organization Endpoints
 
+
+// plugin info related endpoints
+Route::get('/info', [AboutController::class, 'showPluginInfo']);
+Route::get('/ping', [PingController::class, 'ping']);
 
 
 
